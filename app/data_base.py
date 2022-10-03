@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
 
-def read() -> list:
+def read() -> dict:
     """
     Получение данных из db.\n
     :return: Данные в виде списка словарей (list). None - при вызове исключения.
@@ -32,7 +32,7 @@ def get_now(time) -> list:
             data: dict = json.load(file)
 
         answer = []
-        for chat, notifications in data:
+        for chat, notifications in data.items():
             for message in notifications:
                 if message.get("time") == time:
                     answer.append({"chat_id": chat, "time": message.get("time"), "text": message.get("text")})
@@ -52,10 +52,15 @@ def add_new(time: str, chat_id: int, text: str) -> bool:
     try:
         with open(r"data\notifications.json", "r") as file:
             data: dict = json.load(file)
-        data[chat_id].append({"time": time, "text": text})
+        if data.get(chat_id):
+            data[chat_id].append({"time": time, "text": text})
+        else:
+            data[chat_id] = [{"time": time, "text": text}]
 
         with open(r"data\notifications.json", "w") as file:
             json.dump(data, file)
+
+        return True
 
 
     except Exception as e:
@@ -73,10 +78,10 @@ def reset() -> bool:
     # default = dict(last_update=now_time, users=0, teams=[])
 
     try:
-        with open("characters.json", "w") as file:
+        with open(r"data\notifications.json", "w") as file:
             json.dump({}, file)
             return True
 
     except Exception as e:
-        logger.error("Failed to read db!\n\tException: {0}".format(e))
+        logger.error("Failed to reset db!\n\tException: {0}".format(e))
         return False
