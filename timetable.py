@@ -21,30 +21,34 @@ config = load_config("config/bot.ini")
 
 schedule_stop = threading.Event()
 
-def timer(bot: Bot):
-    # schedule.every().minute.at(":00").do(notification, bot)
-    schedule.every().minute.at(":00").do(start_notification, bot)
-    # schedule.every().minute.at(":00").do(asyncio.create_task(notification(bot)))
-    # schedule.every().day.at("8:00").do(day_plan)
-    # schedule.every().day.at("19:00").do(check)
-
+def timer(bot: Bot, loop):
+    # await bot.send_message("1990672413", "some text")
+    last_minute = -1
+    asyncio.set_event_loop(loop)
+    # loop.run_forever()
 
     while not schedule_stop.is_set():
-        schedule.run_pending()
-        sleep(5)
-    # await bot.send_message("1990672413", "some text")
+        if int(str(datetime.now())[14:16]) > last_minute or int(str(datetime.now())[14:16]) == 0:
+            if last_minute == 59:
+                last_minute = 0
+            else:
+                last_minute += 1
+
+            # asyncio.run(send_notifications(bot))
+            # loop = asyncio.get_event_loop()
+            loop.create_task(send_notifications(bot))
+            # print(asyncio.get_event_loop())
+            # print(asyncio.get_event_loop().is_running())
+            # loop.run_until_complete(send_notifications(bot))
+            # asyncio.run(send_notifications(bot))
+        sleep(32)
 
 
-def start_notification(bot: Bot):
-    logger.info("start_notification!!!!!!!!!!!!!!!")
-    print(asyncio.iscoroutinefunction(notification))
-    asyncio.run(notification(bot))
 
-
-async def notification(bot: Bot):
+async def send_notifications(bot: Bot):
     now_date = datetime.now().strftime(config.logger.date_format)
-    logger.info("NOTIFICATION AT {0}".format(now_date))
-    await bot.send_message("1990672413", "some text")
+    # logger.info("NOTIFICATION AT {0}".format(now_date))
+    # await bot.send_message("1990672413", "some text")
 
     data = data_base.get_now(now_date)
 

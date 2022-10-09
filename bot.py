@@ -35,9 +35,12 @@ async def set_commands(dispatcher: Dispatcher):
 async def on_startup(dispatcher):
     await set_commands(dispatcher)
 
-    th = threading.Thread(target=timer, args=[dispatcher.bot])
+    loop = asyncio.get_event_loop()
+
+    th = threading.Thread(target=timer, args=[dispatcher.bot, loop])
     th.start()
-    # asyncio.create_task(worker_main(dispatcher.bot))
+    # await timer(dispatcher.bot)
+    # asyncio.create_task(timer(dispatcher.bot))
     logger.info("Start schedule process.")
 
 
