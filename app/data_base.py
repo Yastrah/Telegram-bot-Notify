@@ -44,7 +44,7 @@ def get_now(time) -> list:
         return None
 
 
-def add_new(time: str, chat_id: int, text: str) -> bool:
+def add_new(time: str, chat_id: str, text: str) -> bool:
     """
     Получение данных из db.\n
     :return: Данные в виде списка словарей (list). None - при вызове исключения.

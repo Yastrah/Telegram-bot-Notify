@@ -1,6 +1,6 @@
 import logging
 import threading
-# import asyncio
+import asyncio
 # import emoji
 # import datetime
 
@@ -13,7 +13,7 @@ from aiogram.utils import executor
 from aiogram.types import BotCommand
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
-from timetable import worker_main
+from timetable import timer
 
 
 version = "1.0.1"
@@ -35,8 +35,9 @@ async def set_commands(dispatcher: Dispatcher):
 async def on_startup(dispatcher):
     await set_commands(dispatcher)
 
-    th = threading.Thread(target=worker_main, args=[dispatcher.bot])
+    th = threading.Thread(target=timer, args=[dispatcher.bot])
     th.start()
+    # asyncio.create_task(worker_main(dispatcher.bot))
     logger.info("Start schedule process.")
 
 

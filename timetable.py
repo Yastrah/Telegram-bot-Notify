@@ -1,6 +1,7 @@
 import logging
 import schedule
 import asyncio
+import threading
 from time import sleep
 from datetime import datetime
 from aiogram import Bot
@@ -12,22 +13,38 @@ from app import data_base
 logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
-def worker_main(bot: Bot):
+# schedule_stop.set()
+# def timer():
+#     while not schedule_stop.is_set():
+#         schedule.run_pending()
+#         sleep(5)
+
+schedule_stop = threading.Event()
+
+def timer(bot: Bot):
+    # schedule.every().minute.at(":00").do(notification, bot)
     schedule.every().minute.at(":00").do(start_notification, bot)
+    # schedule.every().minute.at(":00").do(asyncio.create_task(notification(bot)))
     # schedule.every().day.at("8:00").do(day_plan)
     # schedule.every().day.at("19:00").do(check)
 
-    while True:
+
+    while not schedule_stop.is_set():
         schedule.run_pending()
-        sleep(1)
+        sleep(5)
+    # await bot.send_message("1990672413", "some text")
 
 
-def start_notification(bot):
+def start_notification(bot: Bot):
+    logger.info("start_notification!!!!!!!!!!!!!!!")
+    print(asyncio.iscoroutinefunction(notification))
     asyncio.run(notification(bot))
 
 
-async def notification(bot):
+async def notification(bot: Bot):
     now_date = datetime.now().strftime(config.logger.date_format)
+    logger.info("NOTIFICATION AT {0}".format(now_date))
+    await bot.send_message("1990672413", "some text")
 
     data = data_base.get_now(now_date)
 

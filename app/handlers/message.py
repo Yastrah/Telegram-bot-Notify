@@ -72,7 +72,7 @@ async def create_notification(message: types.Message):
 
     full_date = " ".join([date, time])
 
-    if data_base.add_new(full_date, message.chat.id, text):
+    if data_base.add_new(full_date, str(message.chat.id), text):
         logger.debug("Created notification:\t chat_id: {0}, time: {1}, text: {2}".format(full_date,
                                                                                          message.chat.id, text))
 
