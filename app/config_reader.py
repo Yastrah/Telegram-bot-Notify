@@ -22,9 +22,15 @@ class Logger:
 
 
 @dataclass
+class Data:
+    reminders_file: str
+
+
+@dataclass
 class Config:
     bot: Bot
     logger: Logger
+    data: Data
 
 
 def load_config(path: str):
@@ -34,6 +40,7 @@ def load_config(path: str):
     try:
         bot_conf = config["bot"]
         logger_conf = config["logger"]
+        data_conf = config["data"]
 
         return Config(
             bot=Bot(
@@ -45,6 +52,9 @@ def load_config(path: str):
             logger=Logger(
                 level=logger_conf["level"],
                 date_format=logger_conf["date_format"].replace('&', '%')
+            ),
+            data=Data(
+                reminders_file=data_conf["reminders_file"]
             )
         )
     except Exception as e:

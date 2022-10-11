@@ -13,7 +13,7 @@ def read() -> dict:
     :return: Данные в виде списка словарей (list). None - при вызове исключения.
     """
     try:
-        with open(r"data\notifications.json", "r") as file:
+        with open(config.data.reminders_file, "r") as file:
             data: dict = json.load(file)
             return data
 
@@ -28,12 +28,12 @@ def get_now(time) -> list:
     :return: Данные в виде списка словарей (list). None - при вызове исключения.
     """
     try:
-        with open(r"data\notifications.json", "r") as file:
+        with open(config.data.reminders_file, "r") as file:
             data: dict = json.load(file)
 
         answer = []
-        for chat, notifications in data.items():
-            for message in notifications:
+        for chat, reminders in data.items():
+            for message in reminders:
                 if message.get("time") == time:
                     answer.append({"chat_id": chat, "time": message.get("time"), "text": message.get("text")})
 
@@ -50,21 +50,21 @@ def add_new(time: str, chat_id: str, text: str) -> bool:
     :return: Данные в виде списка словарей (list). None - при вызове исключения.
     """
     try:
-        with open(r"data\notifications.json", "r") as file:
+        with open(config.data.reminders_file, "r") as file:
             data: dict = json.load(file)
         if data.get(chat_id):
             data[chat_id].append({"time": time, "text": text})
         else:
             data[chat_id] = [{"time": time, "text": text}]
 
-        with open(r"data\notifications.json", "w") as file:
+        with open(config.data.reminders_file, "w") as file:
             json.dump(data, file)
 
         return True
 
 
     except Exception as e:
-        logger.error("Failed to add notification to DataBase!\n\tException: {0}".format(e))
+        logger.error("Failed to add reminder to DataBase!\n\tException: {0}".format(e))
         return None
 
 
@@ -78,10 +78,10 @@ def reset() -> bool:
     # default = dict(last_update=now_time, users=0, teams=[])
 
     try:
-        with open(r"data\notifications.json", "w") as file:
+        with open(config.data.reminders_file, "w") as file:
             json.dump({}, file)
             return True
 
     except Exception as e:
-        logger.error("Failed to reset db!\n\tException: {0}".format(e))
+        logger.error("Failed to reset database!\n\tException: {0}".format(e))
         return False
