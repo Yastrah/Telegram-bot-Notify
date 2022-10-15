@@ -3,17 +3,18 @@ import re
 import datetime
 
 from app.config_reader import load_config
+from app.logic import date_converter
 from app import data_base
-from app import date_converter
 
 from aiogram import Dispatcher, types
+
 
 logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
 
 async def create_reminder(message: types.Message):
-    text = " ".join(message.text.split())
+    text = " ".join(message.text.split())  # избавление от лишних пробелов
 
     tomorrow_pattern = re.compile("завтра", re.IGNORECASE)
     match = tomorrow_pattern.search(text)
@@ -21,8 +22,7 @@ async def create_reminder(message: types.Message):
     if match and match.start() <= 7:
         text = " ".join(text.replace(match.group(), '', 1).split())  # сообщение без даты
 
-        now_date = datetime.datetime.now().strftime(config.logger.date_format)
-        date = date_converter.tomorrow(now_date).split()[0]
+        date = date_converter.tomorrow().split()[0]
 
     else:
         date_pattern = re.compile("\d{1,2}([-./]\d{1,2})?([-./]\d{2,4})?")

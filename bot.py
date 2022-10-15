@@ -186,7 +186,22 @@ def main():
 
 
 if __name__ == "__main__":
-    from app import data_base
-    data_base.reset()
-    main()
-    # Re()
+    # from app import data_base
+    # data_base.reset()
+    # main()
+    from app.logic import search_engine
+
+    # message = "1/10 13:30 сделать уроки до 15:20."
+    # message = "затвра в  14  сделать уроки до 19:20."
+    message = "в пятницу в 14 сделать уроки до 19:20."
+    # message = "завтра  14  сделать уроки до 19:20."
+    # message = "33.09.20 13:30 сделать уроки до 15:20."
+    # message = "c 30/09/22 ..dfsf"
+    message = " ".join(message.split())  # избавление от лишних пробелов
+    # print(search_engine.search_tomorrow(message))
+    res = search_engine.search_day_name(message, "завтра")
+    print(res[0])
+    print(res[1])
+    res = search_engine.search_day_name(message, "пятница")
+    print(res[0])
+    print(res[1])

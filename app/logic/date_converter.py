@@ -1,5 +1,8 @@
 import datetime
+from app.config_reader import load_config
 
+
+config = load_config("config/bot.ini")
 
 def dict_in_date(old_date: dict) -> str:
     """
@@ -34,12 +37,12 @@ def dict_in_date(old_date: dict) -> str:
     return date
 
 
-def tomorrow(now_date: str) -> str:
+def tomorrow() -> str:
     """
     Обрабатывает все случаи и находит дату для следующего дня.\n
-    :param now_date: строка с текущей датой.
     :return: полная дата следующего дня.
     """
+    now_date = datetime.datetime.now().strftime(config.logger.date_format)
 
     now_date = {"day": int(now_date.split()[0].split("/")[0]), "month": int(now_date.split()[0].split("/")[1]),
                 "year": int(now_date.split()[0].split("/")[2]), "hour": int(now_date.split()[1].split(":")[0]),
