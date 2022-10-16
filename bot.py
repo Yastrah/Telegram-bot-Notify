@@ -193,8 +193,8 @@ if __name__ == "__main__":
     from app.logic import date_converter
 
     # message = "1/10 в 13:30 сделать уроки до 15:20."
-    message = "затвра в  14  сделать уроки до 19:20."
-    # message = "в пятницу в 14 сделать уроки до 19:20."
+    # message = "затвра в  14  сделать уроки до 19:20."
+    message = "в пятницу в 14 сделать уроки до 19:20."
     # message = "завтра  14  сделать уроки до 19:20."
     # message = "33/09/20 13:30 сделать уроки до 15:20."
 
@@ -230,19 +230,3 @@ if __name__ == "__main__":
         print(f"time: {time}")
         print(f"text: {text}")
 
-    # res = search_engine.search_day_name(message, "завтра")
-    # print(res[0], '|', res[1])
-    # print("-------------------------------------------------")
-    # res = search_engine.search_day_name(message, "пятница")
-    # print(res[0], '|', res[1])
-    # print("-------------------------------------------------")
-    # res = search_engine.search_date(message)
-    # print(res[0], '|', res[1])
-    # print("-------------------------------------------------")
-    # message = res[1]
-
-    # res = search_engine.search_time(message)
-    # print(res[0], '|', res[1])
-    # print("-------------------------------------------------")
-    print()
-    print(date_converter.day_of_the_week("понедельник"))

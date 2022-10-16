@@ -1,7 +1,9 @@
+import logging
 import datetime
 from app.config_reader import load_config
 
 
+logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
 def dict_in_date(old_date: dict) -> str:
@@ -50,8 +52,12 @@ def today() -> str:
 def tomorrow(now_date=datetime.datetime.now().strftime(config.logger.date_format)) -> str:
     """
     Обрабатывает все случаи и находит дату для следующего дня.\n
+    :param now_date: строка, формата: день/месяц/год
     :return: дата без времени следующего дня.
     """
+    date = datetime.datetime.now().strftime(config.logger.date_format)
+    if now_date != date:
+        now_date += " "+str(date.split()[1])
 
     now_date = {"day": int(now_date.split()[0].split("/")[0]), "month": int(now_date.split()[0].split("/")[1]),
                 "year": int(now_date.split()[0].split("/")[2]), "hour": int(now_date.split()[1].split(":")[0]),
@@ -90,5 +96,16 @@ def day_of_the_week(day: str) -> str:
     :param day: день недели
     :return: Дата ближайшего нужного дня недели
     """
-    pass
+    days_list = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"]
+
+    date = str(datetime.datetime.today().strftime(config.logger.date_format)).split()[0].split('/')
+    # print(tomorrow(f"{date[0]}/{date[1]}/{date[2]}"))
+    for i in range(7):
+        if datetime.datetime(int(date[2]), int(date[1]), int(date[0])).weekday() == days_list.index(day):
+            return f"{date[0]}/{date[1]}/{date[2]}"
+
+        date = tomorrow(f"{date[0]}/{date[1]}/{date[2]}").split('/')
+
+    logger.warning("Couldn't find date for {0}!".format(day))
+    return None
 
