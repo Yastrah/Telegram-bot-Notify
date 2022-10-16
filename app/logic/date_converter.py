@@ -37,12 +37,21 @@ def dict_in_date(old_date: dict) -> str:
     return date
 
 
-def tomorrow() -> str:
+def today() -> str:
     """
-    Обрабатывает все случаи и находит дату для следующего дня.\n
-    :return: полная дата следующего дня.
+    Находит текущую дату.\n
+    :return: текущая дата без времени.
     """
     now_date = datetime.datetime.now().strftime(config.logger.date_format)
+
+    return now_date.split()[0]
+
+
+def tomorrow(now_date=datetime.datetime.now().strftime(config.logger.date_format)) -> str:
+    """
+    Обрабатывает все случаи и находит дату для следующего дня.\n
+    :return: дата без времени следующего дня.
+    """
 
     now_date = {"day": int(now_date.split()[0].split("/")[0]), "month": int(now_date.split()[0].split("/")[1]),
                 "year": int(now_date.split()[0].split("/")[2]), "hour": int(now_date.split()[1].split(":")[0]),
@@ -72,5 +81,14 @@ def tomorrow() -> str:
     else:
         now_date["day"] += 1
 
+    return dict_in_date(now_date).split()[0]
 
-    return dict_in_date(now_date)
+
+def day_of_the_week(day: str) -> str:
+    """
+    Находит дату ближайшего заданного дня недели
+    :param day: день недели
+    :return: Дата ближайшего нужного дня недели
+    """
+    pass
+

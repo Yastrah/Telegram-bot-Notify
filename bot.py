@@ -190,18 +190,59 @@ if __name__ == "__main__":
     # data_base.reset()
     # main()
     from app.logic import search_engine
+    from app.logic import date_converter
 
-    # message = "1/10 13:30 сделать уроки до 15:20."
-    # message = "затвра в  14  сделать уроки до 19:20."
-    message = "в пятницу в 14 сделать уроки до 19:20."
+    # message = "1/10 в 13:30 сделать уроки до 15:20."
+    message = "затвра в  14  сделать уроки до 19:20."
+    # message = "в пятницу в 14 сделать уроки до 19:20."
     # message = "завтра  14  сделать уроки до 19:20."
-    # message = "33.09.20 13:30 сделать уроки до 15:20."
-    # message = "c 30/09/22 ..dfsf"
+    # message = "33/09/20 13:30 сделать уроки до 15:20."
+
+    print(f"message: {message}")
     message = " ".join(message.split())  # избавление от лишних пробелов
-    # print(search_engine.search_tomorrow(message))
-    res = search_engine.search_day_name(message, "завтра")
-    print(res[0])
-    print(res[1])
-    res = search_engine.search_day_name(message, "пятница")
-    print(res[0])
-    print(res[1])
+
+    days_list = ["сегодня", "завтра", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"]
+
+    date = None
+    for day in days_list:
+        res = search_engine.search_day_name(message, day)
+        if res[0]:
+            message = res[1]
+            print(f"key_word: {day}")
+
+            if day == "сегодня":
+                date = date_converter.today()
+            elif day == "завтра":
+                date = date_converter.tomorrow()
+            else:
+                date = date_converter.day_of_the_week(day)
+            break
+
+    if date is None:
+        date, message = search_engine.search_date(message)
+
+    time, text = search_engine.search_time(message)
+
+    if date is None or time is None:
+        print("ERROR")
+    else:
+        print(f"date: {date}")
+        print(f"time: {time}")
+        print(f"text: {text}")
+
+    # res = search_engine.search_day_name(message, "завтра")
+    # print(res[0], '|', res[1])
+    # print("-------------------------------------------------")
+    # res = search_engine.search_day_name(message, "пятница")
+    # print(res[0], '|', res[1])
+    # print("-------------------------------------------------")
+    # res = search_engine.search_date(message)
+    # print(res[0], '|', res[1])
+    # print("-------------------------------------------------")
+    # message = res[1]
+
+    # res = search_engine.search_time(message)
+    # print(res[0], '|', res[1])
+    # print("-------------------------------------------------")
+    print()
+    print(date_converter.day_of_the_week("понедельник"))

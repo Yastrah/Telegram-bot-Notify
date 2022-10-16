@@ -22,7 +22,7 @@ async def create_reminder(message: types.Message):
     if match and match.start() <= 7:
         text = " ".join(text.replace(match.group(), '', 1).split())  # сообщение без даты
 
-        date = date_converter.tomorrow().split()[0]
+        date = date_converter.tomorrow()
 
     else:
         date_pattern = re.compile("\d{1,2}([-./]\d{1,2})?([-./]\d{2,4})?")
