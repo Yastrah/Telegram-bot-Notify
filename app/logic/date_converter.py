@@ -1,6 +1,7 @@
 import logging
 import datetime
 from app.config_reader import load_config
+from config.configuration import Settings
 
 
 logger = logging.getLogger(__name__)
@@ -52,7 +53,7 @@ def today() -> str:
 def tomorrow(now_date=datetime.datetime.now().strftime(config.logger.date_format)) -> str:
     """
     Обрабатывает все случаи и находит дату для следующего дня.\n
-    :param now_date: строка, формата: день/месяц/год
+    :param now_date: дата, формата: день/месяц/год
     :return: дата без времени следующего дня.
     """
     date = datetime.datetime.now().strftime(config.logger.date_format)
@@ -90,7 +91,7 @@ def tomorrow(now_date=datetime.datetime.now().strftime(config.logger.date_format
     return dict_in_date(now_date).split()[0]
 
 
-def day_of_the_week(day: str) -> str:
+def nearest_day_of_the_week(day: str) -> str:
     """
     Находит дату ближайшего заданного дня недели
     :param day: день недели
@@ -99,7 +100,7 @@ def day_of_the_week(day: str) -> str:
     days_list = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"]
 
     date = str(datetime.datetime.today().strftime(config.logger.date_format)).split()[0].split('/')
-    # print(tomorrow(f"{date[0]}/{date[1]}/{date[2]}"))
+
     for i in range(7):
         if datetime.datetime(int(date[2]), int(date[1]), int(date[0])).weekday() == days_list.index(day):
             return f"{date[0]}/{date[1]}/{date[2]}"
@@ -109,3 +110,13 @@ def day_of_the_week(day: str) -> str:
     logger.warning("Couldn't find date for {0}!".format(day))
     return None
 
+
+def get_day_of_the_week(date: str) -> str:
+    """
+    Находит день недели заданной даты, возвращая в сокращённом формате.\n
+    :param date: дата, формата: день/месяц/год
+    :return: день недели формата пн, вт и т.д.
+    """
+    date = date.split()[0].split('/')
+    day_number = datetime.datetime(int(date[2]), int(date[1]), int(date[0])).weekday()
+    return Settings.week_days[day_number][0]

@@ -2,8 +2,10 @@ import logging
 import re
 import datetime
 
+from config.configuration import Settings
+
 from app.config_reader import load_config
-from app.logic import date_converter
+from app.logic import date_converter, search_engine
 from app import data_base
 
 from aiogram import Dispatcher, types
@@ -16,57 +18,29 @@ config = load_config("config/bot.ini")
 async def create_reminder(message: types.Message):
     text = " ".join(message.text.split())  # избавление от лишних пробелов
 
-    tomorrow_pattern = re.compile("завтра", re.IGNORECASE)
-    match = tomorrow_pattern.search(text)
+    date = None
 
-    if match and match.start() <= 7:
-        text = " ".join(text.replace(match.group(), '', 1).split())  # сообщение без даты
+    found, text = search_engine.search_day_name(text, "сегодня")
+    if found:
+        date = date_converter.today()
 
-        date = date_converter.tomorrow()
+    if date is None:
+        found, text = search_engine.search_day_name(text, "завтра")
+        if found:
+            date = date_converter.tomorrow()
 
-    else:
-        date_pattern = re.compile("\d{1,2}([-./]\d{1,2})?([-./]\d{2,4})?")
-        match = date_pattern.search(text)
+    for day in [day[1] for day in Settings.week_days]:
+        found, text = search_engine.search_day_name(text, day)
+        if found:
+            date = date_converter.nearest_day_of_the_week(day)
+            break
 
-        if match and match.start() <= 7:
-            date = re.split(r"[-./]", match.group())
-            text = " ".join(text.replace(match.group(), '', 1).split())  # сообщение без даты
+    if date is None:
+        date, text = search_engine.search_date(text)
 
-            now_date = datetime.datetime.now().strftime(config.logger.date_format)
-            now_date = now_date.split()[0].split('/')
+    time, text = search_engine.search_time(text)
 
-            for num in date:
-                if len(num) == 1:
-                    date[date.index(num)] = f"0{num}"
-                elif len(num) > 2:
-                    logger.debug("Reminder handling error!")
-
-            for i in range(len(date), 3):
-                date.append(now_date[i])
-
-            if len(date[2]) == 2:
-                date[2] = now_date[2][:2] + date[2]
-
-            date = "/".join(date)
-
-        else:
-            logger.debug("Reminder handling error!")
-            return
-
-    time_pattern = re.compile("\d{1,2}([:. /]\d{1,2})?")
-    match = time_pattern.search(text)
-
-    if match and match.start() <= 4:
-        if len(match.group().split(':')) == 1:
-            time = f"{match.group()}:00:00"
-        elif len(match.group().split(':')) == 2:
-            time = f"{match.group()}:00"
-        else:
-            time = match.group()
-
-        text = " ".join(text.replace(match.group(), '', 1).split())  # сообщение без времени
-
-    else:
+    if date is None or time is None:
         logger.debug("Reminder handling error!")
         return
 
@@ -77,10 +51,10 @@ async def create_reminder(message: types.Message):
                                                                                      full_date, text))
 
         await message.answer("Уведомление успешно создано.\n"
-                             f"Дата: {full_date}\n"
+                             f"Дата: {date_converter.get_day_of_the_week(date)} {full_date}\n"
                              f"Текст: {text}")
     else:
-        await message.answer("Неудалось создать уведомление")
+        await message.answer("Не удалось создать уведомление")
 
 
 def register_handlers_message(dp: Dispatcher):

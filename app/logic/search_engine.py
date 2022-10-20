@@ -4,55 +4,53 @@ import re
 import datetime
 
 from app.config_reader import load_config
-from app.logic import date_converter
+from config.configuration import Settings
 
 
 logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
-prepositions_list = ['в', 'к']  # автоматически удаляющиеся предлоги
 
 
-def search_day_name(message: str, word: str) -> (bool, str):
-    message = message.lower().split()
-    for i in range(len(message)):
-        distance = nltk.edit_distance(word.lower(), message[i]) / len(message[i])
-        # print(word, distance)
+def search_day_name(text: str, word: str) -> (bool, str):
+    text = text.split()
+    for i in range(len(text)):
+        distance = nltk.edit_distance(word.lower(), text[i].lower()) / len(text[i])
 
-        if distance < 0.5 and i <= 3:
-            if message[i+1] in prepositions_list:  # проверка на ненужные символы
-                message.pop(i+1)
+        if distance < Settings.day_distance_index and i < Settings.day_order_index:
+            if text[i + 1] in Settings.prepositions_for_delete:  # проверка на ненужные символы
+                text.pop(i + 1)
 
-            message.pop(i)
+            text.pop(i)
 
-            if message[i-1] in prepositions_list:  # проверка на ненужные символы
-                message.pop(i-1)
+            if text[i - 1] in Settings.prepositions_for_delete:  # проверка на ненужные символы
+                text.pop(i - 1)
 
-            message = " ".join(message)
+            text = " ".join(text)
 
-            return True, message
+            return True, text
 
-    return False, " ".join(message)
+    return False, " ".join(text)
 
 
-def search_date(message: str) -> (str, str):
+def search_date(text: str) -> (str, str):
     date_pattern = re.compile("\d{1,2}([-./]\d{1,2})?([-./]\d{2,4})?")
-    match = date_pattern.search(message)
+    match = date_pattern.search(text)
 
-    if match and match.start() <= 10:
+    if match and match.start() < Settings.date_order_index:
         date = re.split(r"[-./]", match.group())
-        message = message.split()
-        i = message.index(match.group())
+        text = text.split()
+        i = text.index(match.group())
 
-        if message[i+1] in prepositions_list:  # проверка на ненужные символы
-            message.pop(i+1)
+        if text[i + 1] in Settings.prepositions_for_delete:  # проверка на ненужные символы
+            text.pop(i + 1)
 
-        message.pop(i)
+        text.pop(i)
 
-        if message[i-1] in prepositions_list:  # проверка на ненужные символы
-            message.pop(i-1)
+        if text[i - 1] in Settings.prepositions_for_delete:  # проверка на ненужные символы
+            text.pop(i - 1)
 
-        message = " ".join(message)  # сообщение без даты
+        text = " ".join(text)  # сообщение без даты
 
         now_date = datetime.datetime.now().strftime(config.logger.date_format)
         now_date = now_date.split()[0].split('/')
@@ -61,7 +59,7 @@ def search_date(message: str) -> (str, str):
             if len(num) == 1:
                 date[date.index(num)] = f"0{num}"
             elif len(num) > 2:
-                logger.debug("Reminder handling error!")
+                logger.warning("Reminder handling error!")
 
         for i in range(len(date), 3):
             date.append(now_date[i])
@@ -71,26 +69,28 @@ def search_date(message: str) -> (str, str):
 
         date = "/".join(date)
 
-        return date, message
+        return date, text
 
-    return None, message
+    return None, text
 
 
-def search_time(message: str) -> (str, str):
+def search_time(text: str) -> (str, str):
     time_pattern = re.compile("\d{1,2}([:. /]\d{1,2})?")
-    match = time_pattern.search(message)
+    match = time_pattern.search(text)
 
-    if match and match.start() <= 3:
-        if len(match.group().split(':')) == 1:
-            time = f"{match.group()}:00:00"
-        elif len(match.group().split(':')) == 2:
-            time = f"{match.group()}:00"
+    if match and match.start() < Settings.time_order_index:
+        time = re.split(r"[:. /]", match.group())
+
+        if len(time) == 1:
+            time = f"{':'.join(time)}:00:00"
+        elif len(time) == 2:
+            time = f"{':'.join(time)}:00"
         else:
-            time = match.group()
+            time = ':'.join(time)
 
-        message = " ".join(message.replace(match.group(), '', 1).split())  # сообщение без времени
+        text = " ".join(text.replace(match.group(), '', 1).split())  # сообщение без времени
 
-        return time, message
+        return time, text
 
-    return None, message
+    return None, text
 
