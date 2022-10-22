@@ -1,6 +1,4 @@
 import logging
-import re
-import datetime
 
 from config.configuration import Settings
 

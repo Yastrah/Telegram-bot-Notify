@@ -16,3 +16,15 @@ class Settings(object):
     date_order_index = 10  # наиболее дальнее(не включая) расположение даты от начала строки(по номеру символа)
     time_order_index = 4  # наиболее дальнее(не включая) расположение времени от начала строки(по номеру символа)
 
+
+class BotCommands(object):
+    """
+    Содержит коианды для бота с их описаниями для пользователя.
+    """
+    cmd_start = "start"
+    cmd_start_description = {"ru": None, "en": "Hi!\nI'm <u><b>{0}</b>!</u>\nDesigned by Yastrah."}
+
+    cmd_help = "help"
+    cmd_help_description = {"ru": "<b>{0}</b> - это бот позволяющий создавать напоминания.\nКомады:\n...", "en": None}
+
+

@@ -2,10 +2,11 @@ import logging
 import threading
 import asyncio
 # import emoji
-# import datetime
 
 from app.config_reader import load_config
 from app.handlers.message import register_handlers_message
+from app.handlers.admin import register_handlers_admin
+from app.handlers.common import register_handlers_common
 
 from aiogram import Bot
 from aiogram.dispatcher import Dispatcher
@@ -16,7 +17,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from timetable import timer
 
 
-version = "1.0.2"
+version = "1.0.3"
 
 logger = logging.getLogger(__name__)
 
@@ -29,6 +30,7 @@ async def set_commands(dispatcher: Dispatcher):
         BotCommand(command=f"/today", description="список дел на сегодня"),
     ]
     await dispatcher.bot.set_my_commands(commands)
+
     logger.info("Bot commands have been set.")
 
 
@@ -39,8 +41,7 @@ async def on_startup(dispatcher):
 
     th = threading.Thread(target=timer, args=[dispatcher.bot, loop])
     th.start()
-    # await timer(dispatcher.bot)
-    # asyncio.create_task(timer(dispatcher.bot))
+
     logger.info("Start schedule process.")
 
 
@@ -55,6 +56,8 @@ def main():
 
     logger.info(f"VERSION: {version}")
 
+    register_handlers_common(dp)
+    register_handlers_admin(dp)
     register_handlers_message(dp)
 
     executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
