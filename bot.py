@@ -3,7 +3,7 @@ import threading
 import asyncio
 # import emoji
 
-from app.config_reader import load_config
+from app.data_scripts.config_reader import load_config
 from app.handlers.message import register_handlers_message
 from app.handlers.admin import register_handlers_admin
 from app.handlers.common import register_handlers_common
@@ -12,7 +12,6 @@ from aiogram import Bot
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 from aiogram.types import BotCommand
-from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
 from timetable import timer
 
@@ -64,6 +63,6 @@ def main():
 
 
 if __name__ == "__main__":
-    from app import data_base  # временно, для тестирования
-    data_base.reset()  # временно, для тестирования
+    from app.data_scripts import reminders_data  # временно, для тестирования
+    reminders_data.reset()  # временно, для тестирования
     main()

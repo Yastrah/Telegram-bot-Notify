@@ -6,8 +6,8 @@ from time import sleep
 from datetime import datetime
 from aiogram import Bot
 
-from app.config_reader import load_config
-from app import data_base
+from app.data_scripts.config_reader import load_config
+from app.data_scripts import reminders_data
 
 
 logger = logging.getLogger(__name__)
@@ -28,7 +28,7 @@ def timer(bot: Bot, loop):
 
 async def send_reminders(bot: Bot):
     now_date = datetime.now().strftime(config.logger.date_format)
-    data = data_base.get_now(now_date)
+    data = reminders_data.get_now(now_date)
 
     if data is None:
         logger.debug("Impossible to process reminders - data error.")
@@ -40,9 +40,9 @@ async def send_reminders(bot: Bot):
 
     logger.debug("There are {0} reminders for {1}.".format(len(data), now_date))
 
-    for message in data:
+    for reminder in data:
         try:
-            await bot.send_message(chat_id=message["chat_id"], text=message["text"])
+            await bot.send_message(chat_id=reminder[1], text=reminder[4])
         except Exception as e:
-            logger.error("Failed to send reminder to user {0}!\n\tException: {1}".format(message["chat_id"], e))
+            logger.error("Failed to send reminder to user {0}!\n\tException: {1}".format(reminder[1], e))
             continue

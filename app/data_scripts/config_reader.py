@@ -23,7 +23,9 @@ class Logger:
 
 @dataclass
 class Data:
-    reminders_file: str
+    bot_db: str
+    reminders_table: str
+    users_table: str
 
 
 @dataclass
@@ -47,14 +49,16 @@ def load_config(path: str):
                 name=bot_conf["name"],
                 id=bot_conf["id"],
                 token=bot_conf["token"],
-                admin_id=bot_conf["admin_id"]
+                admin_id=bot_conf["admin_id"],
             ),
             logger=Logger(
                 level=logger_conf["level"],
-                date_format=logger_conf["date_format"].replace('&', '%')
+                date_format=logger_conf["date_format"].replace('&', '%'),
             ),
             data=Data(
-                reminders_file=data_conf["reminders_file"]
+                bot_db=data_conf["bot_db"],
+                reminders_table=data_conf["reminders_table"],
+                users_table=data_conf["users_table"],
             )
         )
     except Exception as e:

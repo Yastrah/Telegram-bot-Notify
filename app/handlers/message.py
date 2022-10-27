@@ -2,9 +2,9 @@ import logging
 
 from config.configuration import Settings
 
-from app.config_reader import load_config
+from app.data_scripts.config_reader import load_config
 from app.logic import date_converter, search_engine
-from app import data_base
+from app.data_scripts import reminders_data
 
 from aiogram import Dispatcher, types
 
@@ -44,7 +44,7 @@ async def create_reminder(message: types.Message):
 
     full_date = " ".join([date, time])
 
-    if data_base.add_new(full_date, str(message.chat.id), text):
+    if reminders_data.add_new(str(message.chat.id), str(message.message_id), full_date, text):
         logger.debug("Created reminder:\t chat_id: {0}, time: {1}, text: {2}".format(message.chat.id,
                                                                                      full_date, text))
 

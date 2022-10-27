@@ -1,7 +1,7 @@
 import logging
 
-from app.config_reader import load_config
-from app import data_base
+from app.data_scripts.config_reader import load_config
+from app.data_scripts import reminders_data
 
 from aiogram import Dispatcher, types
 
@@ -17,7 +17,12 @@ async def cmd_users(message: types.Message):
         logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
         return
 
-    await message.answer(f"Сейчас в базе данных {len(data_base.read().keys())} пользователей.")
+    users_id = []
+    for reminder in reminders_data.read():
+        if not reminder[1] in users_id:
+            users_id.append(reminder[1])
+
+    await message.answer(f"Сейчас в базе данных {len(users_id)} пользователей.")
 
 
 

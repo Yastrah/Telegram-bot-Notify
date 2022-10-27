@@ -3,7 +3,7 @@ import nltk
 import re
 import datetime
 
-from app.config_reader import load_config
+from app.data_scripts.config_reader import load_config
 from config.configuration import Settings
 
 

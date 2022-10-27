@@ -1,11 +1,10 @@
 import logging
 
-from app.config_reader import load_config
+from app.data_scripts.config_reader import load_config
 
-from aiogram import Dispatcher, types
-from aiogram.dispatcher import FSMContext
-from aiogram.dispatcher.filters.state import State, StatesGroup
-
+# from aiogram import Dispatcher, types
+# from aiogram.dispatcher import FSMContext
+# from aiogram.dispatcher.filters.state import State, StatesGroup
 
 logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")

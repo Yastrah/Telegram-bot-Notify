@@ -1,11 +1,25 @@
 import logging
 import datetime
-from app.config_reader import load_config
+from app.data_scripts.config_reader import load_config
 from config.configuration import Settings
 
 
 logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
+
+
+def date_to_value(date: str) -> int:
+    """
+    Конвертирует строковый формат даты в численное значение. Чем позже дата, тем больше значение.\n
+    :param date: дата, формата: день/месяц/год
+    :return: численное значение
+    """
+    date, time = date.split()
+    day, month, year = date.split('/')
+    hour, minute, second = time.split(':')
+    value = int(year)*10**10 + int(month)*10**8 + int(day)*10**6 + int(hour)*10**4 + int(minute)*10**2 + int(second)
+    return value
+
 
 def dict_in_date(old_date: dict) -> str:
     """
