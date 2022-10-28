@@ -55,9 +55,43 @@ def add_new(chat_id: str, message_id: str, time: str, text: str):
 
         return True
 
-
     except Exception as e:
         logger.error("Failed to add reminder to DataBase!\n\tException: {0}".format(e))
+        return None
+
+
+def remove(id=None, chat_id=None):
+    """
+    Удаляет уведомление с заданным id или удаляет все уведомления определённого пользователя.\n
+    :param id: уведомления, которое необходимо удалить
+    :param chat_id: пользователя, все уведомления кторого необходимо удалить
+    :return:
+    """
+    if id:
+        try:
+            with sqlite3.connect(config.data.bot_db) as db:
+                cursor = db.cursor()
+                cursor.execute("DELETE FROM reminders WHERE id=?", [id])
+
+            return True
+
+        except Exception as e:
+            logger.error("Failed to remove reminder from DataBase!\n\tException: {0}".format(e))
+            return None
+
+    elif chat_id:
+        try:
+            with sqlite3.connect(config.data.bot_db) as db:
+                cursor = db.cursor()
+                cursor.execute("DELETE FROM reminders WHERE chat_id=?", [chat_id])
+
+            return True
+
+        except Exception as e:
+            logger.error("Failed to remove reminders from DataBase!\n\tException: {0}".format(e))
+            return None
+
+    else:
         return None
 
 
@@ -66,10 +100,6 @@ def reset():
     Полностью удаляет все данные из db.\n
     :return: True. None - при вызове исключения.
     """
-    # now_time = datetime.datetime.now().strftime(config.logger.date_format)
-
-    # default = dict(last_update=now_time, users=0, teams=[])
-
     try:
         with sqlite3.connect(config.data.bot_db) as db:
             cursor = db.cursor()

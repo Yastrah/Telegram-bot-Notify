@@ -43,6 +43,9 @@ async def send_reminders(bot: Bot):
     for reminder in data:
         try:
             await bot.send_message(chat_id=reminder[1], text=reminder[4])
+            reminders_data.remove(id=reminder[0])
+            logger.debug("Reminder sent successfully to user {0}".format(reminder[1]))
+
         except Exception as e:
             logger.error("Failed to send reminder to user {0}!\n\tException: {1}".format(reminder[1], e))
             continue

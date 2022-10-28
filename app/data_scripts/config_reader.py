@@ -24,8 +24,6 @@ class Logger:
 @dataclass
 class Data:
     bot_db: str
-    reminders_table: str
-    users_table: str
 
 
 @dataclass
@@ -57,8 +55,6 @@ def load_config(path: str):
             ),
             data=Data(
                 bot_db=data_conf["bot_db"],
-                reminders_table=data_conf["reminders_table"],
-                users_table=data_conf["users_table"],
             )
         )
     except Exception as e:

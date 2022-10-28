@@ -1,6 +1,7 @@
 import logging
 import threading
 import asyncio
+from datetime import datetime
 # import emoji
 
 from app.data_scripts.config_reader import load_config
@@ -16,7 +17,7 @@ from aiogram.types import BotCommand
 from timetable import timer
 
 
-version = "1.0.3"
+version = "1.0.4"
 
 logger = logging.getLogger(__name__)
 
@@ -53,7 +54,13 @@ def main():
     bot = Bot(token=config.bot.token)
     dp = Dispatcher(bot)
 
-    logger.info(f"VERSION: {version}")
+    logger.info("""Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: {0}
+LAST_UPDATE: {1}
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah""".format(version, datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
 
     register_handlers_common(dp)
     register_handlers_admin(dp)
