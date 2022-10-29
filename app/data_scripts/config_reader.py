@@ -12,7 +12,7 @@ class Bot:
     name: str
     id: str
     token: str
-    admin_id: str
+    admin_id: list
 
 
 @dataclass
@@ -47,7 +47,7 @@ def load_config(path: str):
                 name=bot_conf["name"],
                 id=bot_conf["id"],
                 token=bot_conf["token"],
-                admin_id=bot_conf["admin_id"],
+                admin_id=bot_conf["admin_id"].split(),
             ),
             logger=Logger(
                 level=logger_conf["level"],
