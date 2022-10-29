@@ -11,11 +11,11 @@ config = load_config("config/bot.ini")
 
 
 async def cmd_start(message: types.Message):
-    await message.answer(BotCommands.cmd_start_description["en"].format(config.bot.name), parse_mode="HTML")
+    await message.answer(BotCommands.cmd_start_text["en"].format(config.bot.name), parse_mode="HTML")
 
 
 async def cmd_help(message: types.Message):
-    await message.answer(BotCommands.cmd_help_description["ru"].format(config.bot.name), parse_mode="HTML")
+    await message.answer(BotCommands.cmd_help_text["ru"].format(config.bot.name), parse_mode="HTML")
 
 
 def register_handlers_common(dp: Dispatcher):

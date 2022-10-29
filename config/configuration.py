@@ -19,12 +19,13 @@ class Settings(object):
 
 class BotCommands(object):
     """
-    Содержит коианды для бота с их описаниями для пользователя.
+    Содержит команды для бота с их описаниями для пользователя и выводимыми сообщениями.
     """
     cmd_start = "start"
-    cmd_start_description = {"ru": None, "en": "Hi!\nI'm <u><b>{0}</b>!</u>\nDesigned by Yastrah."}
+    cmd_start_description = "начать"
+    cmd_start_text = {"ru": None, "en": "Hi!\nI'm <u><b>{0}</b>!</u>\nDesigned by Yastrah."}
 
     cmd_help = "help"
-    cmd_help_description = {"ru": "<b>{0}</b> - это бот позволяющий создавать напоминания.\nКомады:\n...", "en": None}
-
+    cmd_help_description = "помощь в использовании"
+    cmd_help_text = {"ru": "<b>{0}</b> - это бот позволяющий создавать напоминания.\nКомады:\n...", "en": None}
 

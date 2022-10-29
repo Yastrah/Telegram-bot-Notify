@@ -4,6 +4,8 @@ import asyncio
 from datetime import datetime
 # import emoji
 
+from config.configuration import BotCommands
+
 from app.data_scripts.config_reader import load_config
 from app.handlers.message import register_handlers_message
 from app.handlers.admin import register_handlers_admin
@@ -22,12 +24,13 @@ version = "1.0.4"
 logger = logging.getLogger(__name__)
 
 
-# Регистрация команд, отображаемых в интерфейсе Telegram
 async def set_commands(dispatcher: Dispatcher):
+    """
+    Регистрация команд, отображаемых в интерфейсе Telegram.
+    """
     commands = [
-        BotCommand(command=f"/start", description="начать"),
-        BotCommand(command=f"/help", description="помощь в использовании"),
-        BotCommand(command=f"/today", description="список дел на сегодня"),
+        BotCommand(command=f"/{BotCommands.cmd_start}", description=BotCommands.cmd_start_description),
+        BotCommand(command=f"/{BotCommands.cmd_help}", description=BotCommands.cmd_help_description),
     ]
     await dispatcher.bot.set_my_commands(commands)
 
