@@ -6,11 +6,11 @@ from datetime import datetime
 
 from config.configuration import BotCommands
 
-from app.data_scripts.config_reader import load_config
-from app.handlers.message import register_handlers_message
-from app.handlers.admin import register_handlers_admin
-from app.handlers.common import register_handlers_common
-from app.handlers.errors import register_handlers_error
+from bot.db.config_reader import load_config
+from bot.handlers.message import register_handlers_message
+from bot.handlers.admin import register_handlers_admin
+from bot.handlers.common import register_handlers_common
+from bot.handlers.errors import register_handlers_error
 
 from aiogram import Bot
 from aiogram.dispatcher import Dispatcher
@@ -49,6 +49,11 @@ async def on_startup(dispatcher):
     logger.info("Start schedule process.")
 
 
+async def on_shutdown(dispatcher):
+    # Проверка бд и т.п.
+    logger.warning("Shutdown dispatcher!!!")
+
+
 def main():
     config = load_config("config/bot.ini")
 
@@ -71,10 +76,10 @@ GitHub: https://github.com/Yastrah""".format(version, datetime.now().strftime("%
     register_handlers_message(dp)
     register_handlers_error(dp)
 
-    executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
+    executor.start_polling(dp, skip_updates=True, on_startup=on_startup, on_shutdown=on_shutdown)
 
 
 if __name__ == "__main__":
-    from app.data_scripts import reminders_data  # временно, для тестирования
-    reminders_data.reset()  # временно, для тестирования
+    from bot.db import reminders  # временно, для тестирования
+    reminders.reset()  # временно, для тестирования
     main()

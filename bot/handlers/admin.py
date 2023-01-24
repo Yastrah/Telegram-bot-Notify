@@ -1,7 +1,7 @@
 import logging
 
-from app.data_scripts.config_reader import load_config
-from app.data_scripts import reminders_data
+from bot.db.config_reader import load_config
+from bot.db import reminders
 
 from aiogram import Dispatcher, types
 

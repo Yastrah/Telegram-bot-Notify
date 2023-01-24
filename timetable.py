@@ -6,8 +6,8 @@ from time import sleep
 from datetime import datetime
 from aiogram import Bot
 
-from app.data_scripts.config_reader import load_config
-from app.data_scripts import reminders_data
+from bot.db.config_reader import load_config
+from bot.db import reminders
 
 
 logger = logging.getLogger(__name__)

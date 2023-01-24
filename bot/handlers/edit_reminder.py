@@ -1,6 +1,6 @@
 import logging
 
-from app.data_scripts.config_reader import load_config
+from bot.db.config_reader import load_config
 
 # from aiogram import Dispatcher, types
 # from aiogram.dispatcher import FSMContext

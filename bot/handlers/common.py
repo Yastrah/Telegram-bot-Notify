@@ -1,6 +1,6 @@
 import logging
 
-from app.data_scripts.config_reader import load_config
+from bot.db.config_reader import load_config
 from config.configuration import BotCommands
 
 from aiogram import Dispatcher, types

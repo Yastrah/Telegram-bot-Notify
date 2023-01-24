@@ -1,8 +1,8 @@
 import sqlite3
 import logging
 
-from app.data_scripts.config_reader import load_config
-from app.data_scripts.database_connector import on_start
+from bot.db.config_reader import load_config
+from bot.db.connector import on_start
 
 logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
