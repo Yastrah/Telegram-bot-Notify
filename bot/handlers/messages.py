@@ -43,19 +43,21 @@ async def create_reminder(message: types.Message):
         return await message.answer("Некорректный формат записи!")
 
     full_date = " ".join([date, time])
+    reminder_id = reminders.get_free_id(str(message.chat.id))
 
-    if reminders_data.add_new(str(message.chat.id), str(message.message_id), full_date, text):
-        logger.debug("Created reminder:\t chat_id: {0}, time: {1}, text: {2}".format(message.chat.id,
-                                                                                     full_date, text))
+    if reminders.add_new(str(message.chat.id), str(message.message_id), reminder_id, full_date, text):
+        logger.debug("Created reminder:\t chat_id: {0}, "
+                     "reminder_id: {1}, time: {2}, text: {3}".format(message.chat.id, reminder_id, full_date, text))
 
         await message.answer("Уведомление успешно создано.\n"
+                             f"Id: {reminder_id}\n"
                              f"Дата: {date_converter.get_day_of_the_week(date)} {full_date}\n"
                              f"Текст: {text}")
     else:
         await message.answer("Не удалось создать уведомление")
 
 
-def register_handlers_message(dp: Dispatcher):
+def register_handlers_messages(dp: Dispatcher):
     dp.register_message_handler(create_reminder, state="*")
     # dp.register_message_handler(cmd_help, commands="help", state="*")
     # dp.register_message_handler(cmd_cancel, Text(equals="отмена", ignore_case=True), state="*")

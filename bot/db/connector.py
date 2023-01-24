@@ -20,6 +20,7 @@ def on_start():
                            id INTEGER PRIMARY KEY AUTOINCREMENT,
                            chat_id VARCHAR NOT NULL,
                            message_id VARCHAR NOT NULL,
+                           reminder_id INT32 NOT NULL,
                            date VARCHAR(19) NOT NULL,
                            content TEXT NOT NULL
                            )""")

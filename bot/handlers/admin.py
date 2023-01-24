@@ -16,7 +16,7 @@ async def cmd_users(message: types.Message):
         return
 
     users_id = []
-    for reminder in reminders_data.read():
+    for reminder in reminders.read():
         if not reminder[1] in users_id:
             users_id.append(reminder[1])
 
@@ -32,7 +32,7 @@ async def cmd_send_all(message: types.Message):
     text = ' '.join(message.text.split()[1:])
 
     chats_id = []
-    for reminder in reminders_data.read():
+    for reminder in reminders.read():
         if not reminder[1] in chats_id:
             chats_id.append(reminder[1])
 

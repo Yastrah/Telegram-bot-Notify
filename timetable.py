@@ -28,7 +28,7 @@ def timer(bot: Bot, loop):
 
 async def send_reminders(bot: Bot):
     now_date = datetime.now().strftime(config.logger.date_format)
-    data = reminders_data.get_now(now_date)
+    data = reminders.get_now(now_date)
 
     if data is None:
         logger.debug("Impossible to process reminders - data error.")
@@ -42,8 +42,8 @@ async def send_reminders(bot: Bot):
 
     for reminder in data:
         try:
-            await bot.send_message(chat_id=reminder[1], text=reminder[4])
-            reminders_data.remove(id=reminder[0])
+            await bot.send_message(chat_id=reminder[1], text=reminder[5])
+            reminders.remove(id=reminder[0])
             logger.debug("Reminder sent successfully to user {0}".format(reminder[1]))
 
         except Exception as e:

@@ -17,15 +17,21 @@ class Settings(object):
     time_order_index = 4  # наиболее дальнее(не включая) расположение времени от начала строки(по номеру символа)
 
 
-class BotCommands(object):
+class User(object):
     """
     Содержит команды для бота с их описаниями для пользователя и выводимыми сообщениями.
     """
-    cmd_start = "start"
-    cmd_start_description = "начать"
-    cmd_start_text = {"ru": None, "en": "Hi!\nI'm <u><b>{0}</b>!</u>\nDesigned by Yastrah."}
-
-    cmd_help = "help"
-    cmd_help_description = "помощь в использовании"
-    cmd_help_text = {"ru": "<b>{0}</b> - это бот позволяющий создавать напоминания.\nКомады:\n...", "en": None}
-
+    user_commands = {
+        "start": {
+            "description": "начать пользоваться",
+            "text": {"ru": None, "en": "Hi!\nI'm <u><b>{0}</b>!</u>\nDesigned by Yastrah."},
+        },
+        "help": {
+            "description": "помощь в использовании бота",
+            "text": {"ru": "<b>{0}</b> - это бот позволяющий создавать напоминания.\nКомады:\n...", "en": None},
+        },
+        "list": {
+            "description": "вывод всех активных напоминаний",
+            # "text": {"ru": "<b>{0}</b> - это бот позволяющий создавать напоминания.\nКомады:\n...", "en": None},
+        },
+    }
