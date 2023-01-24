@@ -61,6 +61,9 @@ def search_date(text: str) -> (str, str):
             elif len(num) > 2:
                 logger.warning("Reminder handling error!")
 
+        if not 1 <= len(date) <= 3:
+            return None, text
+
         for i in range(len(date), 3):
             date.append(now_date[i])
 
@@ -81,6 +84,15 @@ def search_time(text: str) -> (str, str):
     if match and match.start() < Settings.time_order_index:
         time = re.split(r"[:. /]", match.group())
 
+        # Проверка на некорректность данных
+        if not 1 <= len(time) <= 3:
+            return None, text
+
+        for el in time[1:]:
+            if not len(el) == 2:
+                return None, text
+
+        # При необходимости форматирование данных
         if len(time) == 1:
             time = f"{':'.join(time)}:00:00"
         elif len(time) == 2:

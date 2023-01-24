@@ -10,6 +10,7 @@ from app.data_scripts.config_reader import load_config
 from app.handlers.message import register_handlers_message
 from app.handlers.admin import register_handlers_admin
 from app.handlers.common import register_handlers_common
+from app.handlers.errors import register_handlers_error
 
 from aiogram import Bot
 from aiogram.dispatcher import Dispatcher
@@ -19,7 +20,7 @@ from aiogram.types import BotCommand
 from timetable import timer
 
 
-version = "1.0.4"
+version = "1.0.5"
 
 logger = logging.getLogger(__name__)
 
@@ -68,6 +69,7 @@ GitHub: https://github.com/Yastrah""".format(version, datetime.now().strftime("%
     register_handlers_common(dp)
     register_handlers_admin(dp)
     register_handlers_message(dp)
+    register_handlers_error(dp)
 
     executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
 

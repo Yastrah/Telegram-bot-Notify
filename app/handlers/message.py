@@ -40,7 +40,7 @@ async def create_reminder(message: types.Message):
 
     if date is None or time is None:
         logger.debug("Reminder handling error!")
-        return
+        return await message.answer("Некорректный формат записи!")
 
     full_date = " ".join([date, time])
 
