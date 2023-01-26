@@ -2,7 +2,7 @@ import logging
 
 from config.configuration import Settings
 
-from bot.db.config_reader import load_config
+from config.config_reader import load_config
 from bot.logic import date_converter, search_engine
 from bot.db import reminders
 
@@ -14,7 +14,7 @@ config = load_config("config/bot.ini")
 
 
 async def create_reminder(message: types.Message):
-    text = " ".join(message.text.split())  # избавление от лишних пробелов
+    text = " ".join(message.text.split())
 
     date = None
 

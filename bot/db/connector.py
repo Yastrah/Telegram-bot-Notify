@@ -1,7 +1,7 @@
 import sqlite3
 import logging
 
-from bot.db.config_reader import load_config
+from config.config_reader import load_config
 
 logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
@@ -12,6 +12,7 @@ def on_start():
     Проверка существования базы данных и таблиц, при необходимости их создание.\n
     :return: True. None - при вызове исключения.
     """
+
     try:
         with sqlite3.connect(config.data.bot_db) as db:
             cursor = db.cursor()

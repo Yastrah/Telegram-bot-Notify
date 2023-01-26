@@ -6,7 +6,7 @@ from time import sleep
 from datetime import datetime
 from aiogram import Bot
 
-from bot.db.config_reader import load_config
+from config.config_reader import load_config
 from bot.db import reminders
 
 
@@ -19,14 +19,14 @@ timer_stop = threading.Event()
 def timer(bot: Bot, loop):
     asyncio.set_event_loop(loop)
 
-    schedule.every().minute.at(":00").do(lambda: loop.create_task(send_reminders(bot)))
+    schedule.every().minute.at(":00").do(lambda: loop.create_task(check_for_reminders(bot)))
 
     while not timer_stop.is_set():
         schedule.run_pending()
         sleep(5)
 
 
-async def send_reminders(bot: Bot):
+async def check_for_reminders(bot: Bot):
     now_date = datetime.now().strftime(config.logger.date_format)
     data = reminders.get_now(now_date)
 

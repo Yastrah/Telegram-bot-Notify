@@ -3,7 +3,7 @@ import nltk
 import re
 import datetime
 
-from bot.db.config_reader import load_config
+from config.config_reader import load_config
 from config.configuration import Settings
 
 

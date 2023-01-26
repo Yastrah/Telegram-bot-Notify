@@ -1,9 +1,7 @@
 import logging
 
-from config.configuration import Settings
-
-from bot.db.config_reader import load_config
-from bot.logic import date_converter, search_engine
+from config.config_reader import load_config
+from bot.logic import date_converter
 from bot.db import reminders
 
 from aiogram import Dispatcher, types

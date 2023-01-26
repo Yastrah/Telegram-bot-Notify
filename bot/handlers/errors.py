@@ -1,7 +1,6 @@
 import logging
 
-from bot.db.config_reader import load_config
-from bot.db import reminders
+from config.config_reader import load_config
 
 from aiogram import Dispatcher, types
 from aiogram.utils.exceptions import BotBlocked

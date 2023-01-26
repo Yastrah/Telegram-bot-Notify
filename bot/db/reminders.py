@@ -1,7 +1,7 @@
 import sqlite3
 import logging
 
-from bot.db.config_reader import load_config
+from config.config_reader import load_config
 from bot.db.connector import on_start
 
 logger = logging.getLogger(__name__)
