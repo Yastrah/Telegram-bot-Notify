@@ -6,6 +6,7 @@ from time import sleep
 from datetime import datetime
 from aiogram import Bot
 
+from config.configuration import Settings
 from config.config_reader import load_config
 from bot.db import reminders
 
@@ -27,24 +28,24 @@ def timer(bot: Bot, loop):
 
 
 async def check_for_reminders(bot: Bot):
-    now_date = datetime.now().strftime(config.logger.date_format)
+    now_date = datetime.now().strftime(Settings.date_format)
     data = reminders.get_now(now_date)
 
     if data is None:
-        logger.debug("Impossible to process reminders - data error.")
+        logger.error("Impossible to process reminders - data error.")
         return
 
     if not data:
-        logger.debug("There is no reminders for {0}.".format(now_date))
+        # logger.debug("There is no reminders for {0}.".format(now_date))
         return
 
-    logger.debug("There are {0} reminders for {1}.".format(len(data), now_date))
+    # logger.debug("There are {0} reminders for {1}.".format(len(data), now_date))
 
     for reminder in data:
         try:
             await bot.send_message(chat_id=reminder[1], text=reminder[5])
             reminders.remove(id=reminder[0])
-            logger.debug("Reminder sent successfully to user {0}".format(reminder[1]))
+            logger.info("Reminder sent successfully to user {0}.\n\tText: {1}".format(reminder[1], reminder[5]))
 
         except Exception as e:
             logger.error("Failed to send reminder to user {0}!\n\tException: {1}".format(reminder[1], e))

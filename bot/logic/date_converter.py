@@ -59,18 +59,18 @@ def today() -> str:
     Находит текущую дату.\n
     :return: текущая дата без времени.
     """
-    now_date = datetime.datetime.now().strftime(config.logger.date_format)
+    now_date = datetime.datetime.now().strftime(Settings.date_format)
 
     return now_date.split()[0]
 
 
-def tomorrow(now_date=datetime.datetime.now().strftime(config.logger.date_format)) -> str:
+def tomorrow(now_date=datetime.datetime.now().strftime(Settings.date_format)) -> str:
     """
     Обрабатывает все случаи и находит дату для следующего дня.\n
     :param now_date: дата, формата: день/месяц/год
     :return: дата без времени следующего дня.
     """
-    date = datetime.datetime.now().strftime(config.logger.date_format)
+    date = datetime.datetime.now().strftime(Settings.date_format)
     if now_date != date:
         now_date += " "+str(date.split()[1])
 
@@ -113,7 +113,7 @@ def nearest_day_of_the_week(day: str) -> str:
     """
     days_list = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"]
 
-    date = str(datetime.datetime.today().strftime(config.logger.date_format)).split()[0].split('/')
+    date = str(datetime.datetime.today().strftime(Settings.date_format)).split()[0].split('/')
 
     for i in range(7):
         if datetime.datetime(int(date[2]), int(date[1]), int(date[0])).weekday() == days_list.index(day):

@@ -39,14 +39,14 @@ async def create_reminder(message: types.Message):
     time, text = search_engine.search_time(text)
 
     if date is None or time is None:
-        logger.debug("Reminder handling error!")
+        logger.debug("Reminder handling: can not find requirement arguments.")
         return await message.answer("Некорректный формат записи!")
 
     full_date = " ".join([date, time])
     reminder_id = reminders.get_free_id(str(message.chat.id))
 
     if reminders.add_new(str(message.chat.id), str(message.message_id), reminder_id, full_date, text):
-        logger.debug("Created reminder:\t chat_id: {0}, "
+        logger.debug("Created reminder:\n\t chat_id: {0}, "
                      "reminder_id: {1}, time: {2}, text: {3}".format(message.chat.id, reminder_id, full_date, text))
 
         await message.answer("Уведомление успешно создано.\n"

@@ -2,6 +2,7 @@ import logging
 import threading
 import asyncio
 from datetime import datetime
+import sys
 # import emoji
 
 from config.configuration import Constants
@@ -21,9 +22,17 @@ from aiogram.types import BotCommand
 from bot.send_reminders import timer
 
 
-version = "1.0.6"
+version = "1.0.7"
 
 logger = logging.getLogger(__name__)
+
+
+def register_all_handlers(dp: Dispatcher):
+    register_handlers_admin(dp)
+    register_handlers_common(dp)
+    register_handlers_client(dp)
+    register_handlers_messages(dp)
+    register_handlers_error(dp)
 
 
 async def set_commands(dispatcher: Dispatcher):
@@ -35,13 +44,6 @@ async def set_commands(dispatcher: Dispatcher):
 
     await dispatcher.bot.set_my_commands(commands)
     logger.info("Bot commands have been set.")
-
-def register_all_handlers(dp: Dispatcher):
-    register_handlers_admin(dp)
-    register_handlers_common(dp)
-    register_handlers_client(dp)
-    register_handlers_messages(dp)
-    register_handlers_error(dp)
 
 
 async def on_startup(dispatcher):
@@ -57,14 +59,23 @@ async def on_startup(dispatcher):
 
 async def on_shutdown(dispatcher):
     # Проверка бд и т.п.
-    logger.warning("Shutdown dispatcher!!!")
-
+    # logger.warning("Shutdown dispatcher!!!")
+    pass
 
 def main():
-    config = load_config("config/bot.ini")
+    file_log = logging.FileHandler(filename="Logs/bot_logs.log", mode='w')  # mode="w" - временно, чтобы файл перезаписывался
+    file_log.setLevel("DEBUG")
 
-    logging.basicConfig(format="%(asctime)s [%(levelname)s] %(name)s: %(message)s", level=config.logger.level,
-                        datefmt="%Y-%m-%d %H:%M:%S")
+    console_log = logging.StreamHandler(stream=sys.stderr)
+    console_log.setLevel("INFO")
+
+    logging.getLogger("aiogram").setLevel("INFO")
+    logging.getLogger("asyncio").setLevel("INFO")
+    logging.getLogger("schedule").setLevel("INFO")
+    logging.basicConfig(format="%(asctime)s [%(levelname)s] %(name)s: %(message)s", level="DEBUG", encoding="UTF-8",
+                        datefmt="%Y-%m-%d %H:%M:%S", handlers=[file_log, console_log])
+
+    config = load_config("config/bot.ini")
 
     bot = Bot(token=config.bot.token)
     dp = Dispatcher(bot)
