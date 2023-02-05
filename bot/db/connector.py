@@ -28,11 +28,12 @@ def on_start():
 
             # Создание таблицы users
             # cursor.execute("""CREATE TABLE IF NOT EXISTS users (
-            #                id INTEGER PRIMARY KEY AUTOINCREMENT,
+            #                user_id VARCHAR PRIMARY KEY,
             #                chat_id VARCHAR NOT NULL,
-            #                message_id VARCHAR NOT NULL,
-            #                date VARCHAR(19) NOT NULL,
-            #                content TEXT NOT NULL
+            #                language VARCHAR NOT NULL,
+            #                last_reminder_id INT32 NOT NULL,
+            #                total_reminders INT64 NOT NULL,
+            #                using_since VARCHAR(10) NOT NULL
             #                )""")
 
         return True

@@ -16,12 +16,12 @@ async def cmd_reminders_list(message: types.Message):
 
     if data:
         data.sort(key=lambda x: x[3])
-        reminders_list = "-----Список активных напоминаний-----\n"
+        reminders_list = "<b>🔻Список активных напоминаний🔻</b>\n\n"  # ➖ ️〰️
 
         for row in data:
-            reminders_list += f"Дата: {date_converter.get_day_of_the_week(row[4].split()[0])} {row[4]}   " \
-                              f"<b>Id: {row[3]}</b>\n" \
-                              f"Текст: {row[5]}\n\n"
+            reminders_list += f"Дата: <b>{date_converter.get_day_of_the_week(row[4].split()[0])} {row[4]}</b>\n" \
+                              f"Id: <b>{row[3]}</b>\n" \
+                              f"Текст: <b>{row[5]}</b>\n\n"
 
         # logger.debug("Created reminder:\t chat_id: {0}, "
         #              "reminder_id: {1}, time: {2}, text: {3}".format(message.chat.id, reminder_id, full_date, text))

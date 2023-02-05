@@ -22,7 +22,7 @@ from aiogram.types import BotCommand
 from bot.send_reminders import timer
 
 
-version = "1.0.7"
+version = "1.0.8"
 
 logger = logging.getLogger(__name__)
 
@@ -32,7 +32,7 @@ def register_all_handlers(dp: Dispatcher):
     register_handlers_common(dp)
     register_handlers_client(dp)
     register_handlers_messages(dp)
-    register_handlers_error(dp)
+    # register_handlers_error(dp)
 
 
 async def set_commands(dispatcher: Dispatcher):
@@ -63,7 +63,7 @@ async def on_shutdown(dispatcher):
     pass
 
 def main():
-    file_log = logging.FileHandler(filename="Logs/bot_logs.log", mode='w')  # mode="w" - временно, чтобы файл перезаписывался
+    file_log = logging.FileHandler(filename="logs/bot_logs.log", mode='w')  # mode="w" - временно, чтобы файл перезаписывался
     file_log.setLevel("DEBUG")
 
     console_log = logging.StreamHandler(stream=sys.stderr)

@@ -52,7 +52,7 @@ def search_date(text: str) -> (str, str):
 
         text = " ".join(text)  # сообщение без даты
 
-        now_date = datetime.datetime.now().strftime(config.logger.date_format)
+        now_date = datetime.datetime.now().strftime(Settings.date_format)
         now_date = now_date.split()[0].split('/')
 
         for num in date:
