@@ -11,11 +11,13 @@ from config.config_reader import load_config
 from bot.handlers.messages import register_handlers_messages
 from bot.handlers.admin import register_handlers_admin
 from bot.handlers.common import register_handlers_common
-from bot.handlers.errors import register_handlers_error
+from bot.handlers.delete_reminder import register_handlers_delete
 from bot.handlers.client import register_handlers_client
+from bot.handlers.errors import register_handlers_error
 
 from aiogram import Bot
 from aiogram.dispatcher import Dispatcher
+from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.utils import executor
 from aiogram.types import BotCommand
 
@@ -31,6 +33,7 @@ def register_all_handlers(dp: Dispatcher):
     register_handlers_admin(dp)
     register_handlers_common(dp)
     register_handlers_client(dp)
+    register_handlers_delete(dp)
     register_handlers_messages(dp)
     # register_handlers_error(dp)
 
@@ -78,7 +81,7 @@ def main():
     config = load_config("config/bot.ini")
 
     bot = Bot(token=config.bot.token)
-    dp = Dispatcher(bot)
+    dp = Dispatcher(bot, storage=MemoryStorage())
 
     logger.info("""Product:
 ~~~Telegram-bot for quick reminders~~~

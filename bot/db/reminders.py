@@ -42,7 +42,7 @@ def get_now(time) -> list:
         return None
 
 
-def get_user_reminders(chat_id: str):
+def get_user_reminders(chat_id: str) -> list:
     """
     Находит все напоминания конкретного пользователя.\n
     :param chat_id: чат id пользователя.
