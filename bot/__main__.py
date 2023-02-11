@@ -12,7 +12,7 @@ from bot.handlers.messages import register_handlers_messages
 from bot.handlers.admin import register_handlers_admin
 from bot.handlers.common import register_handlers_common
 from bot.handlers.delete_reminder import register_handlers_delete
-from bot.handlers.client import register_handlers_client
+from bot.handlers.list_of_reminders import register_handlers_client
 from bot.handlers.errors import register_handlers_error
 
 from aiogram import Bot
@@ -24,7 +24,7 @@ from aiogram.types import BotCommand
 from bot.send_reminders import timer
 
 
-version = "1.0.8"
+version = "1.0.9"
 
 logger = logging.getLogger(__name__)
 
@@ -42,7 +42,7 @@ async def set_commands(dispatcher: Dispatcher):
     """
     Регистрация команд, отображаемых в интерфейсе Telegram.
     """
-    commands = [BotCommand(command=f"/{command}", description=data.get("description"))
+    commands = [BotCommand(command=f"{command}", description=data.get("description"))
                 for command, data in Constants.user_commands.items()]
 
     await dispatcher.bot.set_my_commands(commands)
@@ -66,7 +66,7 @@ async def on_shutdown(dispatcher):
     pass
 
 def main():
-    file_log = logging.FileHandler(filename="logs/bot_logs.log", mode='w')  # mode="w" - временно, чтобы файл перезаписывался
+    file_log = logging.FileHandler(filename=f"logs/bot_logs_{datetime.now().strftime('%Y_%m_%d')}.log", mode='w')
     file_log.setLevel("DEBUG")
 
     console_log = logging.StreamHandler(stream=sys.stderr)

@@ -3,6 +3,7 @@ import logging
 from aiogram import Dispatcher, types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
+from aiogram.types import ReplyKeyboardRemove
 
 from config.config_reader import load_config
 from bot.logic import date_converter
@@ -24,7 +25,7 @@ async def cmd_delete(message: types.Message):
         await message.answer("У вас нет напоминаний, чтобы их удалить")
         return
 
-    await message.answer("Введите id напоминания:")
+    await message.answer("Введите id напоминания:", reply_markup=keyboards.kb_cancel)
     await DeleteReminder.waiting_for_id.set()
 
 
@@ -35,7 +36,7 @@ async def id_received(message: types.Message, state: FSMContext):
 
     if not int(message.text) in [el[3] for el in reminders.get_user_reminders(message.chat.id)]:
         await message.answer("Напоминания с id {reminder_id} не существует!\nВведите id напоминания:".format(
-            reminder_id=int(message.text)))
+            reminder_id=int(message.text)), reply_markup=keyboards.kb_cancel)
         return
 
     await state.update_data(reminder_id=message.text)
@@ -49,36 +50,19 @@ async def id_received(message: types.Message, state: FSMContext):
                          f"Удалить напоминание?", parse_mode="HTML", reply_markup=keyboards.inline_kb_confirm)
 
 
-# @dp.callback_query_handler(text="yes")
 async def confirm_received(call: types.CallbackQuery, state: FSMContext):
     data = await state.get_data()
 
     reminders.remove(id=data["reminder_id"], chat_id=call.message.chat.id)
     logger.debug("Deleted chat id {0} reminder with id: {1}".format(call.message.chat.id, data["reminder_id"]))
 
-    await call.message.answer("Напоминание успешно удалено!")
+    await call.message.answer("Напоминание успешно удалено!", reply_markup=keyboards.kb_main_menu)
     await state.finish()
 
 
-# @dp.callback_query_handler(text="no")
 async def confirm_denied(call: types.CallbackQuery, state: FSMContext):
-    await call.message.answer("Удаление напоминания отменено!")
+    await call.message.answer("Удаление напоминания отменено!", reply_markup=keyboards.kb_main_menu)
     await state.finish()
-
-
-
-# async def team_character_name_chosen(message: types.Message, state: FSMContext):
-#     # await state.update_data(team_character_name=message.text)
-#
-#     # получение рандомного персонажа
-#
-#     user_data = await state.get_data()
-#
-#     db.add_team(message.from_user.id, user_data["team_name"], [{"name": message.text, "stats": "None"}])
-#
-#     await message.answer(f"""Вы создали команду "{user_data["team_name"]}".\n"""
-#                          f"Первого члена команды зовут {message.text}.")
-#     await state.finish()
 
 
 def register_handlers_delete(dp: Dispatcher):
