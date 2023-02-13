@@ -24,7 +24,7 @@ from aiogram.types import BotCommand
 from bot.send_reminders import timer
 
 
-version = "1.1.0"
+version = "1.1.1"
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +35,7 @@ def register_all_handlers(dp: Dispatcher):
     register_handlers_list(dp)
     register_handlers_delete(dp)
     register_handlers_messages(dp)
-    # register_handlers_error(dp)
+    register_handlers_error(dp)
 
 
 async def set_commands(dispatcher: Dispatcher):

@@ -1,8 +1,8 @@
 import logging
 
-from config.configuration import Settings
-
+from config.configuration import Settings, Constants
 from config.config_reader import load_config
+
 from bot.logic import date_converter, search_engine
 from bot.db import reminders
 

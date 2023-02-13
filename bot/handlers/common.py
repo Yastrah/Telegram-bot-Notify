@@ -16,13 +16,13 @@ config = load_config("config/bot.ini")
 
 async def cmd_start(message: types.Message):
     start = Constants.user_commands.get("start")
-    await message.answer(start["text"]["en"].format(config.bot.name), parse_mode="HTML",
+    await message.answer(start["text"]["ru"].format(bot_name=config.bot.name), parse_mode="HTML",
                          reply_markup=keyboards.kb_main_menu)
 
 
 async def cmd_help(message: types.Message):
     help = Constants.user_commands.get("help")
-    await message.answer(help["text"]["ru"].format(config.bot.name), parse_mode="HTML",
+    await message.answer(help["text"]["ru"].format(bot_name=config.bot.name), parse_mode="HTML",
                          reply_markup=keyboards.kb_main_menu)
 
 

@@ -1,15 +1,14 @@
-2023-02-13 22:19:57 [INFO] __main__: Product:
+2023-02-13 22:31:31 [INFO] __main__: Product:
 ~~~Telegram-bot for quick reminders~~~
-VERSION: 1.1.0
-LAST_UPDATE: 2023-02-13 22:19:57
+VERSION: 1.1.1
+LAST_UPDATE: 2023-02-13 22:31:31
 The product is not commercial
 Developed by Yastrah
 GitHub: https://github.com/Yastrah
-2023-02-13 22:19:58 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
-2023-02-13 22:19:58 [WARNING] aiogram: Updates were skipped successfully.
-2023-02-13 22:19:58 [INFO] __main__: Bot commands have been set.
-2023-02-13 22:19:58 [INFO] __main__: Start schedule process.
-2023-02-13 22:19:58 [INFO] aiogram.dispatcher.dispatcher: Start polling.
-2023-02-13 22:20:04 [DEBUG] bot.handlers.messages: Reminder handling: can not find requirement arguments.
-2023-02-13 22:21:11 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
-2023-02-13 22:21:11 [WARNING] aiogram: Goodbye!
+2023-02-13 22:31:31 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-02-13 22:31:31 [WARNING] aiogram: Updates were skipped successfully.
+2023-02-13 22:31:32 [INFO] __main__: Bot commands have been set.
+2023-02-13 22:31:32 [INFO] __main__: Start schedule process.
+2023-02-13 22:31:32 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-02-13 22:31:48 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-02-13 22:31:48 [WARNING] aiogram: Goodbye!

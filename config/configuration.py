@@ -22,11 +22,13 @@ class Constants(object):
     user_commands = {
         "start": {
             "description": "начать пользоваться",
-            "text": {"ru": None, "en": "Hi!\nI'm <u><b>{0}</b>!</u>\nDesigned by Yastrah."},
+            "text": {"ru": "Привет!\nЯ <u><b>{bot_name}</b>!</u>\nЯ буду напоминать тебе о твоих делах.\n"
+                           "Разработано Yastrah.",
+                     "en": "Hi!\nI'm <u><b>{bot_name}</b>!</u>\nDesigned by Yastrah."},
         },
         "help": {
             "description": "помощь в использовании бота",
-            "text": {"ru": "<b>{0}</b> - это бот позволяющий создавать напоминания.\nКомады:\n...", "en": None},
+            "text": {"ru": "<b>{bot_name}</b> - это бот позволяющий создавать напоминания.\nКомады:\n...", "en": None},
         },
         "list": {
             "description": "вывод всех активных напоминаний",
@@ -45,5 +47,7 @@ class Constants(object):
             "custom_name": "◀️отмена",
         },
     }
+
+
 
 
