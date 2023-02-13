@@ -3,9 +3,10 @@ import logging
 from aiogram import Dispatcher, types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
-from aiogram.types import ReplyKeyboardRemove
+from aiogram.dispatcher.filters import Text
 
 from config.config_reader import load_config
+from config.configuration import Constants
 from bot.logic import date_converter
 from bot.db import reminders
 from bot import keyboards
@@ -67,6 +68,8 @@ async def confirm_denied(call: types.CallbackQuery, state: FSMContext):
 
 def register_handlers_delete(dp: Dispatcher):
     dp.register_message_handler(cmd_delete, commands="delete", state="*")
+    dp.register_message_handler(cmd_delete, Text(equals=Constants.user_commands["delete"]["custom_name"]),
+                                state="*")
     dp.register_message_handler(id_received, state=DeleteReminder.waiting_for_id)
     dp.register_callback_query_handler(confirm_received, text="yes", state=DeleteReminder.waiting_for_confirm)
     dp.register_callback_query_handler(confirm_denied, text="no", state=DeleteReminder.waiting_for_confirm)

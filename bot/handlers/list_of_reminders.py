@@ -1,10 +1,12 @@
 import logging
 
 from config.config_reader import load_config
+from config.configuration import Constants
 from bot.logic import date_converter
 from bot.db import reminders
 
 from aiogram import Dispatcher, types
+from aiogram.dispatcher.filters import Text
 
 
 logger = logging.getLogger(__name__)
@@ -30,7 +32,9 @@ async def cmd_reminders_list(message: types.Message):
         await message.answer("У вас нет активных напоминаний.")
 
 
-def register_handlers_client(dp: Dispatcher):
+def register_handlers_list(dp: Dispatcher):
     dp.register_message_handler(cmd_reminders_list, commands="list", state="*")
+    dp.register_message_handler(cmd_reminders_list, Text(equals=Constants.user_commands["list"]["custom_name"]),
+                                state="*")
     # dp.register_message_handler(cmd_help, commands="help", state="*")
     # dp.register_message_handler(cmd_cancel, Text(equals="отмена", ignore_case=True), state="*")
