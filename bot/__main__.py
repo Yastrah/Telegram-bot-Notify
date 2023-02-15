@@ -3,11 +3,11 @@ import threading
 import asyncio
 from datetime import datetime
 import sys
-# import emoji
 
 from config.configuration import Constants
-
 from config.config_reader import load_config
+
+from bot.send_reminders import timer
 from bot.handlers.messages import register_handlers_messages
 from bot.handlers.admin import register_handlers_admin
 from bot.handlers.common import register_handlers_common
@@ -21,7 +21,6 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.utils import executor
 from aiogram.types import BotCommand
 
-from bot.send_reminders import timer
 
 
 version = "1.1.2"

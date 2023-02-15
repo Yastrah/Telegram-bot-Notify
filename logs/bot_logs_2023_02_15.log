@@ -1,67 +1,45 @@
-2023-02-15 13:42:17 [INFO] __main__: Product:
+2023-02-15 15:50:45 [INFO] __main__: Product:
 ~~~Telegram-bot for quick reminders~~~
 VERSION: 1.1.2
-LAST_UPDATE: 2023-02-15 13:42:17
+LAST_UPDATE: 2023-02-15 15:50:45
 The product is not commercial
 Developed by Yastrah
 GitHub: https://github.com/Yastrah
-2023-02-15 13:42:18 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
-2023-02-15 13:42:18 [WARNING] aiogram: Updates were skipped successfully.
-2023-02-15 13:42:18 [INFO] __main__: Bot commands have been set.
-2023-02-15 13:42:18 [INFO] __main__: Start schedule process.
-2023-02-15 13:42:18 [INFO] aiogram.dispatcher.dispatcher: Start polling.
-2023-02-15 13:42:22 [WARNING] __main__: Shutdown dispatcher!!!
-2023-02-15 13:42:22 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
-2023-02-15 13:42:22 [WARNING] aiogram: Goodbye!
-2023-02-15 13:53:29 [INFO] __main__: Product:
+2023-02-15 15:50:45 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-02-15 15:50:45 [WARNING] aiogram: Updates were skipped successfully.
+2023-02-15 15:50:45 [INFO] __main__: Bot commands have been set.
+2023-02-15 15:50:45 [INFO] __main__: Start schedule process.
+2023-02-15 15:50:45 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-02-15 16:18:18 [DEBUG] bot.handlers.messages: Created reminder:
+	 chat_id: 1428079647, reminder_id: 1, time: 15/02/2023 15:20, text: купить пиво
+2023-02-15 16:20:54 [DEBUG] bot.handlers.delete_reminder: Deleted chat id 1428079647 reminder with id: 1
+2023-02-15 16:30:00 [WARNING] __main__: Shutdown dispatcher!!!
+2023-02-15 16:30:00 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-02-15 16:30:00 [WARNING] aiogram: Goodbye!
+2023-02-15 16:30:09 [INFO] __main__: Product:
 ~~~Telegram-bot for quick reminders~~~
 VERSION: 1.1.2
-LAST_UPDATE: 2023-02-15 13:53:29
+LAST_UPDATE: 2023-02-15 16:30:09
 The product is not commercial
 Developed by Yastrah
 GitHub: https://github.com/Yastrah
-2023-02-15 13:53:29 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
-2023-02-15 13:53:29 [WARNING] aiogram: Updates were skipped successfully.
-2023-02-15 13:53:29 [INFO] __main__: Bot commands have been set.
-2023-02-15 13:53:29 [INFO] __main__: Start schedule process.
-2023-02-15 13:53:29 [INFO] aiogram.dispatcher.dispatcher: Start polling.
-2023-02-15 13:53:31 [WARNING] __main__: Shutdown dispatcher!!!
-2023-02-15 13:53:31 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
-2023-02-15 13:53:31 [WARNING] aiogram: Goodbye!
-2023-02-15 14:07:13 [INFO] __main__: Product:
+2023-02-15 16:30:09 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-02-15 16:30:10 [WARNING] aiogram: Updates were skipped successfully.
+2023-02-15 16:30:10 [INFO] __main__: Bot commands have been set.
+2023-02-15 16:30:10 [INFO] __main__: Start schedule process.
+2023-02-15 16:30:10 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-02-15 16:32:04 [WARNING] __main__: Shutdown dispatcher!!!
+2023-02-15 16:32:04 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-02-15 16:32:04 [WARNING] aiogram: Goodbye!
+2023-02-15 16:32:06 [INFO] __main__: Product:
 ~~~Telegram-bot for quick reminders~~~
 VERSION: 1.1.2
-LAST_UPDATE: 2023-02-15 14:07:13
+LAST_UPDATE: 2023-02-15 16:32:06
 The product is not commercial
 Developed by Yastrah
 GitHub: https://github.com/Yastrah
-2023-02-15 14:07:13 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
-2023-02-15 14:07:13 [WARNING] aiogram: Updates were skipped successfully.
-2023-02-15 14:07:13 [INFO] __main__: Bot commands have been set.
-2023-02-15 14:07:13 [INFO] __main__: Start schedule process.
-2023-02-15 14:07:13 [INFO] aiogram.dispatcher.dispatcher: Start polling.
-2023-02-15 14:07:19 [WARNING] __main__: Shutdown dispatcher!!!
-2023-02-15 14:07:19 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
-2023-02-15 14:07:19 [WARNING] aiogram: Goodbye!
-2023-02-15 14:18:23 [INFO] __main__: Product:
-~~~Telegram-bot for quick reminders~~~
-VERSION: 1.1.2
-LAST_UPDATE: 2023-02-15 14:18:23
-The product is not commercial
-Developed by Yastrah
-GitHub: https://github.com/Yastrah
-2023-02-15 14:18:23 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
-2023-02-15 14:18:23 [WARNING] aiogram: Updates were skipped successfully.
-2023-02-15 14:18:23 [INFO] __main__: Bot commands have been set.
-2023-02-15 14:18:23 [INFO] __main__: Start schedule process.
-2023-02-15 14:18:23 [INFO] aiogram.dispatcher.dispatcher: Start polling.
-2023-02-15 14:19:01 [DEBUG] bot.handlers.messages: Created reminder:
-	 chat_id: 1990672413, reminder_id: 1, time: 17/02/2023 9:00, text: сегодня сдача проекта
-2023-02-15 14:19:29 [DEBUG] bot.handlers.messages: Reminder handling: can not find requirement arguments.
-2023-02-15 14:20:33 [DEBUG] bot.handlers.messages: Reminder handling: can not find requirement arguments.
-2023-02-15 14:20:41 [DEBUG] bot.handlers.admin: Admin 1990672413 got users in database.
-2023-02-15 14:20:48 [WARNING] bot.handlers.admin: Database was reset!
-2023-02-15 14:20:48 [DEBUG] bot.handlers.admin: Admin 1990672413 reset database.
-2023-02-15 14:21:07 [WARNING] __main__: Shutdown dispatcher!!!
-2023-02-15 14:21:07 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
-2023-02-15 14:21:07 [WARNING] aiogram: Goodbye!
+2023-02-15 16:32:06 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-02-15 16:32:06 [WARNING] aiogram: Updates were skipped successfully.
+2023-02-15 16:32:06 [INFO] __main__: Bot commands have been set.
+2023-02-15 16:32:06 [INFO] __main__: Start schedule process.
+2023-02-15 16:32:06 [INFO] aiogram.dispatcher.dispatcher: Start polling.
