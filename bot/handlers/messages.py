@@ -42,19 +42,23 @@ async def create_reminder(message: types.Message):
         logger.debug("Reminder handling: can not find requirement arguments.")
         return await message.answer("Некорректный формат записи!")
 
-    full_date = " ".join([date, time])
+    full_date = " ".join([date, time[:-3]])
     reminder_id = reminders.get_free_id(str(message.chat.id))
+
+    if not date_converter.get_day_of_the_week(date):
+        logger.debug("Wrong date input, chat_id: {0}".format(message.chat.id))
+        return await message.answer("Некорректная дата!")
 
     if reminders.add_new(str(message.chat.id), str(message.message_id), reminder_id, full_date, text):
         logger.debug("Created reminder:\n\t chat_id: {0}, "
                      "reminder_id: {1}, time: {2}, text: {3}".format(message.chat.id, reminder_id, full_date, text))
 
-        await message.answer("Уведомление успешно создано.\n"
-                             f"Id: {reminder_id}\n"
-                             f"Дата: {date_converter.get_day_of_the_week(date)} {full_date}\n"
-                             f"Текст: {text}")
+        return await message.answer("Уведомление успешно создано.\n"
+                             f"Дата: <b>{date_converter.get_day_of_the_week(date)} {full_date}</b>\n"
+                             f"Id: <b>{reminder_id}</b>\n"
+                             f"Текст: <b>{text}</b>", parse_mode="HTML")
     else:
-        await message.answer("Не удалось создать уведомление")
+        return await message.answer("Не удалось создать уведомление")
 
 
 def register_handlers_messages(dp: Dispatcher):

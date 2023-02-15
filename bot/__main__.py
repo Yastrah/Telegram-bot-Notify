@@ -24,7 +24,7 @@ from aiogram.types import BotCommand
 from bot.send_reminders import timer
 
 
-version = "1.1.1"
+version = "1.1.2"
 
 logger = logging.getLogger(__name__)
 
@@ -61,12 +61,11 @@ async def on_startup(dispatcher):
 
 
 async def on_shutdown(dispatcher):
-    # Проверка бд и т.п.
-    # logger.warning("Shutdown dispatcher!!!")
+    logger.warning("Shutdown dispatcher!!!")
     pass
 
 def main():
-    file_log = logging.FileHandler(filename=f"logs/bot_logs_{datetime.now().strftime('%Y_%m_%d')}.log", mode='w')
+    file_log = logging.FileHandler(filename=f"logs/bot_logs_{datetime.now().strftime('%Y_%m_%d')}.log")  # mode='w'
     file_log.setLevel("DEBUG")
 
     console_log = logging.StreamHandler(stream=sys.stderr)
@@ -99,6 +98,4 @@ GitHub: https://github.com/Yastrah""".format(version, datetime.now().strftime("%
         logger.error("Could not start polling!\n\tException: {0}".format(e))
 
 if __name__ == "__main__":
-    # from bot.db import reminders  # временно, для тестирования
-    # reminders.reset()  # временно, для тестирования
     main()

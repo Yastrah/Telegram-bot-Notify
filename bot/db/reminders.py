@@ -33,7 +33,7 @@ def get_now(time) -> list:
     try:
         with sqlite3.connect(config.data.bot_db) as db:
             cursor = db.cursor()
-            cursor.execute("SELECT * FROM reminders WHERE date=?", [time])
+            cursor.execute("SELECT * FROM reminders WHERE date=?", [time[:-3]])
 
         return cursor.fetchall()
 

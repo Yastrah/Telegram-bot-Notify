@@ -78,7 +78,7 @@ def search_date(text: str) -> (str, str):
 
 
 def search_time(text: str) -> (str, str):
-    time_pattern = re.compile("\d{1,2}([:. /]\d{1,2})?")
+    time_pattern = re.compile("\d{1,2}([:./]\d{1,2})?")
     match = time_pattern.search(text)
 
     if match and match.start() < Settings.time_order_index:
