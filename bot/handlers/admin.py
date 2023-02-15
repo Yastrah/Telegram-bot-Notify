@@ -21,7 +21,7 @@ async def cmd_users(message: types.Message):
             users_id.append(reminder[1])
 
     await message.answer(f"There are {len(users_id)} users in data base.")
-    logger.debug("Admin {0} got users in data base.".format(message.from_user.id))
+    logger.debug("Admin {0} got users in database.".format(message.from_user.id))
 
 
 async def cmd_send_all(message: types.Message):
@@ -41,6 +41,20 @@ async def cmd_send_all(message: types.Message):
     logger.debug("Admin {0} sent global message '{1}'.".format(message.from_user.id, text))
 
 
+async def cmd_reset_data_base(message: types.Message):
+    if str(message.from_user.id) not in config.bot.admin_id:
+        logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
+        return
+
+    reminders_count = len(reminders.read())
+    reminders.reset()
+    logger.warning("Database was reset!")
+
+    await message.answer(f"Database was reset. Deleted {reminders_count} reminders.")
+    logger.debug("Admin {0} reset database.".format(message.from_user.id))
+
+
 def register_handlers_admin(dp: Dispatcher):
     dp.register_message_handler(cmd_users, commands="users", state="*")
     dp.register_message_handler(cmd_send_all, commands="send_all", state="*")
+    dp.register_message_handler(cmd_reset_data_base, commands="reset_data", state="*")

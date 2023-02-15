@@ -21,7 +21,7 @@ def read() -> list:
         return cursor.fetchall()
 
     except Exception as e:
-        logger.error("Failed to read DataBase!\n\tException: {0}".format(e))
+        logger.error("Failed to read database!\n\tException: {0}".format(e))
         return None
 
 
@@ -38,7 +38,7 @@ def get_now(time) -> list:
         return cursor.fetchall()
 
     except Exception as e:
-        logger.error("Failed to read DataBase!\n\tException: {0}".format(e))
+        logger.error("Failed to read database!\n\tException: {0}".format(e))
         return None
 
 
@@ -56,7 +56,7 @@ def get_user_reminders(chat_id: str) -> list:
         return cursor.fetchall()
 
     except Exception as e:
-        logger.error("Failed to read DataBase!\n\tException: {0}".format(e))
+        logger.error("Failed to read database!\n\tException: {0}".format(e))
         return None
 
 
@@ -83,7 +83,7 @@ def get_free_id(chat_id: str) -> int:
         return None
 
     except Exception as e:
-        logger.error("Failed to find free id in DataBase!\n\tException: {0}".format(e))
+        logger.error("Failed to find free id in database!\n\tException: {0}".format(e))
         return None
 
 
@@ -101,7 +101,7 @@ def add_new(chat_id: str, message_id: str, reminder_id: int, time: str, text: st
         return True
 
     except Exception as e:
-        logger.error("Failed to add reminder to DataBase!\n\tException: {0}".format(e))
+        logger.error("Failed to add reminder to database!\n\tException: {0}".format(e))
         return None
 
 
@@ -121,7 +121,7 @@ def remove(id=None, chat_id=None):
             return True
 
         except Exception as e:
-            logger.error("Failed to remove reminder from DataBase!\n\tException: {0}".format(e))
+            logger.error("Failed to remove reminder from database!\n\tException: {0}".format(e))
             return None
 
     elif id:
@@ -133,7 +133,7 @@ def remove(id=None, chat_id=None):
             return True
 
         except Exception as e:
-            logger.error("Failed to remove reminder from DataBase!\n\tException: {0}".format(e))
+            logger.error("Failed to remove reminder from database!\n\tException: {0}".format(e))
             return None
 
     elif chat_id:
@@ -145,7 +145,7 @@ def remove(id=None, chat_id=None):
             return True
 
         except Exception as e:
-            logger.error("Failed to remove reminders from DataBase!\n\tException: {0}".format(e))
+            logger.error("Failed to remove reminders from database!\n\tException: {0}".format(e))
             return None
 
     else:

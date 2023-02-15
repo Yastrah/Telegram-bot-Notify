@@ -43,3 +43,25 @@ GitHub: https://github.com/Yastrah
 2023-02-15 14:07:19 [WARNING] __main__: Shutdown dispatcher!!!
 2023-02-15 14:07:19 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
 2023-02-15 14:07:19 [WARNING] aiogram: Goodbye!
+2023-02-15 14:18:23 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.1.2
+LAST_UPDATE: 2023-02-15 14:18:23
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-02-15 14:18:23 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-02-15 14:18:23 [WARNING] aiogram: Updates were skipped successfully.
+2023-02-15 14:18:23 [INFO] __main__: Bot commands have been set.
+2023-02-15 14:18:23 [INFO] __main__: Start schedule process.
+2023-02-15 14:18:23 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-02-15 14:19:01 [DEBUG] bot.handlers.messages: Created reminder:
+	 chat_id: 1990672413, reminder_id: 1, time: 17/02/2023 9:00, text: сегодня сдача проекта
+2023-02-15 14:19:29 [DEBUG] bot.handlers.messages: Reminder handling: can not find requirement arguments.
+2023-02-15 14:20:33 [DEBUG] bot.handlers.messages: Reminder handling: can not find requirement arguments.
+2023-02-15 14:20:41 [DEBUG] bot.handlers.admin: Admin 1990672413 got users in database.
+2023-02-15 14:20:48 [WARNING] bot.handlers.admin: Database was reset!
+2023-02-15 14:20:48 [DEBUG] bot.handlers.admin: Admin 1990672413 reset database.
+2023-02-15 14:21:07 [WARNING] __main__: Shutdown dispatcher!!!
+2023-02-15 14:21:07 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-02-15 14:21:07 [WARNING] aiogram: Goodbye!
