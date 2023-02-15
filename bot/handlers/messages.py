@@ -55,6 +55,10 @@ async def create_reminder(message: types.Message):
         logger.debug("Trying to create reminder on the past date, chat_id: {0}".format(message.chat.id))
         return await message.answer("Вы пытаетесь создать напоминание на прошедшее время!")
 
+    if not text:
+        logger.debug("Trying to create reminder without any text, chat_id: {0}".format(message.chat.id))
+        return await message.answer("Вы пытаетесь создать напоминание без текста!")
+
     if reminders.add_new(str(message.chat.id), str(message.message_id), reminder_id, full_date, text):
         logger.debug("Created reminder:\n\t chat_id: {0}, "
                      "reminder_id: {1}, time: {2}, text: {3}".format(message.chat.id, reminder_id, full_date, text))

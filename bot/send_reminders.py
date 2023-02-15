@@ -36,10 +36,7 @@ async def check_for_reminders(bot: Bot):
         return
 
     if not data:
-        # logger.debug("There is no reminders for {0}.".format(now_date))
         return
-
-    # logger.debug("There are {0} reminders for {1}.".format(len(data), now_date))
 
     for reminder in data:
         try:

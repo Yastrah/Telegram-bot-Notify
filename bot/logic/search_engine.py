@@ -17,12 +17,12 @@ def search_day_name(text: str, word: str) -> (bool, str):
         distance = nltk.edit_distance(word.lower(), text[i].lower()) / len(text[i])
 
         if distance < Settings.day_distance_index and i < Settings.day_order_index:
-            if text[i + 1] in Settings.prepositions_for_delete:
+            if text[i + 1].lower() in Settings.prepositions_for_delete:
                 text.pop(i + 1)
 
             text.pop(i)
 
-            if text[i - 1] in Settings.prepositions_for_delete:
+            if text[i - 1].lower() in Settings.prepositions_for_delete:
                 text.pop(i - 1)
 
             text = " ".join(text)
@@ -41,12 +41,12 @@ def search_date(text: str) -> (str, str):
         text = text.split()
         i = text.index(match.group())
 
-        if text[i + 1] in Settings.prepositions_for_delete:
+        if text[i + 1].lower() in Settings.prepositions_for_delete:
             text.pop(i + 1)
 
         text.pop(i)
 
-        if text[i - 1] in Settings.prepositions_for_delete:
+        if text[i - 1].lower() in Settings.prepositions_for_delete:
             text.pop(i - 1)
 
         text = " ".join(text)
