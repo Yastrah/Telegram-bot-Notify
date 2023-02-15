@@ -1,3 +1,4 @@
+import datetime
 import logging
 
 from config.configuration import Settings, Constants
@@ -49,6 +50,11 @@ async def create_reminder(message: types.Message):
         logger.debug("Wrong date input, chat_id: {0}".format(message.chat.id))
         return await message.answer("Некорректная дата!")
 
+    now_date = datetime.datetime.now().strftime(Settings.date_format)
+    if date_converter.date_to_value(" ".join([date, time])) <= date_converter.date_to_value(now_date):
+        logger.debug("Trying to create reminder on the past date, chat_id: {0}".format(message.chat.id))
+        return await message.answer("Вы пытаетесь создать напоминание на прошедшее время!")
+
     if reminders.add_new(str(message.chat.id), str(message.message_id), reminder_id, full_date, text):
         logger.debug("Created reminder:\n\t chat_id: {0}, "
                      "reminder_id: {1}, time: {2}, text: {3}".format(message.chat.id, reminder_id, full_date, text))
@@ -63,5 +69,3 @@ async def create_reminder(message: types.Message):
 
 def register_handlers_messages(dp: Dispatcher):
     dp.register_message_handler(create_reminder, state="*")
-    # dp.register_message_handler(cmd_help, commands="help", state="*")
-    # dp.register_message_handler(cmd_cancel, Text(equals="отмена", ignore_case=True), state="*")
