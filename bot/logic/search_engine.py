@@ -12,6 +12,12 @@ config = load_config("config/bot.ini")
 
 
 def search_day_name(text: str, word: str) -> (bool, str):
+    """
+    Поиск соответствия одного из слов в сообщении, заданному.
+    :param text: текст сообщения
+    :param word: слово для поиска
+    :return: кортеж, первый элемент отвечает, за то, было ли найдено соответствие, а второй - текст уже без ключегого слова
+    """
     text = text.split()
     for i in range(len(text)):
         distance = nltk.edit_distance(word.lower(), text[i].lower()) / len(text[i])
@@ -33,6 +39,11 @@ def search_day_name(text: str, word: str) -> (bool, str):
 
 
 def search_date(text: str) -> (str, str):
+    """
+    Поиск даты в сообщении в численном виде.
+    :param text: текст сообщения
+    :return: Кортеж: дату в обработанном виде и сообщение без даты. None для првого элемента если ничего не найдено.
+    """
     date_pattern = re.compile("\d{1,2}([-./]\d{1,2})?([-./]\d{2,4})?")
     match = date_pattern.search(text)
 
@@ -77,6 +88,11 @@ def search_date(text: str) -> (str, str):
 
 
 def search_time(text: str) -> (str, str):
+    """
+    Поиск времени в сообщении.
+    :param text: текст сообщения
+    :return: Кортеж: время в обработанном виде и сообщение без него. None для првого элемента если ничего не найдено.
+    """
     time_pattern = re.compile(r"\d{1,2}([:./]\d{1,2})?")
     match = time_pattern.search(text)
 

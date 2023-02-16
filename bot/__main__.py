@@ -23,7 +23,7 @@ from aiogram.types import BotCommand
 
 
 
-version = "1.1.4"
+version = "1.1.5"
 
 logger = logging.getLogger(__name__)
 
@@ -64,7 +64,7 @@ async def on_shutdown(dispatcher):
     pass
 
 def main():
-    file_log = logging.FileHandler(filename=f"logs/bot_logs_{datetime.now().strftime('%Y_%m_%d')}.log")  # mode='w'
+    file_log = logging.FileHandler(filename=f"logs/bot_logs_{datetime.now().strftime('%Y_%m_%d')}.log")
     file_log.setLevel("DEBUG")
 
     console_log = logging.StreamHandler(stream=sys.stderr)

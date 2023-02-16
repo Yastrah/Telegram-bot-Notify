@@ -635,3 +635,39 @@ GitHub: https://github.com/Yastrah
 2023-02-16 15:39:30 [WARNING] __main__: Shutdown dispatcher!!!
 2023-02-16 15:39:30 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
 2023-02-16 15:39:30 [WARNING] aiogram: Goodbye!
+2023-02-16 20:26:54 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.1.5
+LAST_UPDATE: 2023-02-16 20:26:54
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-02-16 20:26:54 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-02-16 20:26:54 [WARNING] aiogram: Updates were skipped successfully.
+2023-02-16 20:26:54 [INFO] __main__: Bot commands have been set.
+2023-02-16 20:26:54 [INFO] __main__: Start schedule process.
+2023-02-16 20:26:54 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-02-16 20:28:24 [DEBUG] bot.handlers.messages: Created reminder:
+	 chat_id: 1990672413, reminder_id: 5, time: 16/02/2023 20:30, text: сходить в магазин
+2023-02-16 20:32:12 [WARNING] __main__: Shutdown dispatcher!!!
+2023-02-16 20:32:12 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-02-16 20:32:12 [WARNING] aiogram: Goodbye!
+2023-02-16 20:32:14 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.1.5
+LAST_UPDATE: 2023-02-16 20:32:14
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-02-16 20:32:14 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-02-16 20:32:14 [WARNING] aiogram: Updates were skipped successfully.
+2023-02-16 20:32:14 [INFO] __main__: Bot commands have been set.
+2023-02-16 20:32:14 [INFO] __main__: Start schedule process.
+2023-02-16 20:32:14 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-02-16 20:32:25 [DEBUG] bot.handlers.messages: Created reminder:
+	 chat_id: 1990672413, reminder_id: 6, time: 16/02/2023 20:35, text: сходить в магазин
+2023-02-16 20:35:02 [INFO] bot.send_reminders: Reminder sent successfully to user 1990672413.
+	Text: сходить в магазин
+2023-02-16 20:37:50 [WARNING] __main__: Shutdown dispatcher!!!
+2023-02-16 20:37:50 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-02-16 20:37:50 [WARNING] aiogram: Goodbye!
