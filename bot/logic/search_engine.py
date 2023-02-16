@@ -77,27 +77,29 @@ def search_date(text: str) -> (str, str):
 
 
 def search_time(text: str) -> (str, str):
-    time_pattern = re.compile("\d{1,2}([:./]\d{1,2})?")
+    time_pattern = re.compile(r"\d{1,2}([:./]\d{1,2})?")
     match = time_pattern.search(text)
 
     if match and match.start() < Settings.time_order_index:
-        time = re.split(r"[:. /]", match.group())
+        time = re.split(r"[:./]", match.group())
 
-        if not 1 <= len(time) <= 3:
-            return None, text
+        if not 1 <= len(time) <= 2:
+            return None, "Время указано неправильно! введите время напоминания в часах или в час<разделитель(:./)>минута."
 
         for el in time[1:]:
             if not len(el) == 2:
-                return None, text
+                return None, "Вы неправильно указали минуты для времени! Обратите внимание, что для минут надо указать " \
+                             "две цифры (например: 05 или 45)"
 
         if len(time) == 1:
-            time = f"{':'.join(time)}:00:00"
+            time = time[0] + ':00'
         elif len(time) == 2:
-            time = f"{':'.join(time)}:00"
-        else:
             time = ':'.join(time)
 
-        text = " ".join(text.replace(match.group(), '', 1).split())
+        if not (0 <= int(time[:2]) <= 24 and 0 <= int(time[3:]) <= 59):
+            return None, "Вы указали несуществующее время!"
+
+        text = match.group().join(text.split(match.group())[1:]).strip()
 
         return time, text
 

@@ -211,3 +211,8 @@ GitHub: https://github.com/Yastrah
 2023-02-15 18:00:37 [DEBUG] bot.handlers.admin: Admin 1990672413 got users in database.
 2023-02-15 18:48:38 [DEBUG] bot.handlers.messages: Created reminder:
 	 chat_id: 1092906110, reminder_id: 1, time: 15/02/2023 21:00, text: послать все нахуй и пойти делать англ и матешу
+2023-02-15 21:00:07 [INFO] bot.send_reminders: Reminder sent successfully to user 1092906110.
+	Text: послать все нахуй и пойти делать англ и матешу
+2023-02-15 22:28:55 [WARNING] __main__: Shutdown dispatcher!!!
+2023-02-15 22:28:55 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-02-15 22:28:55 [WARNING] aiogram: Goodbye!

@@ -37,13 +37,17 @@ async def create_reminder(message: types.Message):
     if date is None:
         date, text = search_engine.search_date(text)
 
+    if date is None:
+        logger.debug("Reminder handling: can not find date in message: {0}".format(message.text))
+        return await message.answer("Не удалось обработать дату напоминания!")
+
     time, text = search_engine.search_time(text)
 
-    if date is None or time is None:
-        logger.debug("Reminder handling: can not find requirement arguments.")
-        return await message.answer("Некорректный формат записи!")
+    if time is None:
+        logger.debug("Reminder handling: can not find time in message: {0}".format(message.text))
+        return await message.answer(text)
 
-    full_date = " ".join([date, time[:-3]])
+    full_date = " ".join([date, time])
     reminder_id = reminders.get_free_id(str(message.chat.id))
 
     if not date_converter.get_day_of_the_week(date):

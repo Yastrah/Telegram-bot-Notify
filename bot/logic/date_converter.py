@@ -16,7 +16,7 @@ def date_to_value(date: str) -> int:
     """
     date, time = date.split()
     day, month, year = date.split('/')
-    hour, minute, second = time.split(':')
+    hour, minute = time.split(':')
     value = int(year)*10**8 + int(month)*10**6 + int(day)*10**4 + int(hour)*10**2 + int(minute)
     return value
 
