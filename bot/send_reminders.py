@@ -8,7 +8,7 @@ from aiogram import Bot
 
 from config.configuration import Settings
 from config.config_reader import load_config
-from bot.db import reminders
+from bot.db import reminders, users
 
 
 logger = logging.getLogger(__name__)
@@ -39,11 +39,14 @@ async def check_for_reminders(bot: Bot):
         return
 
     for reminder in data:
-        try:
-            await bot.send_message(chat_id=reminder[1], text=reminder[5])
-            reminders.remove(id=reminder[0])
-            logger.info("Reminder sent successfully to user {0}.\n\tText: {1}".format(reminder[1], reminder[5]))
+        # try:
+        await bot.send_message(chat_id=reminder[1], text=reminder[5])
+        reminders.remove(id=reminder[0])
 
-        except Exception as e:
-            logger.error("Failed to send reminder to user {0}!\n\tException: {1}".format(reminder[1], e))
-            continue
+        users.update_total_reminders(reminder[1])
+
+        logger.info("Reminder sent successfully to user {0}.\n\tText: {1}".format(reminder[1], reminder[5]))
+
+        # except Exception as e:
+        #     logger.error("Failed to send reminder to user {0}!\n\tException: {1}".format(reminder[1], e))
+        #     continue

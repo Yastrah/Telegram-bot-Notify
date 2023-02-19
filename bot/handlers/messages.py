@@ -5,7 +5,8 @@ from config.configuration import Settings, Constants
 from config.config_reader import load_config
 
 from bot.logic import date_converter, search_engine
-from bot.db import reminders
+from bot.db import reminders, users
+from bot.handlers.common import register_user
 
 from aiogram import Dispatcher, types
 
@@ -75,10 +76,17 @@ async def create_reminder(message: types.Message):
         logger.debug("Trying to create reminder without any text, chat_id: {0}".format(message.chat.id))
         return await message.answer("Вы пытаетесь создать напоминание без текста!")
 
+    if not users.get_user_data(str(message.chat.id)):
+        await register_user(message)
+
+    users.update_last_reminder(str(message.from_user.id), reminder_id)
+
     # запись напоминания в базу данных и отправка сообщению об успешном создании напоминания
     if reminders.add_new(str(message.chat.id), str(message.message_id), reminder_id, full_date, text):
         logger.debug("Created reminder for message: {0}\n\t chat_id: {1}, "
                      "reminder_id: {2}, time: {3}, text: {4}".format(message.text, message.chat.id, reminder_id, full_date, text))
+
+
 
         return await message.answer("Уведомление успешно создано.\n"
                              f"Дата: <b>{date_converter.get_day_of_the_week(date)} {full_date}</b>\n"

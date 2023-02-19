@@ -10,7 +10,7 @@ config = load_config("config/bot.ini")
 
 def read() -> list:
     """
-    Получение данных из DataBase.\n
+    Получение данных из DataBase.
     :return: Данные в виде списка кортежей (id, chat_id, message_id, date, content). None - при вызове исключения.
     """
     try:
@@ -21,13 +21,13 @@ def read() -> list:
         return cursor.fetchall()
 
     except Exception as e:
-        logger.error("Failed to read database!\n\tException: {0}".format(e))
+        logger.error("Failed to read table reminders!\n\tException: {0}".format(e))
         return None
 
 
 def get_now(time) -> list:
     """
-    Получение данных из DataBase с заданной датой и временем.\n
+    Получение данных из DataBase с заданной датой и временем.
     :return: Данные в виде списка кортежей (id, chat_id, message_id, date, content). None - при вызове исключения.
     """
     try:
@@ -44,7 +44,7 @@ def get_now(time) -> list:
 
 def get_user_reminders(chat_id: str) -> list:
     """
-    Находит все напоминания конкретного пользователя.\n
+    Находит все напоминания конкретного пользователя.
     :param chat_id: чат id пользователя.
     :return:
     """
@@ -62,7 +62,7 @@ def get_user_reminders(chat_id: str) -> list:
 
 def get_free_id(chat_id: str) -> int:
     """
-    Находит наименьший свободный id для напоминания пользователя.\n
+    Находит наименьший свободный id для напоминания пользователя.
     :param chat_id: чат id пользователя.
     :return:
     """
@@ -87,9 +87,9 @@ def get_free_id(chat_id: str) -> int:
         return None
 
 
-def add_new(chat_id: str, message_id: str, reminder_id: int, time: str, text: str):
+def add_new(chat_id: str, message_id: str, reminder_id: int, time: str, text: str) -> bool:
     """
-    Добавление нового напоминания в DataBase.\n
+    Добавление нового напоминания в DataBase.
     :return: True. None - при вызове исключения.
     """
     try:
@@ -107,7 +107,7 @@ def add_new(chat_id: str, message_id: str, reminder_id: int, time: str, text: st
 
 def remove(id=None, chat_id=None):
     """
-    Удаляет уведомление с заданным id или удаляет все уведомления определённого пользователя.\n
+    Удаляет уведомление с заданным id или удаляет все уведомления определённого пользователя.
     :param id: уведомления, которое необходимо удалить
     :param chat_id: пользователя, все уведомления кторого необходимо удалить
     :return:
@@ -154,7 +154,7 @@ def remove(id=None, chat_id=None):
 
 def reset():
     """
-    Полностью удаляет все данные из db.\n
+    Полностью удаляет все данные из db.
     :return: True. None - при вызове исключения.
     """
     try:

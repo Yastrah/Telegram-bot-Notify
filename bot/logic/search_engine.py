@@ -69,7 +69,7 @@ def search_date(text: str) -> (str, str):
             if len(num) == 1:
                 date[date.index(num)] = f"0{num}"
             elif len(num) > 2:
-                logger.warning("Reminder handling error!")
+                logger.warning(f"Reminder handling error! Date: {date}; Text: {text}")
 
         if not 1 <= len(date) <= 3:
             return None, text
@@ -112,7 +112,7 @@ def search_time(text: str) -> (str, str):
         elif len(time) == 2:
             time = ':'.join(time)
 
-        if not (0 <= int(time[:2]) <= 24 and 0 <= int(time[3:]) <= 59):
+        if not (0 <= int(time.split(':')[0]) <= 24 and 0 <= int(time.split(':')[1]) <= 59):
             return None, "Вы указали несуществующее время!"
 
         text = match.group().join(text.split(match.group())[1:]).strip()

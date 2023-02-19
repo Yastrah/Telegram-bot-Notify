@@ -1,9 +1,12 @@
 import logging
+import datetime
 
 from config.config_reader import load_config
-from config.configuration import Constants
+from config.configuration import Constants, Settings
 
 from bot import keyboards
+from bot.db import users
+
 
 from aiogram.dispatcher import FSMContext
 from aiogram import Dispatcher, types
@@ -14,10 +17,20 @@ logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
 
+async def register_user(message: types.Message):
+    now_date = datetime.datetime.now().strftime(Settings.date_format).split()[0]
+    # Добавить выбор языка
+    users.add_user(str(message.from_user.id), str(message.chat.id), 'ru', 0, now_date)
+    logger.warning("Registered new user. user_id: {0}, chat_id: {1}".format(message.from_user.id, message.chat.id))
+
+
 async def cmd_start(message: types.Message):
     start = Constants.user_commands.get("start")
     await message.answer(start["text"]["ru"].format(bot_name=config.bot.name), parse_mode="HTML",
                          reply_markup=keyboards.kb_main_menu)
+
+    if not users.get_user_data(str(message.chat.id)):
+        await register_user(message)
 
 
 async def cmd_help(message: types.Message):

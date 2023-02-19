@@ -23,7 +23,7 @@ from aiogram.types import BotCommand
 
 
 
-version = "1.1.5"
+version = "1.1.6"
 
 logger = logging.getLogger(__name__)
 
@@ -34,7 +34,7 @@ def register_all_handlers(dp: Dispatcher):
     register_handlers_list(dp)
     register_handlers_delete(dp)
     register_handlers_messages(dp)
-    register_handlers_error(dp)
+    # register_handlers_error(dp)
 
 
 async def set_commands(dispatcher: Dispatcher):
@@ -97,4 +97,6 @@ GitHub: https://github.com/Yastrah""".format(version, datetime.now().strftime("%
         logger.error("Could not start polling!\n\tException: {0}".format(e))
 
 if __name__ == "__main__":
+    # from bot.db import users
+    # print(users.get_user_data("1242432"))
     main()

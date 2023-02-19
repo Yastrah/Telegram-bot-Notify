@@ -1,0 +1,100 @@
+2023-02-17 12:07:06 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.1.5
+LAST_UPDATE: 2023-02-17 12:07:06
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-02-17 12:07:06 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-02-17 12:07:06 [WARNING] aiogram: Updates were skipped successfully.
+2023-02-17 12:07:06 [INFO] __main__: Bot commands have been set.
+2023-02-17 12:07:06 [INFO] __main__: Start schedule process.
+2023-02-17 12:07:06 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-02-17 12:07:36 [WARNING] bot.handlers.admin: Database was reset!
+2023-02-17 12:07:36 [DEBUG] bot.handlers.admin: Admin 1990672413 reset database.
+2023-02-17 12:07:54 [DEBUG] bot.handlers.messages: Created reminder for message: Сегодня 13 защита
+	 chat_id: 1990672413, reminder_id: 1, time: 17/02/2023 13:00, text: защита
+2023-02-17 13:00:16 [INFO] bot.send_reminders: Reminder sent successfully to user 1990672413.
+	Text: защита
+2023-02-17 13:40:21 [ERROR] bot.handlers.errors: Found exception with user 1990672413!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 13:40:31 [ERROR] bot.handlers.errors: Found exception with user 1990672413!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 13:40:41 [ERROR] bot.handlers.errors: Found exception with user 1990672413!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 14:03:55 [DEBUG] bot.handlers.admin: Admin 1990672413 got users in database.
+2023-02-17 14:14:55 [ERROR] bot.handlers.errors: Found exception with user 169878591!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 14:15:04 [ERROR] bot.handlers.errors: Found exception with user 169878591!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 14:15:28 [DEBUG] bot.handlers.messages: Reminder handling: can not find time in message: 19 февраля в 20.00 обращение
+2023-02-17 14:15:36 [ERROR] bot.handlers.errors: Found exception with user 391053782!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 14:15:43 [WARNING] bot.logic.search_engine: Reminder handling error!
+2023-02-17 14:15:43 [DEBUG] bot.handlers.messages: Trying to create reminder without any text, chat_id: 169878591
+2023-02-17 14:15:48 [ERROR] bot.handlers.errors: Found exception with user 391053782!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 14:15:54 [DEBUG] bot.handlers.messages: Created reminder for message: в воскресенье в 11 магазин
+	 chat_id: 169878591, reminder_id: 1, time: 19/02/2023 11:00, text: магазин
+2023-02-17 14:16:00 [DEBUG] bot.handlers.messages: Created reminder for message: В понедельник в 12 свет
+	 chat_id: 169878591, reminder_id: 2, time: 20/02/2023 12:00, text: свет
+2023-02-17 14:16:14 [DEBUG] bot.handlers.messages: Reminder handling: can not find date in message: Выбросить мусор
+2023-02-17 14:16:18 [DEBUG] bot.handlers.messages: Reminder handling: can not find date in message: Ж
+2023-02-17 14:16:32 [ERROR] bot.handlers.errors: Found exception with user 391053782!
+	Exception: '22' is not in list
+2023-02-17 14:16:56 [DEBUG] bot.handlers.messages: Created reminder for message: Завтра в 19 м
+	 chat_id: 169878591, reminder_id: 3, time: 18/02/2023 19:00, text: м
+2023-02-17 14:17:08 [ERROR] bot.handlers.errors: Found exception with user 391053782!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 14:17:18 [DEBUG] bot.handlers.messages: Created reminder for message: 19.03 14.00 свет
+	 chat_id: 169878591, reminder_id: 4, time: 19/03/2023 14:00, text: свет
+2023-02-17 14:17:31 [DEBUG] bot.handlers.messages: Created reminder for message: 17.02 14.19 хуй
+	 chat_id: 169878591, reminder_id: 5, time: 17/02/2023 14:19, text: хуй
+2023-02-17 14:17:45 [DEBUG] bot.handlers.messages: Trying to create reminder without any text, chat_id: 169878591
+2023-02-17 14:17:52 [DEBUG] bot.handlers.messages: Created reminder for message: 17.02 14.18 пр
+	 chat_id: 169878591, reminder_id: 6, time: 17/02/2023 14:18, text: пр
+2023-02-17 14:18:12 [INFO] bot.send_reminders: Reminder sent successfully to user 169878591.
+	Text: пр
+2023-02-17 14:19:08 [INFO] bot.send_reminders: Reminder sent successfully to user 169878591.
+	Text: хуй
+2023-02-17 14:19:25 [ERROR] bot.handlers.errors: Found exception with user 602434200!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 14:19:29 [ERROR] bot.handlers.errors: Found exception with user 602434200!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 14:19:30 [ERROR] bot.handlers.errors: Found exception with user 602434200!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 14:19:34 [ERROR] bot.handlers.errors: Found exception with user 602434200!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 14:19:52 [ERROR] bot.handlers.errors: Found exception with user 602434200!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 14:20:01 [ERROR] bot.handlers.errors: Found exception with user 602434200!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 14:20:13 [ERROR] bot.handlers.errors: Found exception with user 272278151!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 14:20:16 [ERROR] bot.handlers.errors: Found exception with user 1828528010!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 14:20:17 [ERROR] bot.handlers.errors: Found exception with user 1025957999!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 14:20:19 [DEBUG] bot.handlers.messages: Reminder handling: can not find date in message: Ээээ слыш
+2023-02-17 14:20:20 [ERROR] bot.handlers.errors: Found exception with user 5732241262!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 14:20:42 [ERROR] bot.handlers.errors: Found exception with user 5732241262!
+	Exception: invalid literal for int() with base 10: '2:'
+2023-02-17 14:20:45 [DEBUG] bot.handlers.messages: Created reminder for message: Завтра в 17 на пары
+	 chat_id: 602434200, reminder_id: 1, time: 18/02/2023 17:00, text: на пары
+2023-02-17 14:20:48 [ERROR] bot.handlers.errors: Found exception with user 272278151!
+	Exception: invalid literal for int() with base 10: '9:'
+2023-02-17 14:21:17 [DEBUG] bot.handlers.messages: Created reminder for message: Завтра 14 00 Никки бенц
+	 chat_id: 391053782, reminder_id: 1, time: 18/02/2023 14:00, text: 00 Никки бенц
+2023-02-17 14:21:37 [DEBUG] bot.handlers.delete_reminder: Deleted chat id 391053782 reminder with id: 1
+2023-02-17 14:21:56 [DEBUG] bot.handlers.messages: Created reminder for message: Завтра 14 выбросить мусор
+	 chat_id: 391053782, reminder_id: 1, time: 18/02/2023 14:00, text: выбросить мусор
+2023-02-17 14:22:12 [DEBUG] bot.handlers.delete_reminder: Deleted chat id 391053782 reminder with id: 1
+2023-02-17 15:10:43 [DEBUG] bot.handlers.admin: Admin 1990672413 got users in database.
+2023-02-17 15:10:47 [ERROR] bot.handlers.errors: Found exception with user 1990672413!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 15:10:54 [ERROR] bot.handlers.errors: Found exception with user 1990672413!
+	Exception: Can't parse entities: can't find end tag corresponding to start tag u
+2023-02-17 20:40:42 [WARNING] __main__: Shutdown dispatcher!!!
+2023-02-17 20:40:42 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-02-17 20:40:42 [WARNING] aiogram: Goodbye!
