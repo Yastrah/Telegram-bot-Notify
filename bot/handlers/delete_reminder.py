@@ -8,7 +8,7 @@ from aiogram.dispatcher.filters import Text
 from config.config_reader import load_config
 from config.configuration import Constants
 from bot.logic import date_converter
-from bot.db import reminders
+from bot.db import reminders, users
 from bot import keyboards
 
 logger = logging.getLogger(__name__)
@@ -28,6 +28,25 @@ async def cmd_delete(message: types.Message):
 
     await message.answer("Введите id напоминания:", reply_markup=keyboards.kb_cancel)
     await DeleteReminder.waiting_for_id.set()
+
+
+async def cmd_undo(message: types.Message, state: FSMContext):
+    data = users.get_user_data(message.chat.id)
+    if data[4] == 0:
+        return await message.answer("Вы не создали ни одного напоминания")
+
+    if data[3] == 0:
+        return await message.answer("Последнее созданное напоминание удалено или уже отправлено")
+
+    await state.update_data(reminder_id=data[3])
+
+    await DeleteReminder.waiting_for_confirm.set()
+    reminder = [el for el in reminders.get_user_reminders(message.chat.id) if el[3] == data[3]][0]
+
+    await message.answer(f"Дата: <b>{date_converter.get_day_of_the_week(reminder[4].split()[0])} {reminder[4]}</b>\n"
+                         f"Id: <b>{reminder[3]}</b>\n"
+                         f"Текст: <b>{reminder[5]}</b>\n"
+                         f"Удалить напоминание?", parse_mode="HTML", reply_markup=keyboards.inline_kb_confirm)
 
 
 async def id_received(message: types.Message, state: FSMContext):
@@ -57,6 +76,10 @@ async def confirm_received(call: types.CallbackQuery, state: FSMContext):
     reminders.remove(id=data["reminder_id"], chat_id=call.message.chat.id)
     logger.debug("Deleted chat id {0} reminder with id: {1}".format(call.message.chat.id, data["reminder_id"]))
 
+    user_data = users.get_user_data(call.message.chat.id)
+    if user_data[3] == data["reminder_id"]:
+        users.update_last_reminder(call.message.chat.id, 0)
+
     await call.message.answer("Напоминание успешно удалено!", reply_markup=keyboards.kb_main_menu)
     await state.finish()
 
@@ -68,8 +91,9 @@ async def confirm_denied(call: types.CallbackQuery, state: FSMContext):
 
 def register_handlers_delete(dp: Dispatcher):
     dp.register_message_handler(cmd_delete, commands="delete", state="*")
-    dp.register_message_handler(cmd_delete, Text(equals=Constants.user_commands["delete"]["custom_name"]),
-                                state="*")
+    dp.register_message_handler(cmd_delete, Text(equals=Constants.user_commands["delete"]["custom_name"]), state="*")
+    dp.register_message_handler(cmd_undo, commands="undo", state="*")
+    dp.register_message_handler(cmd_undo, Text(equals=Constants.user_commands["undo"]["custom_name"]), state="*")
     dp.register_message_handler(id_received, state=DeleteReminder.waiting_for_id)
     dp.register_callback_query_handler(confirm_received, text="yes", state=DeleteReminder.waiting_for_confirm)
     dp.register_callback_query_handler(confirm_denied, text="no", state=DeleteReminder.waiting_for_confirm)

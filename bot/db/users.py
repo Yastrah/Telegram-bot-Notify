@@ -43,7 +43,7 @@ def get_user_data(chat_id: str) -> tuple:
         return None
 
 
-def update_last_reminder(user_id: str, last_reminder_id: int) -> bool:
+def update_last_reminder(chat_id: str, last_reminder_id: int) -> bool:
     """
     Изменяет id последнего напоминания для пользователя
     :param user_id: id пользователя
@@ -53,12 +53,12 @@ def update_last_reminder(user_id: str, last_reminder_id: int) -> bool:
     try:
         with sqlite3.connect(config.data.bot_db) as db:
             cursor = db.cursor()
-            cursor.execute("""UPDATE users SET last_reminder_id=? WHERE user_id=?""", [last_reminder_id, user_id])
+            cursor.execute("""UPDATE users SET last_reminder_id=? WHERE chat_id=?""", [last_reminder_id, chat_id])
 
         return True
 
     except Exception as e:
-        logger.error("Failed to update user_id {0} last_reminder_id {1}!\n\tException: {2}".format(user_id, last_reminder_id, e))
+        logger.error("Failed to update chat_id {0} last_reminder_id {1}!\n\tException: {2}".format(chat_id, last_reminder_id, e))
         return None
 
 
@@ -79,7 +79,7 @@ def update_total_reminders(chat_id: str) -> bool:
         return True
 
     except Exception as e:
-        logger.error("Failed to update user_id {0} last_reminder_id {1}!\n\tException: {2}".format(user_id, last_reminder_id, e))
+        logger.error("Failed to update chat_id {0} total_reminders!\n\tException: {1}".format(chat_id, e))
         return None
 
 

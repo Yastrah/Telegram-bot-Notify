@@ -6,7 +6,9 @@ from config.configuration import Constants
 
 kb_main_menu = ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
 kb_main_menu.add(KeyboardButton(Constants.user_commands["list"]["custom_name"]),
-                 KeyboardButton(Constants.user_commands["delete"]["custom_name"]))
+                 KeyboardButton(Constants.user_commands["delete"]["custom_name"]),
+                 KeyboardButton(Constants.user_commands["edit"]["custom_name"]),
+                 KeyboardButton(Constants.user_commands["undo"]["custom_name"]))
 # kb_main_menu.add(KeyboardButton(Constants.user_commands["delete"]["custom_name"]),
 #                  KeyboardButton(Constants.user_commands["edit"]["custom_name"]))
 

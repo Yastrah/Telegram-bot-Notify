@@ -23,7 +23,7 @@ from aiogram.types import BotCommand
 
 
 
-version = "1.1.6"
+version = "1.1.7"
 
 logger = logging.getLogger(__name__)
 
@@ -64,7 +64,7 @@ async def on_shutdown(dispatcher):
     pass
 
 def main():
-    file_log = logging.FileHandler(filename=f"logs/bot_logs_{datetime.now().strftime('%Y_%m_%d')}.log")
+    file_log = logging.FileHandler(filename=f"logs/bot_logs_{datetime.now().strftime('%Y_%m_%d')}.log", encoding="utf-8")
     file_log.setLevel("DEBUG")
 
     console_log = logging.StreamHandler(stream=sys.stderr)
@@ -73,7 +73,7 @@ def main():
     logging.getLogger("aiogram").setLevel("INFO")
     logging.getLogger("asyncio").setLevel("INFO")
     logging.getLogger("schedule").setLevel("INFO")
-    logging.basicConfig(format="%(asctime)s [%(levelname)s] %(name)s: %(message)s", level="DEBUG", encoding="UTF-8",
+    logging.basicConfig(format="%(asctime)s [%(levelname)s] %(name)s: %(message)s", level="DEBUG",
                         datefmt="%Y-%m-%d %H:%M:%S", handlers=[file_log, console_log])
 
     config = load_config("config/bot.ini")

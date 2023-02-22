@@ -79,7 +79,7 @@ async def create_reminder(message: types.Message):
     if not users.get_user_data(str(message.chat.id)):
         await register_user(message)
 
-    users.update_last_reminder(str(message.from_user.id), reminder_id)
+    users.update_last_reminder(str(message.chat.id), reminder_id)
 
     # запись напоминания в базу данных и отправка сообщению об успешном создании напоминания
     if reminders.add_new(str(message.chat.id), str(message.message_id), reminder_id, full_date, text):
