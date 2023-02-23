@@ -13,6 +13,7 @@ from bot.handlers.admin import register_handlers_admin
 from bot.handlers.common import register_handlers_common
 from bot.handlers.delete_reminder import register_handlers_delete
 from bot.handlers.list_of_reminders import register_handlers_list
+from bot.handlers.edit_reminder import register_handlers_edit
 from bot.handlers.errors import register_handlers_error
 
 from aiogram import Bot
@@ -23,7 +24,7 @@ from aiogram.types import BotCommand
 
 
 
-version = "1.1.7"
+version = "1.1.8"
 
 logger = logging.getLogger(__name__)
 
@@ -33,6 +34,7 @@ def register_all_handlers(dp: Dispatcher):
     register_handlers_common(dp)
     register_handlers_list(dp)
     register_handlers_delete(dp)
+    register_handlers_edit(dp)
     register_handlers_messages(dp)
     # register_handlers_error(dp)
 

@@ -11,6 +11,7 @@ from bot.logic import date_converter
 from bot.db import reminders, users
 from bot import keyboards
 
+
 logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
@@ -23,8 +24,7 @@ class DeleteReminder(StatesGroup):
 async def cmd_delete(message: types.Message):
     data = reminders.get_user_reminders(message.chat.id)
     if not data:
-        await message.answer("У вас нет напоминаний, чтобы их удалить")
-        return
+        return await message.answer("У вас нет напоминаний, чтобы их удалить")
 
     await message.answer("Введите id напоминания:", reply_markup=keyboards.kb_cancel)
     await DeleteReminder.waiting_for_id.set()
@@ -51,13 +51,11 @@ async def cmd_undo(message: types.Message, state: FSMContext):
 
 async def id_received(message: types.Message, state: FSMContext):
     if not message.text.isdigit():
-        await message.answer("Некорректный id!\nВведите id напоминания:")
-        return
+        return await message.answer("Некорректный id!\nВведите id напоминания:")
 
     if not int(message.text) in [el[3] for el in reminders.get_user_reminders(message.chat.id)]:
-        await message.answer("Напоминания с id {reminder_id} не существует!\nВведите id напоминания:".format(
+        return await message.answer("Напоминания с id {reminder_id} не существует!\nВведите id напоминания:".format(
             reminder_id=int(message.text)), reply_markup=keyboards.kb_cancel)
-        return
 
     await state.update_data(reminder_id=message.text)
     await DeleteReminder.next()

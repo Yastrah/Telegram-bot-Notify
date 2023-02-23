@@ -1,0 +1,77 @@
+2023-02-23 21:09:13 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.1.7
+LAST_UPDATE: 2023-02-23 21:09:13
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-02-23 21:09:13 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-02-23 21:09:13 [WARNING] aiogram: Updates were skipped successfully.
+2023-02-23 21:09:13 [INFO] __main__: Bot commands have been set.
+2023-02-23 21:09:13 [INFO] __main__: Start schedule process.
+2023-02-23 21:09:13 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-02-23 21:09:55 [DEBUG] bot.handlers.messages: Reminder handling: can not find date in message: ✏️ изменить
+2023-02-23 21:10:14 [WARNING] __main__: Shutdown dispatcher!!!
+2023-02-23 21:10:14 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-02-23 21:10:14 [WARNING] aiogram: Goodbye!
+2023-02-23 21:22:23 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.1.8
+LAST_UPDATE: 2023-02-23 21:22:23
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-02-23 21:22:23 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-02-23 21:22:24 [WARNING] aiogram: Updates were skipped successfully.
+2023-02-23 21:22:24 [INFO] __main__: Bot commands have been set.
+2023-02-23 21:22:24 [INFO] __main__: Start schedule process.
+2023-02-23 21:22:24 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-02-23 21:22:26 [DEBUG] bot.handlers.messages: Reminder handling: can not find date in message: ✏️ изменить
+2023-02-23 21:22:37 [WARNING] __main__: Shutdown dispatcher!!!
+2023-02-23 21:22:37 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-02-23 21:22:37 [WARNING] aiogram: Goodbye!
+2023-02-23 21:23:19 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.1.8
+LAST_UPDATE: 2023-02-23 21:23:19
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-02-23 21:23:20 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-02-23 21:23:20 [WARNING] aiogram: Updates were skipped successfully.
+2023-02-23 21:23:20 [INFO] __main__: Bot commands have been set.
+2023-02-23 21:23:20 [INFO] __main__: Start schedule process.
+2023-02-23 21:23:20 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-02-23 21:23:51 [WARNING] __main__: Shutdown dispatcher!!!
+2023-02-23 21:23:51 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-02-23 21:23:51 [WARNING] aiogram: Goodbye!
+2023-02-23 21:24:17 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.1.8
+LAST_UPDATE: 2023-02-23 21:24:17
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-02-23 21:24:17 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-02-23 21:24:18 [WARNING] aiogram: Updates were skipped successfully.
+2023-02-23 21:24:18 [INFO] __main__: Bot commands have been set.
+2023-02-23 21:24:18 [INFO] __main__: Start schedule process.
+2023-02-23 21:24:18 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-02-23 21:26:43 [WARNING] __main__: Shutdown dispatcher!!!
+2023-02-23 21:26:43 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-02-23 21:26:43 [WARNING] aiogram: Goodbye!
+2023-02-23 21:26:45 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.1.8
+LAST_UPDATE: 2023-02-23 21:26:45
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-02-23 21:26:46 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-02-23 21:26:46 [WARNING] aiogram: Updates were skipped successfully.
+2023-02-23 21:26:47 [INFO] __main__: Bot commands have been set.
+2023-02-23 21:26:47 [INFO] __main__: Start schedule process.
+2023-02-23 21:26:47 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-02-23 21:27:08 [WARNING] __main__: Shutdown dispatcher!!!
+2023-02-23 21:27:08 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-02-23 21:27:08 [WARNING] aiogram: Goodbye!
