@@ -1,3 +1,4 @@
+import datetime
 import logging
 
 from aiogram import Dispatcher, types
@@ -6,9 +7,9 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.dispatcher.filters import Text
 
 from config.config_reader import load_config
-from config.configuration import Constants
-from bot.logic import date_converter
-from bot.db import reminders, users
+from config.configuration import Constants, Settings
+from bot.logic import date_converter, search_engine
+from bot.db import reminders
 from bot import keyboards
 
 
@@ -19,7 +20,7 @@ config = load_config("config/bot.ini")
 class EditReminder(StatesGroup):
     waiting_for_id = State()
     waiting_for_edit_type = State()
-    waiting_for_confirm = State()
+    waiting_for_new_data = State()
 
 
 async def cmd_edit(message: types.Message):
@@ -39,7 +40,7 @@ async def id_received(message: types.Message, state: FSMContext):
         return await message.answer("Напоминания с id {reminder_id} не существует!\nВведите id напоминания:".format(
             reminder_id=int(message.text)), reply_markup=keyboards.kb_cancel)
 
-    await state.update_data(reminder_id=message.text)
+    await state.update_data(reminder_id=int(message.text))
     await EditReminder.next()
 
     reminder = [el for el in reminders.get_user_reminders(message.chat.id) if el[3] == int(message.text)][0]
@@ -50,61 +51,103 @@ async def id_received(message: types.Message, state: FSMContext):
                          f"Что вы хотите изменить?", parse_mode="HTML", reply_markup=keyboards.inline_kb_edit_type)
 
 
+async def edit_time(call: types.CallbackQuery, state: FSMContext):
+    await EditReminder.next()
+    await state.update_data(edit_type="time")
+    return await call.message.answer("Введите новые время и дату без текста напоминания:")
+
+
+async def edit_text(call: types.CallbackQuery, state: FSMContext):
+    await EditReminder.next()
+    await state.update_data(edit_type="text")
+    return await call.message.answer("Введите новый текст напоминания:")
+
+
+async def edit_all(call: types.CallbackQuery, state: FSMContext):
+    await EditReminder.next()
+    await state.update_data(edit_type="all")
+    return await call.message.answer("Введите дату, время и текст напоминания, как при создании нового:")
+
+
+async def edit_reminder(message: types.Message, state: FSMContext):
+    data = await state.get_data()
+    if data["edit_type"] == "time":
+        text = " ".join(message.text.split())
+        date, time, text = search_engine.date_and_time_handling(text)
+        full_date = " ".join([date, time])
+
+        # проверка корректности даты
+        if not date_converter.get_day_of_the_week(date):
+            logger.debug("Wrong date input, chat_id: {0}".format(message.chat.id))
+            return await message.answer("Некорректная дата!")
+
+        # проверка на попытку создать напоминание на прошедшее время
+        now_date = datetime.datetime.now().strftime(Settings.date_format)
+        if date_converter.date_to_value(" ".join([date, time])) <= date_converter.date_to_value(now_date):
+            logger.debug("Trying to update reminder date on the past, chat_id: {0}".format(message.chat.id))
+            return await message.answer("Вы пытаетесь изменить время напоминания на прошедшее!")
+
+        if reminders.edit_time(message.chat.id, data["reminder_id"], full_date):
+            logger.debug("Successfully updated reminder date with chat_id: {0}, reminder_id: {1}. New date: {2}".format(
+                message.chat.id, data["reminder_id"], full_date))
+            await state.finish()
+            return await message.answer("Время напоминания успешно изменено", reply_markup=keyboards.kb_main_menu)
+
+        else:
+            logger.error("Update date error, chat_id: {0}, text: {1}!".format(message.chat.id, message.text))
+            await state.finish()
+            return await message.answer("Возникла какая-то ошибка!", reply_markup=keyboards.kb_main_menu)
+
+    elif data["edit_type"] == "text":
+        if reminders.edit_text(message.chat.id, data["reminder_id"], message.text):
+            logger.debug("Successfully updated reminder text with chat_id: {0}, reminder_id: {1}. New text: {2}".format(
+                message.chat.id, data["reminder_id"], message.text))
+            await state.finish()
+            return await message.answer("Текст напоминания успешно изменён", reply_markup=keyboards.kb_main_menu)
+
+        else:
+            logger.error("Update text error, chat_id: {0}, text: {1}!".format(message.chat.id, message.text))
+            await state.finish()
+            return await message.answer("Возникла какая-то ошибка!", reply_markup=keyboards.kb_main_menu)
+
+    elif data["edit_type"] == "all":
+        text = " ".join(message.text.split())
+        date, time, text = search_engine.date_and_time_handling(text)
+        full_date = " ".join([date, time])
+
+        # проверка корректности даты
+        if not date_converter.get_day_of_the_week(date):
+            logger.debug("Wrong date input, chat_id: {0}".format(message.chat.id))
+            return await message.answer("Некорректная дата!")
+
+        # проверка на попытку создать напоминание на прошедшее время
+        now_date = datetime.datetime.now().strftime(Settings.date_format)
+        if date_converter.date_to_value(" ".join([date, time])) <= date_converter.date_to_value(now_date):
+            logger.debug("Trying to update reminder date on the past, chat_id: {0}".format(message.chat.id))
+            return await message.answer("Вы пытаетесь изменить время напоминания на прошедшее!")
+
+        if reminders.edit_all(message.chat.id, data["reminder_id"], full_date, text):
+            logger.debug("Successfully updated reminder date and text with chat_id: {0}, reminder_id: {1}. "
+                         "New date: {2}; new text {3}".format(
+                message.chat.id, data["reminder_id"], full_date, text))
+            await state.finish()
+            return await message.answer("Время напоминания успешно изменено", reply_markup=keyboards.kb_main_menu)
+
+        else:
+            logger.error("Update text error, chat_id: {0}, text: {1}!".format(message.chat.id, message.text))
+            await state.finish()
+            return await message.answer("Возникла какая-то ошибка!", reply_markup=keyboards.kb_main_menu)
+
+    else:
+        logger.error("Error with states for edit reminder, chat_id: {0}!".format(message.chat.id))
+        return await message.answer("Возникла какая-то ошибка!", reply_markup=keyboards.kb_main_menu)
+
+
 def register_handlers_edit(dp: Dispatcher):
     dp.register_message_handler(cmd_edit, commands="edit", state="*")
     dp.register_message_handler(cmd_edit, Text(equals=Constants.user_commands["edit"]["custom_name"]), state="*")
     dp.register_message_handler(id_received, state=EditReminder.waiting_for_id)
-    # dp.register_callback_query_handler(confirm_received, text="yes", state=DeleteReminder.waiting_for_confirm)
-    # dp.register_callback_query_handler(confirm_denied, text="no", state=DeleteReminder.waiting_for_confirm)
-
-
-# class EditReminder(StatesGroup):
-#     waiting_for_team_name = State()
-#     waiting_for_character_name = State()
-#     waiting_for_character_class = State()
-#     waiting_for_character_stats = State()
-#
-#
-# async def team_start(message: types.Message):
-#     verification = protect.user_already_has_team(message.from_user.id)
-#     if verification is not True:
-#         logger.debug(f"User: {message.from_user.id}. Team is already exist!")
-#         await message.answer(verification)
-#         return
-#
-#     await message.answer("Введите имя команды:")
-#     await EditReminder.waiting_for_team_name.set()
-#
-#
-# async def team_name_chosen(message: types.Message, state: FSMContext):
-#     verification = protect.team_name(message.text)
-#     if verification is not True:
-#         logger.debug(f"User: {message.from_user.id}. Invalid characters name!")
-#         await message.answer(f"{verification}\nВведите имя команды ещё раз:")
-#         return
-#
-#     await state.update_data(team_name=message.text)
-#
-#     # Для последовательных шагов можно не указывать название состояния, обходясь next()
-#     await EditReminder.next()
-#     await message.answer("Теперь выберите имя первого члена команды:")
-#
-#
-# async def team_character_name_chosen(message: types.Message, state: FSMContext):
-#     # await state.update_data(team_character_name=message.text)
-#
-#     # получение рандомного персонажа
-#
-#     user_data = await state.get_data()
-#
-#     db.add_team(message.from_user.id, user_data["team_name"], [{"name": message.text, "stats": "None"}])
-#
-#     await message.answer(f"""Вы создали команду "{user_data["team_name"]}".\n"""
-#                          f"Первого члена команды зовут {message.text}.")
-#     await state.finish()
-#
-#
-# def register_handlers_team(dp: Dispatcher):
-#     dp.register_message_handler(team_start, commands=config.bot_commands.new_team, state="*")
-#     dp.register_message_handler(team_name_chosen, state=EditReminder.waiting_for_team_name)
-#     dp.register_message_handler(team_character_name_chosen, state=EditReminder.waiting_for_character_name)
+    dp.register_callback_query_handler(edit_time, text="time", state=EditReminder.waiting_for_edit_type)
+    dp.register_callback_query_handler(edit_text, text="text", state=EditReminder.waiting_for_edit_type)
+    dp.register_callback_query_handler(edit_all, text="all", state=EditReminder.waiting_for_edit_type)
+    dp.register_message_handler(edit_reminder, state=EditReminder.waiting_for_new_data)

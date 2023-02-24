@@ -105,18 +105,18 @@ def add_new(chat_id: str, message_id: str, reminder_id: int, time: str, text: st
         return None
 
 
-def remove(id=None, chat_id=None):
+def remove(reminder_id: int = None, chat_id: str = None):
     """
     Удаляет уведомление с заданным id или удаляет все уведомления определённого пользователя.
-    :param id: уведомления, которое необходимо удалить
+    :param reminder_id: уведомления, которое необходимо удалить
     :param chat_id: пользователя, все уведомления кторого необходимо удалить
     :return:
     """
-    if id and chat_id:
+    if reminder_id and chat_id:
         try:
             with sqlite3.connect(config.data.bot_db) as db:
                 cursor = db.cursor()
-                cursor.execute("DELETE FROM reminders WHERE reminder_id=? AND chat_id=?", [id, chat_id])
+                cursor.execute("DELETE FROM reminders WHERE reminder_id=? AND chat_id=?", [reminder_id, chat_id])
 
             return True
 
@@ -124,11 +124,11 @@ def remove(id=None, chat_id=None):
             logger.error("Failed to remove reminder from database!\n\tException: {0}".format(e))
             return None
 
-    elif id:
+    elif reminder_id:
         try:
             with sqlite3.connect(config.data.bot_db) as db:
                 cursor = db.cursor()
-                cursor.execute("DELETE FROM reminders WHERE id=?", [id])
+                cursor.execute("DELETE FROM reminders WHERE id=?", [reminder_id])
 
             return True
 
@@ -149,6 +149,60 @@ def remove(id=None, chat_id=None):
             return None
 
     else:
+        return None
+
+
+def edit_time(chat_id: str, reminder_id: int, date: str) -> bool:
+    """
+    Изменение даты и времени напоминания по его id.
+    :return: True. None - при вызове исключения.
+    """
+    try:
+        with sqlite3.connect(config.data.bot_db) as db:
+            cursor = db.cursor()
+            cursor.execute("""UPDATE reminders SET date=? WHERE chat_id=? AND reminder_id=?""",
+                           [date, chat_id, reminder_id])
+
+        return True
+
+    except Exception as e:
+        logger.error("Failed to update reminder date in database!\n\tException: {0}".format(e))
+        return None
+
+
+def edit_text(chat_id: str, reminder_id: int, text: str) -> bool:
+    """
+    Изменение текста напоминания по его id.
+    :return: True. None - при вызове исключения.
+    """
+    try:
+        with sqlite3.connect(config.data.bot_db) as db:
+            cursor = db.cursor()
+            cursor.execute("""UPDATE reminders SET content=? WHERE chat_id=? AND reminder_id=?""",
+                           [text, chat_id, reminder_id])
+
+        return True
+
+    except Exception as e:
+        logger.error("Failed to update reminder text in database!\n\tException: {0}".format(e))
+        return None
+
+
+def edit_all(chat_id: str, reminder_id: int, date: str, text: str) -> bool:
+    """
+    Изменение текста напоминания по его id.
+    :return: True. None - при вызове исключения.
+    """
+    try:
+        with sqlite3.connect(config.data.bot_db) as db:
+            cursor = db.cursor()
+            cursor.execute("""UPDATE reminders SET date=?, content=? WHERE chat_id=? AND reminder_id=?""",
+                           [date, text, chat_id, reminder_id])
+
+        return True
+
+    except Exception as e:
+        logger.error("Failed to update reminder date and text in database!\n\tException: {0}".format(e))
         return None
 
 

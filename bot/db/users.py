@@ -46,7 +46,7 @@ def get_user_data(chat_id: str) -> tuple:
 def update_last_reminder(chat_id: str, last_reminder_id: int) -> bool:
     """
     Изменяет id последнего напоминания для пользователя
-    :param user_id: id пользователя
+    :param chat_id: чат id пользователя
     :param last_reminder_id: новое idдля последнего напоминания
     :return: True. None - при вызове исключения.
     """

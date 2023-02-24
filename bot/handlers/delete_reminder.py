@@ -71,7 +71,7 @@ async def id_received(message: types.Message, state: FSMContext):
 async def confirm_received(call: types.CallbackQuery, state: FSMContext):
     data = await state.get_data()
 
-    reminders.remove(id=data["reminder_id"], chat_id=call.message.chat.id)
+    reminders.remove(reminder_id=data["reminder_id"], chat_id=call.message.chat.id)
     logger.debug("Deleted chat id {0} reminder with id: {1}".format(call.message.chat.id, data["reminder_id"]))
 
     user_data = users.get_user_data(call.message.chat.id)

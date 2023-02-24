@@ -9,50 +9,28 @@ from bot.db import reminders, users
 from bot.handlers.common import register_user
 
 from aiogram import Dispatcher, types
+from aiogram.dispatcher import FSMContext
 
 
 logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
 
-async def create_reminder(message: types.Message):
+async def create_reminder(message: types.Message, state: FSMContext):
     if message.chat.id in Settings.blocked_users:
         return await message.answer("К сожалению вы заблокированны!")
 
+    await state.finish()
+
     text = " ".join(message.text.split())
-
-    date = None
-
-    # поиск и обработка ключевых слов
-    found, text = search_engine.search_day_name(text, "сегодня")
-    if found:
-        date = date_converter.today()
-
-    if date is None:
-        found, text = search_engine.search_day_name(text, "завтра")
-        if found:
-            date = date_converter.tomorrow()
-
-    # поиск и обработка дней недели
-    for day in [day[1] for day in Settings.week_days]:
-        found, text = search_engine.search_day_name(text, day)
-        if found:
-            date = date_converter.nearest_day_of_the_week(day)
-            break
-
-    # поиск даты в числовом виде, если не нашлось ключевых слов
-    if date is None:
-        date, text = search_engine.search_date(text)
+    date, time, text = search_engine.date_and_time_handling(text)
 
     # обработка ошибок с датой
     if date is None:
         logger.debug("Reminder handling: can not find date in message: {0}".format(message.text))
         return await message.answer("Не удалось обработать дату напоминания!")
 
-    # поиск времени
-    time, text = search_engine.search_time(text)
-
-    # обработка ошибок с датой
+    # обработка ошибок со временем
     if time is None:
         logger.debug("Reminder handling: can not find time in message: {0}".format(message.text))
         return await message.answer(text)

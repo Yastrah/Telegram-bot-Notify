@@ -6,6 +6,8 @@ import datetime
 from config.config_reader import load_config
 from config.configuration import Settings
 
+from bot.logic import date_converter
+
 
 logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
@@ -44,6 +46,9 @@ def search_date(text: str) -> (str, str):
     :param text: текст сообщения
     :return: Кортеж: дату в обработанном виде и сообщение без даты. None для првого элемента если ничего не найдено.
     """
+    if len(text) < Settings.min_messege_len:
+        return None, text
+
     date_pattern = re.compile("\d{1,2}([-./]\d{1,2})?([-./]\d{2,4})?")
     match = date_pattern.search(text)
 
@@ -121,3 +126,40 @@ def search_time(text: str) -> (str, str):
 
     return None, text
 
+
+def date_and_time_handling(text: str) -> tuple:
+    """
+    Обрабатывает сообщение разбирая его на дату, время и оставшийся текст
+    :param text: текст сообщения
+    :return:
+    """
+    date = None
+
+    # поиск и обработка ключевых слов
+    found, text = search_day_name(text, "сегодня")
+    if found:
+        date = date_converter.today()
+
+    if date is None:
+        found, text = search_day_name(text, "завтра")
+        if found:
+            date = date_converter.tomorrow()
+
+    # поиск и обработка дней недели
+    for day in [day[1] for day in Settings.week_days]:
+        found, text = search_day_name(text, day)
+        if found:
+            date = date_converter.nearest_day_of_the_week(day)
+            break
+
+    # поиск даты в числовом виде, если не нашлось ключевых слов
+    if date is None:
+        date, text = search_date(text)
+
+    if date is None:
+        return None, None, None
+
+    # поиск времени
+    time, text = search_time(text)
+
+    return date, time, text
