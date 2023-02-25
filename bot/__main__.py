@@ -8,12 +8,13 @@ from config.configuration import Constants
 from config.config_reader import load_config
 
 from bot.send_reminders import timer
-from bot.handlers.messages import register_handlers_messages
 from bot.handlers.admin import register_handlers_admin
 from bot.handlers.common import register_handlers_common
 from bot.handlers.delete_reminder import register_handlers_delete
 from bot.handlers.list_of_reminders import register_handlers_list
 from bot.handlers.edit_reminder import register_handlers_edit
+from bot.handlers.report import register_handlers_report
+from bot.handlers.messages import register_handlers_messages
 from bot.handlers.errors import register_handlers_error
 
 from aiogram import Bot
@@ -24,7 +25,7 @@ from aiogram.types import BotCommand
 
 
 
-version = "1.1.9"
+version = "1.2.0"
 
 logger = logging.getLogger(__name__)
 
@@ -35,6 +36,7 @@ def register_all_handlers(dp: Dispatcher):
     register_handlers_list(dp)
     register_handlers_delete(dp)
     register_handlers_edit(dp)
+    register_handlers_report(dp)
     register_handlers_messages(dp)
     # register_handlers_error(dp)
 
@@ -99,6 +101,4 @@ GitHub: https://github.com/Yastrah""".format(version, datetime.now().strftime("%
         logger.error("Could not start polling!\n\tException: {0}".format(e))
 
 if __name__ == "__main__":
-    # from bot.db import users
-    # print(users.get_user_data("1242432"))
     main()

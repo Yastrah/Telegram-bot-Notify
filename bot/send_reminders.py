@@ -3,7 +3,7 @@ import schedule
 import asyncio
 import threading
 from time import sleep
-from datetime import datetime
+import datetime
 from aiogram import Bot
 
 from config.configuration import Settings
@@ -28,7 +28,7 @@ def timer(bot: Bot, loop):
 
 
 async def check_for_reminders(bot: Bot):
-    now_date = datetime.now().strftime(Settings.date_format)
+    now_date = datetime.datetime.now().strftime(Settings.date_format)
     data = reminders.get_now(now_date)
 
     if data is None:

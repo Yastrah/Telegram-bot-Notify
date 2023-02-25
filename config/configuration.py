@@ -65,6 +65,9 @@ class Constants(object):
             "description": "сбросить состояние",
             "custom_name": "◀️ назад",
         },
+        "report": {
+            "description": "пожаловаться на ошибку / предложить доработки",
+        },
     }
 
 

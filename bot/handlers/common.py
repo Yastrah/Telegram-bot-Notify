@@ -48,6 +48,4 @@ def register_handlers_common(dp: Dispatcher):
     dp.register_message_handler(cmd_start, commands="start", state="*")
     dp.register_message_handler(cmd_help, commands="help", state="*")
     dp.register_message_handler(cmd_cancel, commands="cancel", state="*")
-    dp.register_message_handler(cmd_cancel, Text(equals=Constants.user_commands["cancel"]["custom_name"]),
-                                state="*")
-    # dp.register_message_handler(cmd_cancel, Text(equals="отмена", ignore_case=True), state="*")
+    dp.register_message_handler(cmd_cancel, Text(equals=Constants.user_commands["cancel"]["custom_name"]), state="*")
