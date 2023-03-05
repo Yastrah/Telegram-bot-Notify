@@ -19,7 +19,7 @@ config = load_config("config/bot.ini")
 async def create_reminder(message: types.Message, state: FSMContext):
     await state.finish()
 
-    if message.chat.id in Settings.blocked_users:
+    if message.from_user.id in Settings.blocked_users:
         return await message.answer("К сожалению вы заблокированны!")
 
     if message.text.startswith('/'):

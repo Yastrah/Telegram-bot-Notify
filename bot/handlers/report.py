@@ -22,20 +22,21 @@ class ReportAppeal(StatesGroup):
 
 
 async def cmd_report(message: types.Message):
-    if message.chat.id in Settings.blocked_users:
+    if message.from_user.id in Settings.blocked_users:
         return await message.answer("К сожалению вы заблокированны!")
 
     with open("data/reports.txt", mode='r', encoding="utf-8") as file:
         file.readline()
         data = file.read()
 
-    now_date = datetime.datetime.now().strftime("%Y-%m-%d")
-    pattern = re.compile(fr"{now_date}.+?{message.from_user.id}")
-    match = pattern.findall(data)
+    if data:
+        now_date = datetime.datetime.now().strftime("%Y-%m-%d")
+        pattern = re.compile(fr"{now_date}.+?{message.from_user.id}")
+        match = pattern.findall(data)
 
-    if len(match) >= Settings.max_reports_per_day:
-        return await message.answer(f"Вы за сегодня уже отправили максимальное допустимое число "
-                                    f"жалоб/предложений ({Settings.max_reports_per_day})!")
+        if len(match) >= Settings.max_reports_per_day:
+            return await message.answer(f"Вы за сегодня уже отправили максимальное допустимое число "
+                                        f"жалоб/предложений ({Settings.max_reports_per_day})!")
 
     await ReportAppeal.waiting_for_text.set()
     return await message.answer("Введите текст обращения:", reply_markup=keyboards.kb_cancel)

@@ -47,7 +47,7 @@ async def cmd_reset_data_base(message: types.Message):
     logger.warning("Database was reset!")
 
     await message.answer(f"Database was reset. Deleted {reminders_count} reminders.")
-    logger.debug("Admin {0} reset database.".format(message.from_user.id))
+    logger.warning("Admin {0} reset database.".format(message.from_user.id))
 
 
 async def cmd_show_reports(message: types.Message):
@@ -59,6 +59,9 @@ async def cmd_show_reports(message: types.Message):
         reports_count = int(file.readline())
         data = file.readlines()
 
+    if not data:
+        return await message.answer("There are no reports.")
+
     text = f"There are {reports_count} reports:\n\n"
     for row in data:
         text += f"{row.split(': ')[0]}:\n<b>{': '.join(row.split(': ')[1:])}</b>\n"
@@ -67,11 +70,26 @@ async def cmd_show_reports(message: types.Message):
     logger.debug("Admin {0} got all reports.".format(message.from_user.id))
 
 
-# async def cmd_archive_reports(message: types.Message):
-#     if str(message.from_user.id) not in config.bot.admin_id:
-#         logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
-#         return
+async def cmd_archive_reports(message: types.Message):
+    if str(message.from_user.id) not in config.bot.admin_id:
+        logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
+        return
 
+    with open("data/reports.txt", mode='r', encoding="utf-8") as file:
+        reports_count = int(file.readline())
+        data = file.read()
+
+    if reports_count == 0:
+        return await message.answer("There are no reports to archive!")
+
+    with open("data/reports.txt", mode='w', encoding="utf-8") as file:
+        file.write('0\n')
+
+    with open("data/archived_reports.txt", mode='a', encoding="utf-8") as file:
+        file.write(data)
+
+    await message.answer(f"{reports_count} reports archived successfully.")
+    logger.debug("Admin {0} archived {1} reports.".format(message.from_user.id, reports_count))
 
 
 def register_handlers_admin(dp: Dispatcher):
@@ -79,3 +97,4 @@ def register_handlers_admin(dp: Dispatcher):
     dp.register_message_handler(cmd_send_all, commands="send_all", state="*")
     dp.register_message_handler(cmd_reset_data_base, commands="reset_data", state="*")
     dp.register_message_handler(cmd_show_reports, commands="show_reports", state="*")
+    dp.register_message_handler(cmd_archive_reports, commands="archive_reports", state="*")
