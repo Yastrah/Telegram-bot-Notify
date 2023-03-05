@@ -59,11 +59,12 @@ async def cmd_show_reports(message: types.Message):
         reports_count = int(file.readline())
         data = file.readlines()
 
-    text = f"There are {reports_count} reports now:\n\n"
+    text = f"There are {reports_count} reports:\n\n"
     for row in data:
-        text += f"{row.split()[:-1]} <b>{row.split()[-1]}</b>\n"
-    print(reports_count)
-    print(data)
+        text += f"{row.split(': ')[0]}:\n<b>{': '.join(row.split(': ')[1:])}</b>\n"
+
+    await message.answer(text, parse_mode="HTML")
+    logger.debug("Admin {0} got all reports.".format(message.from_user.id))
 
 
 # async def cmd_archive_reports(message: types.Message):

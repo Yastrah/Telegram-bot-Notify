@@ -61,3 +61,353 @@ GitHub: https://github.com/Yastrah
 2023-03-05 16:58:18 [INFO] aiogram.dispatcher.dispatcher: Start polling.
 2023-03-05 16:58:44 [WARNING] bot.handlers.report: Appeal received from report_id: 1990672413_1
 2023-03-05 16:59:25 [WARNING] bot.handlers.report: Appeal received from report_id: 1990672413_2
+2023-03-05 17:17:52 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:17:52 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:17:52 [WARNING] aiogram: Goodbye!
+2023-03-05 17:18:05 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.2
+LAST_UPDATE: 2023-03-05 17:18:05
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-05 17:18:05 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-05 17:18:05 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-05 17:18:05 [INFO] __main__: Bot commands have been set.
+2023-03-05 17:18:05 [INFO] __main__: Start schedule process.
+2023-03-05 17:18:05 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-05 17:18:08 [DEBUG] bot.handlers.admin: Admin 1990672413 got all reports.
+2023-03-05 17:20:46 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:20:46 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:20:46 [WARNING] aiogram: Goodbye!
+2023-03-05 17:20:48 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.2
+LAST_UPDATE: 2023-03-05 17:20:48
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-05 17:20:48 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-05 17:20:48 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-05 17:20:48 [INFO] __main__: Bot commands have been set.
+2023-03-05 17:20:48 [INFO] __main__: Start schedule process.
+2023-03-05 17:20:48 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-05 17:20:49 [DEBUG] bot.handlers.admin: Admin 1990672413 got all reports.
+2023-03-05 17:21:19 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:21:19 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:21:19 [WARNING] aiogram: Goodbye!
+2023-03-05 17:21:21 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.2
+LAST_UPDATE: 2023-03-05 17:21:21
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-05 17:21:21 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-05 17:21:21 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-05 17:21:21 [INFO] __main__: Bot commands have been set.
+2023-03-05 17:21:21 [INFO] __main__: Start schedule process.
+2023-03-05 17:21:21 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-05 17:21:25 [DEBUG] bot.handlers.admin: Admin 1990672413 got all reports.
+2023-03-05 17:22:10 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:22:10 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:22:10 [WARNING] aiogram: Goodbye!
+2023-03-05 17:29:43 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.2
+LAST_UPDATE: 2023-03-05 17:29:43
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-05 17:29:43 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-05 17:29:43 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-05 17:29:43 [INFO] __main__: Bot commands have been set.
+2023-03-05 17:29:43 [INFO] __main__: Start schedule process.
+2023-03-05 17:29:43 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-05 17:29:49 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-10' coro=<Dispatcher._process_polling_updates() done, defined at C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=TypeError('expected string or bytes-like object')>
+Traceback (most recent call last):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\bot\handlers\report.py", line 34, in cmd_report
+    match = pattern.findall(data)
+TypeError: expected string or bytes-like object
+2023-03-05 17:31:05 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:31:05 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:31:05 [WARNING] aiogram: Goodbye!
+2023-03-05 17:31:09 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.2
+LAST_UPDATE: 2023-03-05 17:31:09
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-05 17:31:09 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-05 17:31:09 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-05 17:31:09 [INFO] __main__: Bot commands have been set.
+2023-03-05 17:31:09 [INFO] __main__: Start schedule process.
+2023-03-05 17:31:09 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-05 17:31:13 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-10' coro=<Dispatcher._process_polling_updates() done, defined at C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=TypeError('expected string or bytes-like object')>
+Traceback (most recent call last):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\bot\handlers\report.py", line 34, in cmd_report
+    match = pattern.findall(data)
+TypeError: expected string or bytes-like object
+2023-03-05 17:31:51 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:31:51 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:31:51 [WARNING] aiogram: Goodbye!
+2023-03-05 17:31:54 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.2
+LAST_UPDATE: 2023-03-05 17:31:54
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-05 17:31:54 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-05 17:31:54 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-05 17:31:54 [INFO] __main__: Bot commands have been set.
+2023-03-05 17:31:54 [INFO] __main__: Start schedule process.
+2023-03-05 17:31:54 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-05 17:31:56 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-10' coro=<Dispatcher._process_polling_updates() done, defined at C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=TypeError('expected string or bytes-like object')>
+Traceback (most recent call last):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\bot\handlers\report.py", line 36, in cmd_report
+    match = re.findall(pattern, data)
+  File "C:\Users\sirfo\AppData\Local\Programs\Python\Python39\lib\re.py", line 241, in findall
+    return _compile(pattern, flags).findall(string)
+TypeError: expected string or bytes-like object
+2023-03-05 17:32:19 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:32:19 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:32:19 [WARNING] aiogram: Goodbye!
+2023-03-05 17:32:21 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.2
+LAST_UPDATE: 2023-03-05 17:32:21
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-05 17:32:21 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-05 17:32:21 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-05 17:32:21 [INFO] __main__: Bot commands have been set.
+2023-03-05 17:32:21 [INFO] __main__: Start schedule process.
+2023-03-05 17:32:21 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-05 17:32:25 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-10' coro=<Dispatcher._process_polling_updates() done, defined at C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=TypeError('expected string or bytes-like object')>
+Traceback (most recent call last):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\bot\handlers\report.py", line 36, in cmd_report
+    match = re.findall(pattern, data)
+  File "C:\Users\sirfo\AppData\Local\Programs\Python\Python39\lib\re.py", line 241, in findall
+    return _compile(pattern, flags).findall(string)
+TypeError: expected string or bytes-like object
+2023-03-05 17:32:38 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:32:38 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:32:38 [WARNING] aiogram: Goodbye!
+2023-03-05 17:32:41 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.2
+LAST_UPDATE: 2023-03-05 17:32:41
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-05 17:32:41 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-05 17:32:41 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-05 17:32:41 [INFO] __main__: Bot commands have been set.
+2023-03-05 17:32:41 [INFO] __main__: Start schedule process.
+2023-03-05 17:32:41 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-05 17:32:43 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-10' coro=<Dispatcher._process_polling_updates() done, defined at C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=TypeError('expected string or bytes-like object')>
+Traceback (most recent call last):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\bot\handlers\report.py", line 36, in cmd_report
+    match = re.findall(pattern, data)
+  File "C:\Users\sirfo\AppData\Local\Programs\Python\Python39\lib\re.py", line 241, in findall
+    return _compile(pattern, flags).findall(string)
+TypeError: expected string or bytes-like object
+2023-03-05 17:33:42 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:33:42 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:33:42 [WARNING] aiogram: Goodbye!
+2023-03-05 17:33:44 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.2
+LAST_UPDATE: 2023-03-05 17:33:44
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-05 17:33:45 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-05 17:33:45 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-05 17:33:45 [INFO] __main__: Bot commands have been set.
+2023-03-05 17:33:45 [INFO] __main__: Start schedule process.
+2023-03-05 17:33:45 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-05 17:34:06 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:34:06 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:34:06 [WARNING] aiogram: Goodbye!
+2023-03-05 17:34:07 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.2
+LAST_UPDATE: 2023-03-05 17:34:07
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-05 17:34:07 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-05 17:34:08 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-05 17:34:08 [INFO] __main__: Bot commands have been set.
+2023-03-05 17:34:08 [INFO] __main__: Start schedule process.
+2023-03-05 17:34:08 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-05 17:34:58 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:34:58 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:34:58 [WARNING] aiogram: Goodbye!
+2023-03-05 17:35:00 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.2
+LAST_UPDATE: 2023-03-05 17:35:00
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-05 17:35:00 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-05 17:35:00 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-05 17:35:01 [INFO] __main__: Bot commands have been set.
+2023-03-05 17:35:01 [INFO] __main__: Start schedule process.
+2023-03-05 17:35:01 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-05 17:35:22 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:35:22 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:35:22 [WARNING] aiogram: Goodbye!
+2023-03-05 17:35:24 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.2
+LAST_UPDATE: 2023-03-05 17:35:24
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-05 17:35:24 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-05 17:35:24 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-05 17:35:24 [INFO] __main__: Bot commands have been set.
+2023-03-05 17:35:24 [INFO] __main__: Start schedule process.
+2023-03-05 17:35:24 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-05 17:35:27 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-10' coro=<Dispatcher._process_polling_updates() done, defined at C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=NameError("name 'date' is not defined")>
+Traceback (most recent call last):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\bot\handlers\report.py", line 37, in cmd_report
+    print(date)
+NameError: name 'date' is not defined
+2023-03-05 17:35:35 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:35:35 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:35:35 [WARNING] aiogram: Goodbye!
+2023-03-05 17:35:36 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.2
+LAST_UPDATE: 2023-03-05 17:35:36
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-05 17:35:37 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-05 17:35:37 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-05 17:35:37 [INFO] __main__: Bot commands have been set.
+2023-03-05 17:35:37 [INFO] __main__: Start schedule process.
+2023-03-05 17:35:37 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-05 17:35:56 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:35:56 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:35:56 [WARNING] aiogram: Goodbye!
+2023-03-05 17:35:58 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.2
+LAST_UPDATE: 2023-03-05 17:35:58
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-05 17:35:58 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-05 17:35:58 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-05 17:35:58 [INFO] __main__: Bot commands have been set.
+2023-03-05 17:35:58 [INFO] __main__: Start schedule process.
+2023-03-05 17:35:58 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-05 17:41:34 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:41:34 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:41:34 [WARNING] aiogram: Goodbye!
+2023-03-05 17:41:40 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.2
+LAST_UPDATE: 2023-03-05 17:41:40
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-05 17:41:40 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-05 17:41:40 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-05 17:41:40 [INFO] __main__: Bot commands have been set.
+2023-03-05 17:41:40 [INFO] __main__: Start schedule process.
+2023-03-05 17:41:40 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-05 17:41:49 [WARNING] bot.handlers.report: Appeal received from report_id: 1990672413_3
+2023-03-05 17:42:04 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:42:04 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:42:04 [WARNING] aiogram: Goodbye!
+2023-03-05 17:42:51 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.2
+LAST_UPDATE: 2023-03-05 17:42:51
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-05 17:42:51 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-05 17:42:51 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-05 17:42:51 [INFO] __main__: Bot commands have been set.
+2023-03-05 17:42:51 [INFO] __main__: Start schedule process.
+2023-03-05 17:42:51 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-05 17:42:53 [DEBUG] bot.handlers.admin: Admin 1990672413 got all reports.
+2023-03-05 17:43:51 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-05 17:43:51 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-05 17:43:51 [WARNING] aiogram: Goodbye!

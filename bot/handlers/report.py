@@ -1,5 +1,6 @@
 import logging
 import datetime
+import re
 
 from config.config_reader import load_config
 from config.configuration import Settings
@@ -23,6 +24,18 @@ class ReportAppeal(StatesGroup):
 async def cmd_report(message: types.Message):
     if message.chat.id in Settings.blocked_users:
         return await message.answer("К сожалению вы заблокированны!")
+
+    with open("data/reports.txt", mode='r', encoding="utf-8") as file:
+        file.readline()
+        data = file.read()
+
+    now_date = datetime.datetime.now().strftime("%Y-%m-%d")
+    pattern = re.compile(fr"{now_date}.+?{message.from_user.id}")
+    match = pattern.findall(data)
+
+    if len(match) >= Settings.max_reports_per_day:
+        return await message.answer(f"Вы за сегодня уже отправили максимальное допустимое число "
+                                    f"жалоб/предложений ({Settings.max_reports_per_day})!")
 
     await ReportAppeal.waiting_for_text.set()
     return await message.answer("Введите текст обращения:", reply_markup=keyboards.kb_cancel)
@@ -58,9 +71,7 @@ async def photos_received(message: types.Message, state: FSMContext):
 
     await message.photo[-1].download(destination_file=f"data/reports_photos/"
                                                       f"report {message.from_user.id}_{data['report_id']}.png")
-    # for photo in photos:
-    #     await photo.download(f"data/reports_photos/{message.from_user.id}_{reports_count+1}_{count}.png")
-    #     count += 1
+
     await state.finish()
     return await message.answer("Ваше сообщение успешно сохранено", reply_markup=keyboards.kb_main_menu)
 

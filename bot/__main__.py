@@ -25,12 +25,15 @@ from aiogram.types import BotCommand
 
 
 
-version = "1.2.1"
+version = "1.2.2"
 
 logger = logging.getLogger(__name__)
 
 
 def register_all_handlers(dp: Dispatcher):
+    """
+    Регистрация всех обработчиков сообщений и команд.
+    """
     register_handlers_admin(dp)
     register_handlers_common(dp)
     register_handlers_list(dp)
@@ -53,6 +56,9 @@ async def set_commands(dispatcher: Dispatcher):
 
 
 async def on_startup(dispatcher):
+    """
+    Запуск параллельного потока с таймером при запуске диспетчера.
+    """
     await set_commands(dispatcher)
 
     loop = asyncio.get_event_loop()
