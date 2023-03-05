@@ -17,10 +17,13 @@ config = load_config("config/bot.ini")
 
 
 async def create_reminder(message: types.Message, state: FSMContext):
+    await state.finish()
+
     if message.chat.id in Settings.blocked_users:
         return await message.answer("К сожалению вы заблокированны!")
 
-    await state.finish()
+    if message.text.startswith('/'):
+        return await message.answer("Такой команды не существует!")
 
     text = " ".join(message.text.split())
     date, time, text = search_engine.date_and_time_handling(text)
@@ -67,9 +70,9 @@ async def create_reminder(message: types.Message, state: FSMContext):
 
 
         return await message.answer("Уведомление успешно создано.\n"
-                             f"Дата: <b>{date_converter.get_day_of_the_week(date)} {full_date}</b>\n"
-                             f"Id: <b>{reminder_id}</b>\n"
-                             f"Текст: <b>{text}</b>", parse_mode="HTML")
+                                    f"Дата: <b>{date_converter.get_day_of_the_week(date)} {full_date}</b>\n"
+                                    f"Id: <b>{reminder_id}</b>\n"
+                                    f"Текст: <b>{text}</b>", parse_mode="HTML")
     else:
         return await message.answer("Не удалось создать уведомление")
 

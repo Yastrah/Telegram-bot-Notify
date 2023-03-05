@@ -8,7 +8,7 @@ from aiogram import Bot
 
 from config.configuration import Settings
 from config.config_reader import load_config
-from bot.db import reminders, users
+from bot.db import reminders, users, protection
 
 
 logger = logging.getLogger(__name__)
@@ -21,6 +21,8 @@ def timer(bot: Bot, loop):
     asyncio.set_event_loop(loop)
 
     schedule.every().minute.at(":00").do(lambda: loop.create_task(check_for_reminders(bot)))
+    schedule.every().day.at("00:00").do(protection.checking_for_old_reminders)
+
 
     while not timer_stop.is_set():
         schedule.run_pending()
@@ -39,16 +41,16 @@ async def check_for_reminders(bot: Bot):
         return
 
     for reminder in data:
-        # try:
-        await bot.send_message(chat_id=reminder[1], text=reminder[5])
-        reminders.remove(reminder_id=reminder[0])
+        try:
+            await bot.send_message(chat_id=reminder[1], text=f"<b>{reminder[5]}</b>", parse_mode="HTML")
+            reminders.remove(id=reminder[0])
 
-        users.update_total_reminders(reminder[1])
-        if users.get_user_data(reminder[1])[3] == reminder[3]:
-            users.update_last_reminder(reminder[1], 0)
+            users.update_total_reminders(reminder[1])
+            if users.get_user_data(reminder[1])[3] == reminder[3]:
+                users.update_last_reminder(reminder[1], 0)
 
-        logger.info("Reminder sent successfully to user {0}.\n\tText: {1}".format(reminder[1], reminder[5]))
+            logger.info("Reminder sent successfully to user {0}.\n\tText: {1}".format(reminder[1], reminder[5]))
 
-        # except Exception as e:
-        #     logger.error("Failed to send reminder to user {0}!\n\tException: {1}".format(reminder[1], e))
-        #     continue
+        except Exception as e:
+            logger.error("Failed to send reminder to user {0}!\n\tException: {1}".format(reminder[1], e))
+            continue

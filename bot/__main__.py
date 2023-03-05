@@ -25,7 +25,7 @@ from aiogram.types import BotCommand
 
 
 
-version = "1.2.0"
+version = "1.2.1"
 
 logger = logging.getLogger(__name__)
 
@@ -102,3 +102,5 @@ GitHub: https://github.com/Yastrah""".format(version, datetime.now().strftime("%
 
 if __name__ == "__main__":
     main()
+    # from bot.db import protection
+    # protection.checking_for_old_reminders()

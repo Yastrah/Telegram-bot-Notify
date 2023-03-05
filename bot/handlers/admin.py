@@ -1,7 +1,7 @@
 import logging
 
 from config.config_reader import load_config
-from bot.db import reminders
+from bot.db import reminders, users
 
 from aiogram import Dispatcher, types
 
@@ -20,7 +20,8 @@ async def cmd_users(message: types.Message):
         if not reminder[1] in users_id:
             users_id.append(reminder[1])
 
-    await message.answer(f"There are {len(users_id)} users in data base.")
+    await message.answer(f"There are {len(users.read())} users in data base.\n"
+                         f"Active reminders have {len(users_id)} users.")
     logger.debug("Admin {0} got users in database.".format(message.from_user.id))
 
 
@@ -31,13 +32,8 @@ async def cmd_send_all(message: types.Message):
 
     text = ' '.join(message.text.split()[1:])
 
-    chats_id = []
-    for reminder in reminders.read():
-        if not reminder[1] in chats_id:
-            chats_id.append(reminder[1])
-
-    for chat_id in chats_id:
-        await message.bot.send_message(chat_id=chat_id, text=text)
+    for user in users.read():
+        await message.bot.send_message(chat_id=user[1], text=text)
     logger.debug("Admin {0} sent global message '{1}'.".format(message.from_user.id, text))
 
 
@@ -54,7 +50,31 @@ async def cmd_reset_data_base(message: types.Message):
     logger.debug("Admin {0} reset database.".format(message.from_user.id))
 
 
+async def cmd_show_reports(message: types.Message):
+    if str(message.from_user.id) not in config.bot.admin_id:
+        logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
+        return
+
+    with open("data/reports.txt", mode='r', encoding="utf-8") as file:
+        reports_count = int(file.readline())
+        data = file.readlines()
+
+    text = f"There are {reports_count} reports now:\n\n"
+    for row in data:
+        text += f"{row.split()[:-1]} <b>{row.split()[-1]}</b>\n"
+    print(reports_count)
+    print(data)
+
+
+# async def cmd_archive_reports(message: types.Message):
+#     if str(message.from_user.id) not in config.bot.admin_id:
+#         logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
+#         return
+
+
+
 def register_handlers_admin(dp: Dispatcher):
     dp.register_message_handler(cmd_users, commands="users", state="*")
     dp.register_message_handler(cmd_send_all, commands="send_all", state="*")
     dp.register_message_handler(cmd_reset_data_base, commands="reset_data", state="*")
+    dp.register_message_handler(cmd_show_reports, commands="show_reports", state="*")

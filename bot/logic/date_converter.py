@@ -11,7 +11,7 @@ config = load_config("config/bot.ini")
 def date_to_value(date: str) -> int:
     """
     Конвертирует строковый формат даты в численное значение. Чем позже дата, тем больше значение.\n
-    :param date: дата, формата: день/месяц/год
+    :param date: дата, формата: день/месяц/год часы:минуты
     :return: численное значение
     """
     date, time = date.split()

@@ -105,18 +105,18 @@ def add_new(chat_id: str, message_id: str, reminder_id: int, time: str, text: st
         return None
 
 
-def remove(reminder_id: int = None, chat_id: str = None):
+def remove(id: int = None, chat_id: str = None):
     """
     Удаляет уведомление с заданным id или удаляет все уведомления определённого пользователя.
-    :param reminder_id: уведомления, которое необходимо удалить
+    :param id: уведомления, которое необходимо удалить
     :param chat_id: пользователя, все уведомления кторого необходимо удалить
     :return:
     """
-    if reminder_id and chat_id:
+    if id and chat_id:
         try:
             with sqlite3.connect(config.data.bot_db) as db:
                 cursor = db.cursor()
-                cursor.execute("DELETE FROM reminders WHERE reminder_id=? AND chat_id=?", [reminder_id, chat_id])
+                cursor.execute("DELETE FROM reminders WHERE reminder_id=? AND chat_id=?", [id, chat_id])
 
             return True
 
@@ -124,11 +124,11 @@ def remove(reminder_id: int = None, chat_id: str = None):
             logger.error("Failed to remove reminder from database!\n\tException: {0}".format(e))
             return None
 
-    elif reminder_id:
+    elif id:
         try:
             with sqlite3.connect(config.data.bot_db) as db:
                 cursor = db.cursor()
-                cursor.execute("DELETE FROM reminders WHERE id=?", [reminder_id])
+                cursor.execute("DELETE FROM reminders WHERE id=?", [id])
 
             return True
 

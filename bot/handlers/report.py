@@ -2,14 +2,12 @@ import logging
 import datetime
 
 from config.config_reader import load_config
-from config.configuration import Constants, Settings
+from config.configuration import Settings
 
 from bot import keyboards
-from bot.db import users
 
 from aiogram import Dispatcher, types
 from aiogram.dispatcher import FSMContext
-from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.filters.state import State, StatesGroup
 
 
