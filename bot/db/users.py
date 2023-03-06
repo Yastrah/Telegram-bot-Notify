@@ -2,6 +2,8 @@ import sqlite3
 import logging
 
 from config.config_reader import load_config
+from bot.db.connector import on_start
+
 
 logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
@@ -103,4 +105,35 @@ def add_user(user_id: str, chat_id: str, language: str, last_reminder_id: int, u
 
     except Exception as e:
         logger.error("Failed to add user_id {0} to database!\n\tException: {1}".format(user_id, e))
+        return None
+
+
+def remove_user(user_id: str):
+    try:
+        with sqlite3.connect(config.data.bot_db) as db:
+            cursor = db.cursor()
+            cursor.execute("DELETE FROM users WHERE user_id=?", [user_id])
+
+        return True
+
+    except Exception as e:
+        logger.error("Failed to remove user {0} from table users!\n\tException: {1}".format(user_id, e))
+        return None
+
+
+def reset():
+    """
+    Полностью удаляет все данные из db.
+    :return: True. None - при вызове исключения.
+    """
+    try:
+        with sqlite3.connect(config.data.bot_db) as db:
+            cursor = db.cursor()
+            cursor.execute("DROP TABLE IF EXISTS users")
+            on_start()
+
+        return True
+
+    except Exception as e:
+        logger.error("Failed to reset database!\n\tException: {0}".format(e))
         return None

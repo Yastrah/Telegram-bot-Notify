@@ -18,7 +18,6 @@ config = load_config("config/bot.ini")
 
 class ReportAppeal(StatesGroup):
     waiting_for_text = State()
-    waiting_for_photos = State()
 
 
 async def cmd_report(message: types.Message):
@@ -60,19 +59,6 @@ async def text_received(message: types.Message, state: FSMContext):
             for admin in config.bot.admin_id:
                 await message.bot.send_message(chat_id=admin, text="Appeal received")
 
-    await state.update_data(report_id=reports_count+1)
-    await ReportAppeal.next()
-
-    return await message.answer("При необходимости отправьте скриншот проблемы или завершите "
-                                "командой /cancel:", reply_markup=keyboards.kb_cancel)
-
-
-async def photos_received(message: types.Message, state: FSMContext):
-    data = await state.get_data()
-
-    await message.photo[-1].download(destination_file=f"data/reports_photos/"
-                                                      f"report {message.from_user.id}_{data['report_id']}.png")
-
     await state.finish()
     return await message.answer("Ваше сообщение успешно сохранено", reply_markup=keyboards.kb_main_menu)
 
@@ -80,6 +66,5 @@ async def photos_received(message: types.Message, state: FSMContext):
 def register_handlers_report(dp: Dispatcher):
     dp.register_message_handler(cmd_report, commands="report", state="*")
     dp.register_message_handler(text_received, state=ReportAppeal.waiting_for_text)
-    dp.register_message_handler(photos_received, content_types=['photo'], state=ReportAppeal.waiting_for_photos)
 
 

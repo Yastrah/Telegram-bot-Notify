@@ -1,6 +1,8 @@
 import logging
 
+from config.configuration import Settings
 from config.config_reader import load_config
+
 from bot.db import reminders, users
 
 from aiogram import Dispatcher, types
@@ -11,7 +13,7 @@ config = load_config("config/bot.ini")
 
 
 async def cmd_users(message: types.Message):
-    if str(message.from_user.id) not in config.bot.admin_id:
+    if message.from_user.id not in config.bot.admin_id:
         logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
         return
 
@@ -26,7 +28,7 @@ async def cmd_users(message: types.Message):
 
 
 async def cmd_send_all(message: types.Message):
-    if str(message.from_user.id) not in config.bot.admin_id:
+    if message.from_user.id not in config.bot.admin_id:
         logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
         return
 
@@ -38,7 +40,7 @@ async def cmd_send_all(message: types.Message):
 
 
 async def cmd_reset_data_base(message: types.Message):
-    if str(message.from_user.id) not in config.bot.admin_id:
+    if message.from_user.id not in config.bot.admin_id:
         logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
         return
 
@@ -51,7 +53,7 @@ async def cmd_reset_data_base(message: types.Message):
 
 
 async def cmd_show_reports(message: types.Message):
-    if str(message.from_user.id) not in config.bot.admin_id:
+    if message.from_user.id not in config.bot.admin_id:
         logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
         return
 
@@ -71,7 +73,7 @@ async def cmd_show_reports(message: types.Message):
 
 
 async def cmd_archive_reports(message: types.Message):
-    if str(message.from_user.id) not in config.bot.admin_id:
+    if message.from_user.id not in config.bot.admin_id:
         logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
         return
 
@@ -92,9 +94,51 @@ async def cmd_archive_reports(message: types.Message):
     logger.debug("Admin {0} archived {1} reports.".format(message.from_user.id, reports_count))
 
 
+async def cmd_block_user(message: types.Message):
+    if message.from_user.id not in config.bot.admin_id:
+        logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
+        return
+
+    user_id = message.text.split()[1]
+    Settings.blocked_users.append(int(user_id))
+
+    with open("data/blocked_users.txt", mode='a', encoding="utf-8") as file:
+        file.write(user_id + '\n')
+
+    await message.answer(f"User {user_id} blocked.")
+    logger.debug("Admin {0} blocked user {1}.".format(message.from_user.id, user_id))
+
+
+async def cmd_unblock_user(message: types.Message):
+    if message.from_user.id not in config.bot.admin_id:
+        logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
+        return
+
+    user_id = message.text.split()[1]
+
+    with open("data/blocked_users.txt", mode='r', encoding="utf-8") as file:
+        blocked_users = file.read().split('\n')
+
+    try:
+        blocked_users.remove(user_id)
+        Settings.blocked_users.remove(int(user_id))
+    except:
+        return await message.answer(f"User {user_id} is not blocked.")
+
+    text = '\n'.join(blocked_users)
+
+    with open("data/blocked_users.txt", mode='w', encoding="utf-8") as file:
+        file.write(text)
+
+    await message.answer(f"User {user_id} unblocked.")
+    logger.debug("Admin {0} unblocked user {1}.".format(message.from_user.id, user_id))
+
+
 def register_handlers_admin(dp: Dispatcher):
     dp.register_message_handler(cmd_users, commands="users", state="*")
     dp.register_message_handler(cmd_send_all, commands="send_all", state="*")
     dp.register_message_handler(cmd_reset_data_base, commands="reset_data", state="*")
     dp.register_message_handler(cmd_show_reports, commands="show_reports", state="*")
     dp.register_message_handler(cmd_archive_reports, commands="archive_reports", state="*")
+    dp.register_message_handler(cmd_block_user, commands="block_user", state="*")
+    dp.register_message_handler(cmd_unblock_user, commands="unblock_user", state="*")

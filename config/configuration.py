@@ -3,7 +3,10 @@ class Settings(object):
     Класс, хранящий в себе все настраиваемые коэффициенты и вспомогательные данные.
     """
     date_format = "%d/%m/%Y %H:%M"
-    blocked_users = [740736853, ]
+
+    with open("data/blocked_users.txt", mode='r', encoding="utf-8") as file:
+        blocked_users = list(map(int, file.read().split('\n')[:-1]))
+
     week_days = [["пн", "понедельник"], ["вт", "вторник"], ["ср", "среда"], ["чт", "четверг"],
                  ["пт", "пятница"], ["сб", "суббота"], ["вс", "воскресенье"]]
 

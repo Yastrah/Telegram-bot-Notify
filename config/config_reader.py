@@ -39,7 +39,7 @@ def load_config(path: str):
                 name=bot_conf["name"],
                 id=bot_conf["id"],
                 token=bot_conf["token"],
-                admin_id=bot_conf["admin_id"].split(),
+                admin_id=list(map(int, bot_conf["admin_id"].split())),
             ),
             data=Data(
                 bot_db=data_conf["bot_db"],

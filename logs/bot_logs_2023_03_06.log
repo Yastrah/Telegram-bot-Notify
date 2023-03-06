@@ -1,0 +1,271 @@
+2023-03-06 15:57:31 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.4
+LAST_UPDATE: 2023-03-06 15:57:31
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-06 15:57:31 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-06 15:57:32 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-06 15:57:32 [INFO] __main__: Bot commands have been set.
+2023-03-06 15:57:32 [INFO] __main__: Start schedule process.
+2023-03-06 15:57:32 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-06 15:57:43 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-06 15:57:43 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-06 15:57:43 [WARNING] aiogram: Goodbye!
+2023-03-06 15:57:48 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.4
+LAST_UPDATE: 2023-03-06 15:57:48
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-06 15:57:48 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-06 15:57:48 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-06 15:57:48 [INFO] __main__: Bot commands have been set.
+2023-03-06 15:57:48 [INFO] __main__: Start schedule process.
+2023-03-06 15:57:48 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-06 15:57:55 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-06 15:57:55 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-06 15:57:55 [WARNING] aiogram: Goodbye!
+2023-03-06 16:11:41 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.4
+LAST_UPDATE: 2023-03-06 16:11:41
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-06 16:11:41 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-06 16:11:42 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-06 16:11:42 [INFO] __main__: Bot commands have been set.
+2023-03-06 16:11:42 [INFO] __main__: Start schedule process.
+2023-03-06 16:11:42 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-06 16:12:02 [DEBUG] bot.handlers.admin: Admin 1990672413 blocked user 1234.
+2023-03-06 16:12:15 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-06 16:12:15 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-06 16:12:15 [WARNING] aiogram: Goodbye!
+2023-03-06 16:14:30 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.4
+LAST_UPDATE: 2023-03-06 16:14:30
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-06 16:14:30 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-06 16:14:30 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-06 16:14:30 [INFO] __main__: Bot commands have been set.
+2023-03-06 16:14:30 [INFO] __main__: Start schedule process.
+2023-03-06 16:14:30 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-06 16:14:37 [DEBUG] bot.handlers.admin: Admin 1990672413 blocked user 1234.
+2023-03-06 16:14:45 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-06 16:14:45 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-06 16:14:45 [WARNING] aiogram: Goodbye!
+2023-03-06 16:14:49 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.4
+LAST_UPDATE: 2023-03-06 16:14:49
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-06 16:14:49 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-06 16:14:49 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-06 16:14:49 [INFO] __main__: Bot commands have been set.
+2023-03-06 16:14:49 [INFO] __main__: Start schedule process.
+2023-03-06 16:14:49 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-06 16:15:02 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-10' coro=<Dispatcher._process_polling_updates() done, defined at C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=IndexError('list index out of range')>
+Traceback (most recent call last):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\bot\handlers\delete_reminder.py", line 44, in cmd_undo
+    reminder = [el for el in reminders.get_user_reminders(message.chat.id) if el[3] == data[3]][0]
+IndexError: list index out of range
+2023-03-06 16:16:02 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-06 16:16:02 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-06 16:16:02 [WARNING] aiogram: Goodbye!
+2023-03-06 16:16:05 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.4
+LAST_UPDATE: 2023-03-06 16:16:05
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-06 16:16:07 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-06 16:16:07 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-06 16:16:07 [INFO] __main__: Bot commands have been set.
+2023-03-06 16:16:07 [INFO] __main__: Start schedule process.
+2023-03-06 16:16:07 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-06 16:16:08 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-10' coro=<Dispatcher._process_polling_updates() done, defined at C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=IndexError('list index out of range')>
+Traceback (most recent call last):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\bot\handlers\delete_reminder.py", line 45, in cmd_undo
+    reminder = [el for el in reminders.get_user_reminders(message.chat.id) if el[3] == data[3]][0]
+IndexError: list index out of range
+2023-03-06 16:17:53 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-06 16:17:53 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-06 16:17:53 [WARNING] aiogram: Goodbye!
+2023-03-06 16:21:26 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.4
+LAST_UPDATE: 2023-03-06 16:21:26
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-06 16:21:26 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-06 16:21:26 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-06 16:21:26 [INFO] __main__: Bot commands have been set.
+2023-03-06 16:21:26 [INFO] __main__: Start schedule process.
+2023-03-06 16:21:26 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-06 16:21:47 [DEBUG] bot.handlers.admin: Admin 1990672413 unblocked user 1234.
+2023-03-06 16:22:09 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-25' coro=<Dispatcher._process_polling_updates() done, defined at C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=ValueError('list.remove(x): x not in list')>
+Traceback (most recent call last):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\GitHub\Telegram-bot-Euclid\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\GitHub\Telegram-bot-Euclid\bot\handlers\admin.py", line 124, in cmd_unblock_user
+    blocked_users.remove(user_id)
+ValueError: list.remove(x): x not in list
+2023-03-06 16:22:17 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-06 16:22:17 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-06 16:22:17 [WARNING] aiogram: Goodbye!
+2023-03-06 16:23:16 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.4
+LAST_UPDATE: 2023-03-06 16:23:16
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-06 16:23:16 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-06 16:23:16 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-06 16:23:16 [INFO] __main__: Bot commands have been set.
+2023-03-06 16:23:16 [INFO] __main__: Start schedule process.
+2023-03-06 16:23:16 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-06 16:23:38 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-06 16:23:38 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-06 16:23:38 [WARNING] aiogram: Goodbye!
+2023-03-06 16:23:41 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.4
+LAST_UPDATE: 2023-03-06 16:23:41
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-06 16:23:41 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-06 16:23:41 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-06 16:23:41 [INFO] __main__: Bot commands have been set.
+2023-03-06 16:23:41 [INFO] __main__: Start schedule process.
+2023-03-06 16:23:41 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-06 16:24:07 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-06 16:24:07 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-06 16:24:07 [WARNING] aiogram: Goodbye!
+2023-03-06 16:24:10 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.4
+LAST_UPDATE: 2023-03-06 16:24:10
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-06 16:24:10 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-06 16:24:10 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-06 16:24:10 [INFO] __main__: Bot commands have been set.
+2023-03-06 16:24:10 [INFO] __main__: Start schedule process.
+2023-03-06 16:24:10 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-06 16:24:29 [DEBUG] bot.handlers.admin: Admin 1990672413 blocked user 123454.
+2023-03-06 16:24:40 [DEBUG] bot.handlers.admin: Admin 1990672413 unblocked user 123454.
+2023-03-06 16:26:06 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-06 16:26:06 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-06 16:26:06 [WARNING] aiogram: Goodbye!
+2023-03-06 16:26:07 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.4
+LAST_UPDATE: 2023-03-06 16:26:07
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-06 16:26:08 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-06 16:26:08 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-06 16:26:08 [INFO] __main__: Bot commands have been set.
+2023-03-06 16:26:08 [INFO] __main__: Start schedule process.
+2023-03-06 16:26:08 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-06 16:26:14 [DEBUG] bot.handlers.admin: Admin 1990672413 blocked user 123454.
+2023-03-06 16:26:37 [DEBUG] bot.handlers.admin: Admin 1990672413 blocked user 12345400.
+2023-03-06 16:27:02 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-06 16:27:02 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-06 16:27:02 [WARNING] aiogram: Goodbye!
+2023-03-06 16:27:05 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.4
+LAST_UPDATE: 2023-03-06 16:27:05
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-06 16:27:05 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-06 16:27:05 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-06 16:27:05 [INFO] __main__: Bot commands have been set.
+2023-03-06 16:27:05 [INFO] __main__: Start schedule process.
+2023-03-06 16:27:05 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-06 16:27:12 [DEBUG] bot.handlers.admin: Admin 1990672413 unblocked user 123454.
+2023-03-06 16:27:32 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-06 16:27:32 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-06 16:27:32 [WARNING] aiogram: Goodbye!
+2023-03-06 16:27:36 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.4
+LAST_UPDATE: 2023-03-06 16:27:36
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-06 16:27:37 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-06 16:27:37 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-06 16:27:37 [INFO] __main__: Bot commands have been set.
+2023-03-06 16:27:37 [INFO] __main__: Start schedule process.
+2023-03-06 16:27:37 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-06 16:27:43 [DEBUG] bot.handlers.admin: Admin 1990672413 blocked user 123454.
+2023-03-06 16:27:47 [DEBUG] bot.handlers.admin: Admin 1990672413 blocked user 12345400.
+2023-03-06 16:28:02 [DEBUG] bot.handlers.admin: Admin 1990672413 unblocked user 123454.
+2023-03-06 16:28:24 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-06 16:28:24 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-06 16:28:24 [WARNING] aiogram: Goodbye!
+2023-03-06 16:28:48 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.4
+LAST_UPDATE: 2023-03-06 16:28:48
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-06 16:28:48 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-06 16:28:48 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-06 16:28:48 [INFO] __main__: Bot commands have been set.
+2023-03-06 16:28:48 [INFO] __main__: Start schedule process.
+2023-03-06 16:28:48 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-06 16:28:53 [DEBUG] bot.handlers.admin: Admin 1990672413 unblocked user 123454.
+2023-03-06 16:29:14 [DEBUG] bot.handlers.admin: Admin 1990672413 unblocked user 12345400.
+2023-03-06 16:29:27 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-06 16:29:27 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-06 16:29:27 [WARNING] aiogram: Goodbye!
