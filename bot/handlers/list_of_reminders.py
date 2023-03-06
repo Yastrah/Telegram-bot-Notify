@@ -4,6 +4,7 @@ from config.config_reader import load_config
 from config.configuration import Constants
 from bot.logic import date_converter
 from bot.db import reminders
+from bot import keyboards
 
 from aiogram import Dispatcher, types
 from aiogram.dispatcher.filters import Text
@@ -25,16 +26,13 @@ async def cmd_reminders_list(message: types.Message):
                               f"Id: <b>{row[3]}</b>\n" \
                               f"Текст: <b>{row[5]}</b>\n\n"
 
-        # logger.debug("Created reminder:\t chat_id: {0}, "
-        #              "reminder_id: {1}, time: {2}, text: {3}".format(message.chat.id, reminder_id, full_date, text))
-        await message.answer(reminders_list, parse_mode="HTML")
+        logger.debug("Created reminder:\t chat_id: {0}, "
+                     "reminder_id: {1}, time: {2}, text: {3}".format(message.chat.id, reminder_id, full_date, text))
+        await message.answer(reminders_list, parse_mode="HTML", reply_markup=keyboards.kb_main_menu)
     else:
-        await message.answer("У вас нет активных напоминаний.")
+        await message.answer("У вас нет активных напоминаний.", reply_markup=keyboards.kb_main_menu)
 
 
 def register_handlers_list(dp: Dispatcher):
     dp.register_message_handler(cmd_reminders_list, commands="list", state="*")
-    dp.register_message_handler(cmd_reminders_list, Text(equals=Constants.user_commands["list"]["custom_name"]),
-                                state="*")
-    # dp.register_message_handler(cmd_help, commands="help", state="*")
-    # dp.register_message_handler(cmd_cancel, Text(equals="отмена", ignore_case=True), state="*")
+    dp.register_message_handler(cmd_reminders_list, Text(equals=Constants.user_commands["list"]["custom_name"]), state="*")

@@ -1,12 +1,13 @@
 import datetime
 import logging
 
-from config.configuration import Settings, Constants
+from config.configuration import Settings
 from config.config_reader import load_config
 
 from bot.logic import date_converter, search_engine
 from bot.db import reminders, users
 from bot.handlers.common import register_user
+from bot import keyboards
 
 from aiogram import Dispatcher, types
 from aiogram.dispatcher import FSMContext
@@ -31,7 +32,7 @@ async def create_reminder(message: types.Message, state: FSMContext):
     # обработка ошибок с датой
     if date is None:
         logger.debug("Reminder handling: can not find date in message: {0}".format(message.text))
-        return await message.answer("Не удалось обработать дату напоминания!")
+        return await message.answer("Не удалось обработать дату напоминания!", reply_markup=keyboards.kb_main_menu)
 
     # обработка ошибок со временем
     if time is None:
@@ -44,18 +45,18 @@ async def create_reminder(message: types.Message, state: FSMContext):
     # проверка корректности даты
     if not date_converter.get_day_of_the_week(date):
         logger.debug("Wrong date input, chat_id: {0}".format(message.chat.id))
-        return await message.answer("Некорректная дата!")
+        return await message.answer("Некорректная дата!", reply_markup=keyboards.kb_main_menu)
 
     # проверка на попытку создать напоминание на прошедшее время
     now_date = datetime.datetime.now().strftime(Settings.date_format)
     if date_converter.date_to_value(" ".join([date, time])) <= date_converter.date_to_value(now_date):
         logger.debug("Trying to create reminder on the past date, chat_id: {0}".format(message.chat.id))
-        return await message.answer("Вы пытаетесь создать напоминание на прошедшее время!")
+        return await message.answer("Вы пытаетесь создать напоминание на прошедшее время!", reply_markup=keyboards.kb_main_menu)
 
     # проверка на отсутствие текста напоминание
     if not text:
         logger.debug("Trying to create reminder without any text, chat_id: {0}".format(message.chat.id))
-        return await message.answer("Вы пытаетесь создать напоминание без текста!")
+        return await message.answer("Вы пытаетесь создать напоминание без текста!", reply_markup=keyboards.kb_main_menu)
 
     if not users.get_user_data(str(message.chat.id)):
         await register_user(message)
@@ -72,9 +73,9 @@ async def create_reminder(message: types.Message, state: FSMContext):
         return await message.answer("Уведомление успешно создано.\n"
                                     f"Дата: <b>{date_converter.get_day_of_the_week(date)} {full_date}</b>\n"
                                     f"Id: <b>{reminder_id}</b>\n"
-                                    f"Текст: <b>{text}</b>", parse_mode="HTML")
+                                    f"Текст: <b>{text}</b>", parse_mode="HTML", reply_markup=keyboards.kb_main_menu)
     else:
-        return await message.answer("Не удалось создать уведомление")
+        return await message.answer("Не удалось создать уведомление", reply_markup=keyboards.kb_main_menu)
 
 
 def register_handlers_messages(dp: Dispatcher):

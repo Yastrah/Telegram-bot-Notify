@@ -25,7 +25,7 @@ from aiogram.types import BotCommand
 
 
 
-version = "1.2.4"
+version = "1.2.5"
 
 logger = logging.getLogger(__name__)
 
@@ -41,7 +41,7 @@ def register_all_handlers(dp: Dispatcher):
     register_handlers_edit(dp)
     register_handlers_report(dp)
     register_handlers_messages(dp)
-    # register_handlers_error(dp)
+    register_handlers_error(dp)
 
 
 async def set_commands(dispatcher: Dispatcher):

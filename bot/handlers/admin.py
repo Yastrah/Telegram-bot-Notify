@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
 
-async def cmd_users(message: types.Message):
+async def cmd_show_users(message: types.Message):
     if message.from_user.id not in config.bot.admin_id:
         logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
         return
@@ -22,8 +22,11 @@ async def cmd_users(message: types.Message):
         if not reminder[1] in users_id:
             users_id.append(reminder[1])
 
-    await message.answer(f"There are {len(users.read())} users in data base.\n"
-                         f"Active reminders have {len(users_id)} users.")
+    text = '\n'.join(users_id)
+
+    await message.answer(f"There are <b>{len(users.read())}</b> users in database.\n"
+                         f"Active reminders have <b>{len(users_id)}</b> users.\n"
+                         f"Users in database:\n<b>{text}</b>", parse_mode="HTML")
     logger.debug("Admin {0} got users in database.".format(message.from_user.id))
 
 
@@ -48,7 +51,7 @@ async def cmd_reset_data_base(message: types.Message):
     reminders.reset()
     logger.warning("Database was reset!")
 
-    await message.answer(f"Database was reset. Deleted {reminders_count} reminders.")
+    await message.answer(f"Database was reset. Deleted <b>{reminders_count}</b> reminders.", parse_mode="HTML")
     logger.warning("Admin {0} reset database.".format(message.from_user.id))
 
 
@@ -94,18 +97,32 @@ async def cmd_archive_reports(message: types.Message):
     logger.debug("Admin {0} archived {1} reports.".format(message.from_user.id, reports_count))
 
 
+async def cmd_show_blocked_users(message: types.Message):
+    if message.from_user.id not in config.bot.admin_id:
+        logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
+        return
+
+    text = '\n'.join(Settings.blocked_users)
+    await message.answer(f"Blocked users:\n<b>{text}</b>", parse_mode="HTML")
+    logger.debug("Admin {0} got the list of blocked users.".format(message.from_user.id))
+
+
 async def cmd_block_user(message: types.Message):
     if message.from_user.id not in config.bot.admin_id:
         logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
         return
 
     user_id = message.text.split()[1]
+
+    if int(user_id) in Settings.blocked_users:
+        return await message.answer(f"User <b>{user_id}</b> is already blocked.", parse_mode="HTML")
+
     Settings.blocked_users.append(int(user_id))
 
     with open("data/blocked_users.txt", mode='a', encoding="utf-8") as file:
         file.write(user_id + '\n')
 
-    await message.answer(f"User {user_id} blocked.")
+    await message.answer(f"User <b>{user_id}</b> blocked.", parse_mode="HTML")
     logger.debug("Admin {0} blocked user {1}.".format(message.from_user.id, user_id))
 
 
@@ -123,22 +140,23 @@ async def cmd_unblock_user(message: types.Message):
         blocked_users.remove(user_id)
         Settings.blocked_users.remove(int(user_id))
     except:
-        return await message.answer(f"User {user_id} is not blocked.")
+        return await message.answer(f"User <b>{user_id}</b> is not blocked.", parse_mode="HTML")
 
     text = '\n'.join(blocked_users)
 
     with open("data/blocked_users.txt", mode='w', encoding="utf-8") as file:
         file.write(text)
 
-    await message.answer(f"User {user_id} unblocked.")
+    await message.answer(f"User <b>{user_id}</b> unblocked.", parse_mode="HTML")
     logger.debug("Admin {0} unblocked user {1}.".format(message.from_user.id, user_id))
 
 
 def register_handlers_admin(dp: Dispatcher):
-    dp.register_message_handler(cmd_users, commands="users", state="*")
+    dp.register_message_handler(cmd_show_users, commands="show_users", state="*")
     dp.register_message_handler(cmd_send_all, commands="send_all", state="*")
     dp.register_message_handler(cmd_reset_data_base, commands="reset_data", state="*")
     dp.register_message_handler(cmd_show_reports, commands="show_reports", state="*")
     dp.register_message_handler(cmd_archive_reports, commands="archive_reports", state="*")
+    dp.register_message_handler(cmd_show_blocked_users, commands="show_blocked_users", state="*")
     dp.register_message_handler(cmd_block_user, commands="block_user", state="*")
     dp.register_message_handler(cmd_unblock_user, commands="unblock_user", state="*")
