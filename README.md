@@ -1,12 +1,19 @@
 # Telegram-bot-Euclid
 
+![build](https://img.shields.io/badge/build-passing-green)
+![demo](https://img.shields.io/badge/demo-online-brightgreen)
+![version](https://img.shields.io/badge/version-1.2.5-yellow)
+
 Telegram bot Euclid is a helper bot for [Telegram](https://telegram.org) to create quick and convenient reminders.
-[Euclid Assistant](https://t.me/EuclidAssistantBot)
 
 ## Usage
 
-To get started, use the command /start in bot chat.
+To get started, open bot [Euclid Assistant](https://t.me/EuclidAssistantBot) and use the command ```/start``` in bot chat.
 
-## Contributing
+## Feedback
 
-If you found some bugs or you have any ideas how to make this bot better use command /report
+If you found some bugs or you have any ideas how to make this bot better please use command ```/report``` in bot or reach out to me at sirfoboslancelot@gmail.com
+
+## License
+
+[GPL-3.0](https://choosealicense.com/licenses/gpl-3.0/)
