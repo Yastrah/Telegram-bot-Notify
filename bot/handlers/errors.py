@@ -25,7 +25,7 @@ async def error_catched(update: types.Update, exception):
         logger.error("HTML tag is not close!\n\tException: {1}".format(update.message.from_user.id, exception))
 
     else:
-        logger.warning("Found exception with user {0}!\n\tException: {1}".format(update.message.from_user.id, exception))
+        logger.error("Found exception with user {0}!\n\tException: {1}".format(update.message.from_user.id, exception))
         await update.message.answer("Возникла какая-то ошибка!")
 
     # Такой хэндлер должен всегда возвращать True,

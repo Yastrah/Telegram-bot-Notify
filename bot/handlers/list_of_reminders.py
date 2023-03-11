@@ -23,7 +23,7 @@ async def cmd_reminders_list(message: types.Message, state: FSMContext):
     data = reminders.get_user_reminders(message.chat.id)
 
     if data:
-        data.sort(key=lambda x: x[3])
+        data.sort(key=lambda x: ''.join(list(reversed(x[4].split()[0].split('/'))) + x[4].split()[1].split(':')))
         reminders_list = "<b>🔻Список активных напоминаний🔻</b>\n\n"  # ➖ 〰️ 🔻
 
         for row in data:

@@ -21,7 +21,9 @@ async def register_user(message: types.Message):
     now_date = datetime.datetime.now().strftime(Settings.date_format).split()[0]
     # Добавить выбор языка
     users.add_user(str(message.from_user.id), str(message.chat.id), 'ru', 0, now_date)
-    logger.warning("Registered new user. user_id: {0}, chat_id: {1}".format(message.from_user.id, message.chat.id))
+    logger.warning("Registered new user. user_id: {0}, chat_id: {1}, user_name: {2}".format(message.from_user.id,
+                                                                                            message.chat.id,
+                                                                                            message.from_user.username))
 
 
 async def cmd_start(message: types.Message):

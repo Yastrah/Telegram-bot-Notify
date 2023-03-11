@@ -1,8 +1,8 @@
 # Telegram-bot-Euclid
 
-![build](https://img.shields.io/badge/build-passing-brightgreen)
+![build](https://img.shields.io/badge/build-passing-orange)
 ![demo](https://img.shields.io/badge/demo-online-brightgreen)
-![version](https://img.shields.io/badge/version-1.2.6-blue)
+![version](https://img.shields.io/badge/version-1.2.7-blue)
 
 Telegram bot Euclid is a helper bot for [Telegram](https://telegram.org) to create quick and convenient reminders.
 

@@ -17,16 +17,16 @@ async def cmd_show_users(message: types.Message):
         logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
         return
 
-    users_id = []
-    for reminder in reminders.read():
-        if not reminder[1] in users_id:
-            users_id.append(reminder[1])
+    users_info = []
+    for user in users.read():
+        info = await message.bot.get_chat_member(user[0], user[1])
+        users_info.append(f"{user[0]}; {user[1]}; {info['user']['first_name']}; @{info['user']['username']}")
 
-    text = '\n'.join(users_id)
+    text = '\n'.join(users_info)
 
     await message.answer(f"There are <b>{len(users.read())}</b> users in database.\n"
-                         f"Active reminders have <b>{len(users_id)}</b> users.\n"
-                         f"Users in database:\n<b>{text}</b>", parse_mode="HTML")
+                         f"Active reminders have <b>{len(users_info)}</b> users.\n\n"
+                         f"user_id; chat_id; firstname; username:\n<b>{text}</b>", parse_mode="HTML")
     logger.debug("Admin {0} got users in database.".format(message.from_user.id))
 
 

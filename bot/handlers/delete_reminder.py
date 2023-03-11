@@ -42,9 +42,6 @@ async def cmd_undo(message: types.Message, state: FSMContext):
     data = users.get_user_data(message.chat.id)
     user_reminders = reminders.get_user_reminders(message.chat.id)
 
-    if data[4] == 0:
-        return await message.answer("⚡️ Вы не создали ни одного напоминания")
-
     if data[3] == 0:
         return await message.answer("⚡️ Последнее созданное напоминание удалено или уже отправлено")
 
@@ -58,10 +55,11 @@ async def cmd_undo(message: types.Message, state: FSMContext):
 
     reminder = [el for el in user_reminders if el[3] == data[3]][0]
 
-    await message.answer(f"Дата: <b>{date_converter.get_day_of_the_week(reminder[4].split()[0])} {reminder[4]}</b>\n"
+    question = await message.answer(f"Дата: <b>{date_converter.get_day_of_the_week(reminder[4].split()[0])} {reminder[4]}</b>\n"
                          f"Id: <b>{reminder[3]}</b>\n"
                          f"Текст: <b>{reminder[5]}</b>\n"
                          f"Удалить напоминание?", parse_mode="HTML", reply_markup=keyboards.inline_kb_confirm)
+    await state.update_data(message_id=question.message_id)
 
 
 async def id_received(message: types.Message, state: FSMContext):
@@ -72,7 +70,7 @@ async def id_received(message: types.Message, state: FSMContext):
         return await message.answer("Напоминания с id {reminder_id} не существует!\nВведите id напоминания:".format(
             reminder_id=int(message.text)), reply_markup=keyboards.kb_cancel)
 
-    await state.update_data(reminder_id=message.text)
+    await state.update_data(reminder_id=int(message.text))
     await DeleteReminder.next()
 
     reminder = [el for el in reminders.get_user_reminders(message.chat.id) if el[3] == int(message.text)][0]
