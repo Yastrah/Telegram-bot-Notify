@@ -20,9 +20,10 @@ class ReportAppeal(StatesGroup):
     waiting_for_text = State()
 
 
-async def cmd_report(message: types.Message):
+async def cmd_report(message: types.Message, state: FSMContext):
+    await state.finish()
     if message.from_user.id in Settings.blocked_users:
-        return await message.answer("К сожалению вы заблокированны!")
+        return await message.answer("🔒 К сожалению вы заблокированны!")
 
     with open("data/reports.txt", mode='r', encoding="utf-8") as file:
         file.readline()
@@ -38,7 +39,7 @@ async def cmd_report(message: types.Message):
                                         f"жалоб/предложений ({Settings.max_reports_per_day})!")
 
     await ReportAppeal.waiting_for_text.set()
-    return await message.answer("Введите текст обращения:", reply_markup=keyboards.kb_cancel)
+    return await message.answer("Введите, как можно более подробный, текст обращения:", reply_markup=keyboards.kb_cancel)
 
 
 async def text_received(message: types.Message, state: FSMContext):

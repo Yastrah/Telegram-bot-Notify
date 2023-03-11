@@ -42,7 +42,7 @@ async def check_for_reminders(bot: Bot):
 
     for reminder in data:
         try:
-            await bot.send_message(chat_id=reminder[1], text=f"<b>{reminder[5]}</b>", parse_mode="HTML")
+            await bot.send_message(chat_id=reminder[1], text=f"🔔 <b>{reminder[5]}</b>", parse_mode="HTML")
             reminders.remove(id=reminder[0])
 
             users.update_total_reminders(reminder[1])

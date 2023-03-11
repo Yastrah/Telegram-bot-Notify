@@ -102,7 +102,7 @@ def search_time(text: str) -> (str, str):
     match = time_pattern.search(text)
 
     if match and match.start() < Settings.time_order_index:
-        time = re.split(r"[:./]", match.group())
+        time = re.split(r"[:./-]", match.group())
 
         if not 1 <= len(time) <= 2:
             return None, "Время указано неправильно! введите время напоминания в часах или в час<разделитель(:./)>минута."

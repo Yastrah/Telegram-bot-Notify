@@ -23,10 +23,14 @@ class EditReminder(StatesGroup):
     waiting_for_new_data = State()
 
 
-async def cmd_edit(message: types.Message):
+async def cmd_edit(message: types.Message, state: FSMContext):
+    await state.finish()
+    if message.from_user.id in Settings.blocked_users:
+        return await message.answer("🔒 К сожалению вы заблокированны!")
+
     data = reminders.get_user_reminders(message.chat.id)
     if not data:
-        return await message.answer("У вас нет напоминаний, чтобы их изменить")
+        return await message.answer("⚡️ У вас нет напоминаний, чтобы их изменить")
 
     await message.answer("Введите id напоминания:", reply_markup=keyboards.kb_cancel)
     await EditReminder.waiting_for_id.set()
@@ -45,25 +49,36 @@ async def id_received(message: types.Message, state: FSMContext):
 
     reminder = [el for el in reminders.get_user_reminders(message.chat.id) if el[3] == int(message.text)][0]
 
-    await message.answer(f"Дата: <b>{date_converter.get_day_of_the_week(reminder[4].split()[0])} {reminder[4]}</b>\n"
-                         f"Id: <b>{reminder[3]}</b>\n"
-                         f"Текст: <b>{reminder[5]}</b>\n"
-                         f"Что вы хотите изменить?", parse_mode="HTML", reply_markup=keyboards.inline_kb_edit_type)
+    question = await message.answer(
+        f"Дата: <b>{date_converter.get_day_of_the_week(reminder[4].split()[0])} {reminder[4]}</b>\n"
+        f"Id: <b>{reminder[3]}</b>\n"
+        f"Текст: <b>{reminder[5]}</b>\n"
+        f"Что вы хотите изменить?", parse_mode="HTML", reply_markup=keyboards.inline_kb_edit_type)
+    await state.update_data(message_id=question.message_id)
 
 
 async def edit_time(call: types.CallbackQuery, state: FSMContext):
+    data = await state.get_data()
+    await call.bot.delete_message(call.message.chat.id, data["message_id"])
+
     await EditReminder.next()
     await state.update_data(edit_type="time")
     return await call.message.answer("Введите новые время и дату без текста напоминания:")
 
 
 async def edit_text(call: types.CallbackQuery, state: FSMContext):
+    data = await state.get_data()
+    await call.bot.delete_message(call.message.chat.id, data["message_id"])
+
     await EditReminder.next()
     await state.update_data(edit_type="text")
     return await call.message.answer("Введите новый текст напоминания:")
 
 
 async def edit_all(call: types.CallbackQuery, state: FSMContext):
+    data = await state.get_data()
+    await call.bot.delete_message(call.message.chat.id, data["message_id"])
+
     await EditReminder.next()
     await state.update_data(edit_type="all")
     return await call.message.answer("Введите дату, время и текст напоминания, как при создании нового:")
