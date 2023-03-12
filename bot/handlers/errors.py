@@ -11,6 +11,20 @@ logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
 
+class SomeError(Exception):
+    """Исключение для ошибок во входных данных.
+    Attributes:
+        expression -- выражение, в котором произошла ошибка
+        message -- объяснение ошибки, ответ пользователю
+    """
+    def __init__(self, expression, message):
+        self.expression = expression
+        self.message = message
+
+    # def __str__(self):
+    #     return f'{self.expression} -> {self.message}'
+
+
 async def error_catched(update: types.Update, exception):
     if isinstance(exception, MessageIsTooLong):
         await update.message.answer("Сообщение слишком длинное!")

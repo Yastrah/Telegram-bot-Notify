@@ -33,6 +33,11 @@ async def create_reminder(message: types.Message, state: FSMContext):
         logger.debug("Reminder handling: can not find date in message: {0}".format(message.text))
         return await message.answer("Не удалось обработать дату напоминания!", reply_markup=keyboards.kb_main_menu)
 
+    # проверка корректности даты
+    if not date_converter.get_day_of_the_week(date):
+        logger.debug("Wrong date input, chat_id: {0}".format(message.chat.id))
+        return await message.answer("Некорректная дата!", reply_markup=keyboards.kb_main_menu)
+
     # обработка ошибок со временем
     if time is None:
         logger.debug("Reminder handling: can not find time in message: {0}".format(message.text))
@@ -41,15 +46,11 @@ async def create_reminder(message: types.Message, state: FSMContext):
     full_date = " ".join([date, time])
     reminder_id = reminders.get_free_id(str(message.chat.id))
 
-    # проверка корректности даты
-    if not date_converter.get_day_of_the_week(date):
-        logger.debug("Wrong date input, chat_id: {0}".format(message.chat.id))
-        return await message.answer("Некорректная дата!", reply_markup=keyboards.kb_main_menu)
-
     # проверка на попытку создать напоминание на прошедшее время
     now_date = datetime.datetime.now().strftime(Settings.date_format)
     if date_converter.date_to_value(" ".join([date, time])) <= date_converter.date_to_value(now_date):
-        logger.debug("Trying to create reminder on the past date, chat_id: {0}".format(message.chat.id))
+        logger.debug("Trying to create reminder on the past date, chat_id: {0}. Date: {1} Time: {2}".format(
+            message.chat.id, date, time))
         return await message.answer("Вы пытаетесь создать напоминание на прошедшее время!", reply_markup=keyboards.kb_main_menu)
 
     # проверка на отсутствие текста напоминание

@@ -1,0 +1,16 @@
+2023-03-12 22:13:51 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.8
+LAST_UPDATE: 2023-03-12 22:13:51
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-12 22:13:52 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-12 22:13:52 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-12 22:13:52 [INFO] __main__: Bot commands have been set.
+2023-03-12 22:13:52 [INFO] __main__: Start schedule process.
+2023-03-12 22:13:52 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-12 22:13:56 [DEBUG] bot.handlers.messages: Created reminder for message: завтра в 0.01 проверка с одной цифрой
+	 chat_id: 1990672413, reminder_id: 1, time: 13/03/2023 00:01, text: проверка с одной цифрой
+2023-03-12 22:14:12 [DEBUG] bot.handlers.messages: Created reminder for message: завтра в 1 проверка с одной цифрой
+	 chat_id: 1990672413, reminder_id: 2, time: 13/03/2023 01:00, text: проверка с одной цифрой

@@ -439,3 +439,47 @@ GitHub: https://github.com/Yastrah
 2023-03-11 22:16:26 [INFO] aiogram.dispatcher.dispatcher: Start polling.
 2023-03-11 22:21:35 [DEBUG] bot.handlers.delete_reminder: Deleted chat id 619575575 reminder with id: 3
 2023-03-11 22:22:14 [WARNING] bot.handlers.common: Registered new user. user_id: 643087854, chat_id: 643087854, user_name: want2leaf
+2023-03-11 22:27:09 [DEBUG] bot.handlers.messages: Created reminder for message: сегодня в 22:30 написать Ярику
+	 chat_id: 643087854, reminder_id: 1, time: 11/03/2023 22:30, text: написать Ярику
+2023-03-11 22:27:13 [DEBUG] bot.handlers.messages: Reminder handling: can not find date in message: Нормальные состояния
+2023-03-11 22:30:17 [INFO] bot.send_reminders: Reminder sent successfully to user 643087854.
+	Text: написать Ярику
+2023-03-11 22:35:02 [DEBUG] bot.handlers.messages: Reminder handling: can not find date in message: переименовать /cancel
+2023-03-11 22:35:50 [DEBUG] bot.handlers.messages: Reminder handling: can not find time in message: 32.13 24:61
+2023-03-11 22:35:53 [DEBUG] bot.handlers.admin: Admin 1990672413 got users in database.
+2023-03-11 22:36:04 [DEBUG] bot.logic.date_converter: Warning: month must be in 1..12
+2023-03-11 22:36:04 [DEBUG] bot.handlers.messages: Wrong date input, chat_id: 643087854
+2023-03-11 22:36:14 [DEBUG] bot.logic.date_converter: Warning: day is out of range for month
+2023-03-11 22:36:14 [DEBUG] bot.handlers.messages: Wrong date input, chat_id: 643087854
+2023-03-11 22:36:31 [DEBUG] bot.logic.date_converter: Warning: month must be in 1..12
+2023-03-11 22:36:31 [DEBUG] bot.handlers.messages: Wrong date input, chat_id: 643087854
+2023-03-11 22:37:27 [DEBUG] bot.handlers.messages: Reminder handling: can not find date in message: Ч̸͖̼̹͌̀͗т̶̛̤͕̣̦̀͌̋͑̒͛͂̅͘ͅо̷̢̲̩̪̗̄-̵͊́͒ ̜̚т̷̏ ̰͇̫̺̒̾о̸̧̖͂
+2023-03-11 22:37:33 [DEBUG] bot.handlers.messages: Reminder handling: can not find date in message: А
+2023-03-11 22:37:51 [DEBUG] bot.handlers.messages: Reminder handling: can not find date in message: :     .   Лвл
+2023-03-11 22:38:28 [ERROR] bot.handlers.errors: Found exception with user 643087854!
+	Exception: '10' is not in list
+2023-03-12 00:00:01 [DEBUG] bot.db.protection: Checking old reminders completed successfully. Found 0 old reminders.
+2023-03-12 00:11:46 [WARNING] bot.handlers.common: Registered new user. user_id: 997347607, chat_id: 997347607, user_name: Njiffcumkdfv
+2023-03-12 00:20:38 [DEBUG] bot.handlers.messages: Trying to create reminder on the past date, chat_id: 997347607
+2023-03-12 00:20:56 [DEBUG] bot.handlers.messages: Created reminder for message: сегодня в 1 купить пива
+	 chat_id: 997347607, reminder_id: 1, time: 12/03/2023 1:00, text: купить пива
+2023-03-12 00:23:04 [DEBUG] bot.handlers.delete_reminder: Deleted chat id 1990672413 reminder with id: 1
+2023-03-12 00:29:46 [DEBUG] bot.handlers.messages: Created reminder for message: Завтра в 14 пофиксить ошибки
+	 chat_id: 1990672413, reminder_id: 1, time: 12/03/2023 14:00, text: пофиксить ошибки
+2023-03-12 00:34:38 [DEBUG] bot.handlers.admin: Admin 1990672413 got users in database.
+2023-03-12 10:00:12 [INFO] bot.send_reminders: Reminder sent successfully to user 619575575.
+	Text: начать делать торт
+2023-03-12 11:00:02 [INFO] bot.send_reminders: Reminder sent successfully to user 1428079647.
+	Text: 21:45 покакать
+2023-03-12 11:00:02 [INFO] bot.send_reminders: Reminder sent successfully to user 1428079647.
+	Text: марта 21:25
+2023-03-12 11:12:50 [DEBUG] bot.handlers.messages: Reminder handling: can not find date in message: Ошибка с одной цифрой в часах
+2023-03-12 14:00:08 [INFO] bot.send_reminders: Reminder sent successfully to user 1990672413.
+	Text: пофиксить ошибки
+2023-03-12 20:30:09 [INFO] bot.send_reminders: Reminder sent successfully to user 1092906110.
+	Text: купи тортик!!!!
+2023-03-12 22:08:37 [DEBUG] bot.handlers.messages: Trying to create reminder on the past date, chat_id: 1990672413
+2023-03-12 22:08:48 [DEBUG] bot.handlers.messages: Trying to create reminder on the past date, chat_id: 1990672413
+2023-03-12 22:10:55 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-12 22:10:55 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-12 22:10:55 [WARNING] aiogram: Goodbye!

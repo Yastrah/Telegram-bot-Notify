@@ -70,11 +70,12 @@ def search_date(text: str) -> (str, str):
         now_date = datetime.datetime.now().strftime(Settings.date_format)
         now_date = now_date.split()[0].split('/')
 
-        for num in date:
-            if len(num) == 1:
-                date[date.index(num)] = f"0{num}"
-            elif len(num) > 2:
-                logger.warning(f"Reminder handling error! Date: {date}; Text: {text}")
+        for i in range(len(date)):
+            if len(date[i]) == 1:
+                date[i] = '0' + date[i]
+            elif len(date[i]) > 2:
+                logger.error(f"Reminder handling error! Date: {date}; Text: {text}")
+                return None, text
 
         if not 1 <= len(date) <= 3:
             return None, text
@@ -107,7 +108,10 @@ def search_time(text: str) -> (str, str):
         if not 1 <= len(time) <= 2:
             return None, "Время указано неправильно! введите время напоминания в часах или в час<разделитель(:./)>минута."
 
-        for el in time[1:]:
+        if len(time[0]) == 1:
+            time[0] = '0' + time[0]
+
+        for el in time:
             if not len(el) == 2:
                 return None, "Вы неправильно указали минуты для времени! Обратите внимание, что для минут надо указать " \
                              "две цифры (например: 05 или 45)"
@@ -116,6 +120,9 @@ def search_time(text: str) -> (str, str):
             time = time[0] + ':00'
         elif len(time) == 2:
             time = ':'.join(time)
+        else:
+            return None, "Вы неправильно указали минуты для времени! Обратите внимание, что для минут надо указать " \
+                         "две цифры (например: 05 или 45)"
 
         if not (0 <= int(time.split(':')[0]) <= 24 and 0 <= int(time.split(':')[1]) <= 59):
             return None, "Вы указали несуществующее время!"
