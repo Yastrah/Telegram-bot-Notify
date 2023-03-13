@@ -53,7 +53,13 @@ async def cmd_undo(message: types.Message, state: FSMContext):
 
     await DeleteReminder.waiting_for_confirm.set()
 
-    reminder = [el for el in user_reminders if el[3] == data[3]][0]
+    reminder = [el for el in user_reminders if el[3] == data[3]]
+    if reminder:
+        reminder = reminder[0]
+    else:
+        logger.error("Last_reminder_id has given, but there is no such reminder. User_id: {0}".format(message.from_user.id))
+        users.update_last_reminder(message.chat.id, 0)
+        return await message.answer("⚡️ Последнее созданное напоминание удалено или уже отправлено")
 
     question = await message.answer(f"Дата: <b>{date_converter.get_day_of_the_week(reminder[4].split()[0])} {reminder[4]}</b>\n"
                          f"Id: <b>{reminder[3]}</b>\n"

@@ -14,3 +14,16 @@ GitHub: https://github.com/Yastrah
 	 chat_id: 1990672413, reminder_id: 1, time: 13/03/2023 00:01, text: проверка с одной цифрой
 2023-03-12 22:14:12 [DEBUG] bot.handlers.messages: Created reminder for message: завтра в 1 проверка с одной цифрой
 	 chat_id: 1990672413, reminder_id: 2, time: 13/03/2023 01:00, text: проверка с одной цифрой
+2023-03-12 22:24:27 [DEBUG] bot.handlers.messages: Created reminder for message: Завтра в 9 в 9.45 окулист на Алексеевской каб 319
+	 chat_id: 1990672413, reminder_id: 3, time: 13/03/2023 09:00, text: в 9.45 окулист на Алексеевской каб 319
+2023-03-13 00:00:02 [DEBUG] bot.db.protection: Checking old reminders completed successfully. Found 5 old reminders.
+2023-03-13 00:01:09 [INFO] bot.send_reminders: Reminder sent successfully to user 1990672413.
+	Text: проверка с одной цифрой
+2023-03-13 01:00:14 [INFO] bot.send_reminders: Reminder sent successfully to user 1990672413.
+	Text: проверка с одной цифрой
+2023-03-13 09:00:02 [INFO] bot.send_reminders: Reminder sent successfully to user 1990672413.
+	Text: в 9.45 окулист на Алексеевской каб 319
+2023-03-13 09:44:41 [DEBUG] bot.handlers.messages: Reminder handling: can not find date in message: Добавить в описание рекомендации
+2023-03-13 19:54:41 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-13 19:54:41 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-13 19:54:41 [WARNING] aiogram: Goodbye!

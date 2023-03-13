@@ -3,7 +3,7 @@ import datetime
 import re
 
 from config.config_reader import load_config
-from config.configuration import Settings
+from config.configuration import Settings, Constants
 
 from bot import keyboards
 
@@ -35,11 +35,11 @@ async def cmd_report(message: types.Message, state: FSMContext):
         match = pattern.findall(data)
 
         if len(match) >= Settings.max_reports_per_day:
-            return await message.answer(f"Вы за сегодня уже отправили максимальное допустимое число "
-                                        f"жалоб/предложений ({Settings.max_reports_per_day})!")
+            return await message.answer(Constants.user_commands["report"]["too_many_reports"]['ru'].format(
+                max_reports_per_day=Settings.max_reports_per_day))
 
     await ReportAppeal.waiting_for_text.set()
-    return await message.answer("Введите, как можно более подробный, текст обращения:", reply_markup=keyboards.kb_cancel)
+    return await message.answer(Constants.user_commands["report"]["what_to_do"]['ru'], reply_markup=keyboards.kb_cancel)
 
 
 async def text_received(message: types.Message, state: FSMContext):
@@ -61,7 +61,7 @@ async def text_received(message: types.Message, state: FSMContext):
                 await message.bot.send_message(chat_id=admin, text="Appeal received")
 
     await state.finish()
-    return await message.answer("Ваше сообщение успешно сохранено", reply_markup=keyboards.kb_main_menu)
+    return await message.answer(Constants.user_commands["report"]["report_saved"]['ru'], reply_markup=keyboards.kb_main_menu)
 
 
 def register_handlers_report(dp: Dispatcher):

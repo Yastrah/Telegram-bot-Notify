@@ -25,7 +25,7 @@ class Constants(object):
     """
     Содержит константные строки для команд и сообщений.
     """
-    # Emojis used ⚡️ 🔒 🔻 🔔
+    # Emojis used ⚡️ 🔒 🔻 🔔 📃 🗑 ↩️ ✏️ ◀️ 📅 🏠 ✅ ❌ 🕑 📝
 
     user_commands = {
         "start": {
@@ -81,12 +81,19 @@ class Constants(object):
             "description": "изменинить текст напоминания по id",
             "custom_name": "✏️ изменить",
         },
-        "cancel": {
-            "description": "сбросить состояние",
-            "custom_name": "◀️ назад",
+        "menu": {
+            "description": "вернуться в главное меню",
+            "custom_name": "🏠 меню",
         },
         "report": {
             "description": "пожаловаться на ошибку / предложить доработки",
+            "what_to_do": {"ru": "Введите, как можно более подробный, текст обращения:",
+                           "en": None},
+            "report_saved": {"ru": "Ваше сообщение успешно сохранено",
+                             "en": None},
+            "too_many_reports": {"ru": "Вы за сегодня уже отправили максимальное допустимое число жалоб/предложений "
+                                       "({max_reports_per_day})!",
+                                       "en": None},
         },
     }
 

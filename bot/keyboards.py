@@ -14,7 +14,7 @@ kb_main_menu.add(KeyboardButton(Constants.user_commands["list"]["custom_name"]),
 
 
 kb_cancel = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-kb_cancel.add(Constants.user_commands["cancel"]["custom_name"])
+kb_cancel.add(Constants.user_commands["menu"]["custom_name"])
 
 
 inline_kb_confirm = InlineKeyboardMarkup(row_width=2)

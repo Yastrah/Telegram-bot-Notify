@@ -1,0 +1,32 @@
+2023-03-13 20:08:54 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.9
+LAST_UPDATE: 2023-03-13 20:08:54
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-13 20:08:55 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-13 20:08:55 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-13 20:08:55 [INFO] __main__: Bot commands have been set.
+2023-03-13 20:08:55 [INFO] __main__: Start schedule process.
+2023-03-13 20:08:55 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-13 21:56:42 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-13 21:56:42 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-13 21:56:42 [WARNING] aiogram: Goodbye!
+2023-03-13 22:21:43 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.2.9
+LAST_UPDATE: 2023-03-13 22:21:43
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-13 22:21:44 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-13 22:21:44 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-13 22:21:44 [INFO] __main__: Bot commands have been set.
+2023-03-13 22:21:44 [INFO] __main__: Start schedule process.
+2023-03-13 22:21:44 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-13 22:22:07 [DEBUG] bot.handlers.messages: Created reminder for message: сегодня в 23 проверка
+	 chat_id: 1990672413, reminder_id: 1, time: 13/03/2023 23:00, text: проверка
+2023-03-13 22:22:28 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-13 22:22:28 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-13 22:22:28 [WARNING] aiogram: Goodbye!
