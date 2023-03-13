@@ -24,7 +24,7 @@ from aiogram.utils import executor
 from aiogram.types import BotCommand
 
 
-version = "1.2.9"
+version = "1.3.0"
 
 logger = logging.getLogger(__name__)
 
