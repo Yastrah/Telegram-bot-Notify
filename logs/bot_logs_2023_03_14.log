@@ -1,0 +1,92 @@
+2023-03-14 22:43:18 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.0
+LAST_UPDATE: 2023-03-14 22:43:18
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-14 22:43:18 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-14 22:43:19 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-14 22:43:19 [INFO] __main__: Bot commands have been set.
+2023-03-14 22:43:19 [INFO] __main__: Start schedule process.
+2023-03-14 22:43:19 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-14 22:43:43 [DEBUG] bot.handlers.messages: Created reminder for message: 3.04 в 12 проверка
+	 chat_id: 1990672413, reminder_id: 1, time: 03/04/2023 12:00, text: проверка
+2023-03-14 22:44:21 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-14 22:44:21 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-14 22:44:21 [WARNING] aiogram: Goodbye!
+2023-03-14 22:47:59 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.0
+LAST_UPDATE: 2023-03-14 22:47:59
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-14 22:47:59 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-14 22:47:59 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-14 22:47:59 [INFO] __main__: Bot commands have been set.
+2023-03-14 22:47:59 [INFO] __main__: Start schedule process.
+2023-03-14 22:47:59 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-14 22:48:39 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-14 22:48:39 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-14 22:48:39 [WARNING] aiogram: Goodbye!
+2023-03-14 22:52:58 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.0
+LAST_UPDATE: 2023-03-14 22:52:58
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-14 22:52:58 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-14 22:52:58 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-14 22:52:58 [INFO] __main__: Bot commands have been set.
+2023-03-14 22:52:58 [INFO] __main__: Start schedule process.
+2023-03-14 22:52:58 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-14 22:53:53 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-14 22:53:53 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-14 22:53:53 [WARNING] aiogram: Goodbye!
+2023-03-14 22:53:54 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.0
+LAST_UPDATE: 2023-03-14 22:53:54
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-14 22:53:54 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-14 22:53:54 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-14 22:53:55 [INFO] __main__: Bot commands have been set.
+2023-03-14 22:53:55 [INFO] __main__: Start schedule process.
+2023-03-14 22:53:55 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-14 22:54:20 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-14 22:54:20 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-14 22:54:20 [WARNING] aiogram: Goodbye!
+2023-03-14 22:55:08 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.0
+LAST_UPDATE: 2023-03-14 22:55:08
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-14 22:55:08 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-14 22:55:08 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-14 22:55:08 [INFO] __main__: Bot commands have been set.
+2023-03-14 22:55:08 [INFO] __main__: Start schedule process.
+2023-03-14 22:55:08 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-14 22:55:30 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-14 22:55:30 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-14 22:55:30 [WARNING] aiogram: Goodbye!
+2023-03-14 22:56:34 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.0
+LAST_UPDATE: 2023-03-14 22:56:34
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-14 22:56:34 [INFO] aiogram: Bot: Euclid Assistant [@EuclidAssistantBot]
+2023-03-14 22:56:34 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-14 22:56:34 [INFO] __main__: Bot commands have been set.
+2023-03-14 22:56:34 [INFO] __main__: Start schedule process.
+2023-03-14 22:56:34 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-14 22:57:25 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-14 22:57:25 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-14 22:57:25 [WARNING] aiogram: Goodbye!

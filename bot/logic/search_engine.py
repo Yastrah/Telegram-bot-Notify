@@ -46,7 +46,7 @@ def search_date(text: str) -> (str, str):
     :param text: текст сообщения
     :return: Кортеж: дату в обработанном виде и сообщение без даты. None для првого элемента если ничего не найдено.
     """
-    if len(text) < Settings.min_messege_len:
+    if len(text) < Settings.min_message_len:
         return None, text
 
     date_pattern = re.compile("\d{1,2}([-./]\d{1,2})?([-./]\d{2,4})?")
