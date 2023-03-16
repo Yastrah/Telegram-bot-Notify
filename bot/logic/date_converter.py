@@ -134,7 +134,7 @@ def get_day_of_the_week(date: str) -> str:
     try:
         date = date.split()[0].split('/')
         day_number = datetime.datetime(int(date[2]), int(date[1]), int(date[0])).weekday()
-        return Settings.week_days[day_number][0]
+        return Settings.words_for_week_days[day_number][0]
     except Exception as e:
         logger.debug("Warning: {0}".format(e))
         return None

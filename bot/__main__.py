@@ -24,7 +24,7 @@ from aiogram.utils import executor
 from aiogram.types import BotCommand
 
 
-version = "1.3.0"
+version = "1.3.1"
 
 logger = logging.getLogger(__name__)
 
@@ -106,6 +106,21 @@ GitHub: https://github.com/Yastrah""".format(version, datetime.now().strftime("%
         logger.error("Could not start polling!\n\tException: {0}".format(e))
 
 if __name__ == "__main__":
-    main()
+    # main()
     # from bot.db import protection
     # protection.checking_for_old_reminders()
+    from bot.logic import search_engine
+
+    text1 = "10: 1 2.12 проверка"
+    text2 = "16 10.40 проверка"
+    text3 = "17 апреля в 1.10 проверка"
+    text4 = "13.05 в 12 проверка"
+    text5 = "в 12:10 проверка"
+    text6 = "в 13.15 проверка"
+    text = text6
+    date, time, text = search_engine.date_and_time_handling(text)
+    print(date)
+    print(time)
+    print(text)
+    # print(search_engine.search_first_number(text))
+    # print("fdas gd gdsgf"["fdas gd gdsgf".find('gd')+len('gd')] == ' ')

@@ -1,0 +1,16 @@
+2023-03-17 01:30:10 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.1
+LAST_UPDATE: 2023-03-17 01:30:10
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-17 01:30:10 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-17 01:30:10 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-17 01:30:10 [INFO] __main__: Bot commands have been set.
+2023-03-17 01:30:10 [INFO] __main__: Start schedule process.
+2023-03-17 01:30:10 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-17 01:30:32 [DEBUG] bot.handlers.errors: User 1990672413 SearchError: Match found: 13.
+2023-03-17 01:30:58 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-17 01:30:58 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-17 01:30:58 [WARNING] aiogram: Goodbye!

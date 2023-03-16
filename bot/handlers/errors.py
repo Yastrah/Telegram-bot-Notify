@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
 
-class SomeError(Exception):
+class SearchError(Exception):
     """Исключение для ошибок во входных данных.
     Attributes:
         expression -- выражение, в котором произошла ошибка
@@ -21,12 +21,13 @@ class SomeError(Exception):
         self.expression = expression
         self.message = message
 
-    # def __str__(self):
-    #     return f'{self.expression} -> {self.message}'
-
 
 async def error_catched(update: types.Update, exception):
-    if isinstance(exception, MessageIsTooLong):
+    if isinstance(exception, SearchError):
+        logger.debug("User {0} SearchError: {1}".format(update.message.from_user.id, exception.expression))
+        await update.message.answer(exception.message)
+
+    elif isinstance(exception, MessageIsTooLong):
         await update.message.answer("Сообщение слишком длинное!")
 
     elif isinstance(exception, BotBlocked):
