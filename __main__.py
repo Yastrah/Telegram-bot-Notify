@@ -23,8 +23,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.utils import executor
 from aiogram.types import BotCommand
 
-
-version = "1.3.1"
+version = "1.3.2"
 
 logger = logging.getLogger(__name__)
 
@@ -72,8 +71,10 @@ async def on_shutdown(dispatcher):
     logger.warning("Shutdown dispatcher!!!")
     pass
 
+
 def main():
-    file_log = logging.FileHandler(filename=f"logs/bot_logs_{datetime.now().strftime('%Y_%m_%d')}.log", encoding="utf-8")
+    file_log = logging.FileHandler(filename=f"logs/bot_logs_{datetime.now().strftime('%Y_%m_%d')}.log",
+                                   encoding="utf-8")
     file_log.setLevel("DEBUG")
 
     console_log = logging.StreamHandler(stream=sys.stderr)
@@ -105,22 +106,25 @@ GitHub: https://github.com/Yastrah""".format(version, datetime.now().strftime("%
     except Exception as e:
         logger.error("Could not start polling!\n\tException: {0}".format(e))
 
+
 if __name__ == "__main__":
-    # main()
+    main()
     # from bot.db import protection
     # protection.checking_for_old_reminders()
-    from bot.logic import search_engine
 
-    text1 = "10: 1 2.12 проверка"
-    text2 = "16 10.40 проверка"
-    text3 = "17 апреля в 1.10 проверка"
-    text4 = "13.05 в 12 проверка"
-    text5 = "в 12:10 проверка"
-    text6 = "в 13.15 проверка"
-    text = text6
-    date, time, text = search_engine.date_and_time_handling(text)
-    print(date)
-    print(time)
-    print(text)
+    # from bot.logic import search_engine
+    # text1 = "10: 1 2.12 проверка"
+    # text2 = "16 10.40 проверка"
+    # text3 = "17 апреля в 1.10 проверка"
+    # text4 = "13.05 в 12 проверка"
+    # text5 = "в 12:10 проверка"
+    # text6 = "в 13.15 проверка"
+    # text7 = "завтра в 15 часов 35 минут проверка"
+    # text8 = "в 10 часов проверка"
+    # text = text8
+    # date, time, text = search_engine.date_and_time_handling(text)
+    # print(date)
+    # print(time)
+    # print(text)
     # print(search_engine.search_first_number(text))
     # print("fdas gd gdsgf"["fdas gd gdsgf".find('gd')+len('gd')] == ' ')

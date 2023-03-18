@@ -1,4 +1,5 @@
 import logging
+
 import nltk
 import re
 import datetime
@@ -13,44 +14,56 @@ logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
 
+def word_matches(text: str, words: list) -> bool:
+    """
+    Соответствует ли слово какому либо из переданного списка.
+    :param text: текст сообщения.
+    :param words: список слов для поиска.
+    :return: Bool - соответствует слово или нет
+    """
+    for word in words:
+        distance = nltk.edit_distance(word.lower(), text.lower()) / len(text)
+
+        if distance < Settings.day_distance_index:
+            return True
+
+    return False
+
+
 def search_key_word(text: str, words: list, mode: str = 'date') -> (bool, str):
     """
     Поиск соответствия одного из слов в сообщении, заданному.
-    :param text: текст сообщения
-    :param words: список слов для поиска
+    :param text: текст сообщения.
+    :param words: список слов для поиска.
     :param mode: тип поиска. Если 'date', то ищет только факт соответствия. Если 'time', то ...
     :return: кортеж, первый элемент отвечает, за то, было ли найдено соответствие, а второй - текст, уже без ключегого слова
     """
     text = text.split()
-    for word in words:
-        for i in range(len(text)):
-            distance = nltk.edit_distance(word.lower(), text[i].lower()) / len(text[i])
 
-            if distance < Settings.day_distance_index and i < Settings.day_order_index:
-                if mode == 'date':
+    for i in range(len(text)):
+        if word_matches(text[i], words) and i < Settings.day_order_index:
+            if mode == 'date':
 
-                    text.pop(i)
-                    # # удаление лишних предлогов
-                    # if text[i + 1].lower() in Settings.prepositions_for_delete:
-                    #     text.pop(i + 1)
-                    #
-                    # text.pop(i)
-                    #
-                    # # удаление лишних предлогов
-                    # if text[i - 1].lower() in Settings.prepositions_for_delete:
-                    #     text.pop(i - 1)
+                text.pop(i)
+                # # удаление лишних предлогов
+                # if text[i + 1].lower() in Settings.prepositions_for_delete:
+                #     text.pop(i + 1)
+                #
+                # text.pop(i)
+                #
+                # # удаление лишних предлогов
+                # if text[i - 1].lower() in Settings.prepositions_for_delete:
+                #     text.pop(i - 1)
 
-                    text = " ".join(text)
+                text = " ".join(text)
 
-                    return True, text
+                return True, text
 
-                elif mode == 'time':
-                    text.pop(i)
-                    if text[i - 1].isdigit():
-                        text.pop(i - 1)
-                        return text[i - 1], text
+            elif mode == 'time':
+                if text[i - 1].isdigit():
+                    return text[i - 1], " ".join(text[i+1:])
 
-                    return False, " ".join(text)
+                return False, " ".join(text)
 
     return False, " ".join(text)
 
@@ -73,14 +86,18 @@ def search_date_in_numbers(text: str) -> (str, str):
 
         # если первое сразу задано время
         if text[text.find(found) + len(found)] == ':':
-            return now_date, text
+            return now_date, text, None
+        if word_matches(text.split(found)[1].strip().split()[0], Settings.words_for_time[0]+Settings.words_for_time[1]):
+            return now_date, text, None
 
         if found[-1] in "-./":
             raise SearchError(f"Match found: {found}",
                               f"Недопустимое формат записи, не ставьте лишние знаки препинания!")
 
         date = re.split(r"[-./]", found)
-        text = ' '.join(text.replace(found, '').split())  # удаление лишних пробелов
+        # text = ' '.join(text.replace(found, '').split())  # удаление лишних пробелов
+        text = text[text.find(found) + len(found):].strip()
+
         # text = text.split()
         # # print(match.group(), date, text)
         # i = text.index(match.group())
@@ -146,8 +163,11 @@ def search_time(text: str) -> (str, str):
     match = time_pattern.search(text)
 
     if match and match.start() < Settings.time_order_index:
-        time = formatting_time(match.group())
-        text = match.group().join(text.split(match.group())[1:]).strip()
+        found = match.group()
+        time = formatting_time(found)
+        text = found.join(text.split(found)[1:]).strip()
+        # print(text.find(found)+len(found))
+        # text = text[text.find(found)+len(found):].strip()  # удаление лишних пробелов
 
         return time, text
 
@@ -155,29 +175,44 @@ def search_time(text: str) -> (str, str):
 
 
 def formatting_time(time: str) -> str:
+    """
+    Обработка найденного времени. Приведение к стандартному формату.
+    :param time: найденное время.
+    :return: Отформатированное время
+    """
     time = re.split(r"[:./-]", time)
 
     if not 1 <= len(time) <= 2:
-        return None, "Время указано неправильно! введите время напоминания в часах или в час<разделитель(:./)>минута."
+        raise SearchError(f"Time length is not correct: {time}",
+                          "Время указано неправильно! введите время напоминания в часах или в час<разделитель(:./)>минута.")
+        # return None, "Время указано неправильно! введите время напоминания в часах или в час<разделитель(:./)>минута."
 
     if len(time[0]) == 1:
         time[0] = '0' + time[0]
 
     for el in time:
         if not len(el) == 2:
-            return None, "Вы неправильно указали минуты для времени! Обратите внимание, что для минут надо указать " \
-                         "две цифры (например: 05 или 45)"
+            raise SearchError(f"Time minutes length is not correct: {time}",
+                              "Вы неправильно указали минуты для времени! Обратите внимание, что для минут надо указать"
+                              " две цифры (например: 05 или 45)")
+            # return None, "Вы неправильно указали минуты для времени! Обратите внимание, что для минут надо указать " \
+            #              "две цифры (например: 05 или 45)"
 
     if len(time) == 1:
         time = time[0] + ':00'
     elif len(time) == 2:
         time = ':'.join(time)
-    else:
-        return None, "Вы неправильно указали минуты для времени! Обратите внимание, что для минут надо указать " \
-                     "две цифры (например: 05 или 45)"
+    # else:
+    #     raise SearchError(f"Time minutes length is not correct: {time}",
+    #                       "Вы неправильно указали минуты для времени! Обратите внимание, что для минут надо указать две"
+    #                       " цифры (например: 05 или 45)"
+    # return None, "Вы неправильно указали минуты для времени! Обратите внимание, что для минут надо указать " \
+    #              "две цифры (например: 05 или 45)"
 
     if not (0 <= int(time.split(':')[0]) <= 24 and 0 <= int(time.split(':')[1]) <= 59):
-        return None, "Вы указали несуществующее время!"
+        raise SearchError(f"Time minutes length is not correct: {time}",
+                          "Вы указали несуществующее время!")
+        # return None, "Вы указали несуществующее время!"
 
     return time
 
@@ -214,16 +249,14 @@ def date_and_time_handling(text: str) -> tuple:
             now_year = datetime.datetime.now().strftime("%Y")
             day, text = search_first_number(text)
             if not day:
-                raise SearchError(f"Could not find day for month {month+1}",
+                raise SearchError(f"Could not find day for month {month + 1}",
                                   f"Не удалось найти день для месяца {word} в сообщении!")
 
-            if month+1 < 10:
-                date = f"{day}/0{month+1}/{now_year}"
+            if month + 1 < 10:
+                date = f"{day}/0{month + 1}/{now_year}"
             else:
-                date = f"{day}/{month+1}/{now_year}"
+                date = f"{day}/{month + 1}/{now_year}"
             break
-
-
 
     # поиск даты в числовом виде, если не нашлось ключевых слов
     if date is None:
@@ -232,12 +265,27 @@ def date_and_time_handling(text: str) -> tuple:
     if date is None:
         return None, None, None
 
-    # поиск времени
-    time, text = search_time(text)
+    # поиск ключевых слов для времени
+    time = None
+    hours, text = search_key_word(text, Settings.words_for_time[0], mode='time')
+    if hours:
+        minutes, text = search_key_word(text, Settings.words_for_time[1], mode='time')
+        if minutes:
+            time = f"{hours}:{minutes}"
+        else:
+            time = f"{hours}:00"
 
+    # поиск времени в численном виде
     if time is None:
+        time, text = search_time(text)
+
+    # если время не найдено, то дата превращается во время, а дата ставится сегодняшняя
+    if time is None:
+        if not 1 <= len(re.split(r"[:./-]", found)) <= 2:
+            raise SearchError(f"Time length is not correct: {found}",
+                              "Время указано неправильно! введите время напоминания в часах или в час<разделитель(:./)>минута.")
+
         date = datetime.datetime.now().strftime(Settings.date_format).split()[0]
         time = formatting_time(found)
-        # print("found: ", found)
 
     return date, time, text
