@@ -68,7 +68,7 @@ def search_key_word(text: str, words: list, mode: str = 'date') -> (bool, str):
     return False, " ".join(text)
 
 
-def search_date_in_numbers(text: str) -> (str, str):
+def search_date_in_numbers(text: str, time_zone: str) -> (str, str):
     """
     Поиск даты в сообщении в численном виде.
     :param text: текст сообщения
@@ -82,7 +82,7 @@ def search_date_in_numbers(text: str) -> (str, str):
 
     if match and match.start() < Settings.date_order_index:
         found = match.group()
-        now_date = datetime.datetime.now().strftime(Settings.date_format).split()[0]
+        now_date = (date_converter.utc(datetime.datetime.utcnow().strftime(Settings.date_format), time_zone, mode='f')).split()[0]
 
         # если первое сразу задано время
         if text[text.find(found) + len(found)] == ':':
@@ -217,7 +217,7 @@ def formatting_time(time: str) -> str:
     return time
 
 
-def date_and_time_handling(text: str) -> tuple:
+def date_and_time_handling(text: str, time_zone: str) -> tuple:
     """
     Обрабатывает сообщение разбирая его на дату, время и оставшийся текст
     :param text: текст сообщения
@@ -228,25 +228,35 @@ def date_and_time_handling(text: str) -> tuple:
     # поиск и обработка ключевых слов
     found, text = search_key_word(text, ["сегодня"])
     if found:
-        date = date_converter.today()
+        # date = date_converter.today()
+        date = date_converter.utc(datetime.datetime.utcnow().strftime(Settings.date_format),
+                                  time_zone, mode='f').split()[0]
 
     if date is None:
         found, text = search_key_word(text, ["завтра"])
         if found:
-            date = date_converter.tomorrow()
+            # date = date_converter.tomorrow()
+            now_date = (datetime.datetime.utcnow() + datetime.timedelta(days=1)).strftime(Settings.date_format)
+            date = date_converter.utc(now_date, time_zone, mode='f').split()[0]
+
+    if date is None:
+        found, text = search_key_word(text, ["послезавтра"])
+        if found:
+            now_date = (datetime.datetime.utcnow() + datetime.timedelta(days=2)).strftime(Settings.date_format)
+            date = date_converter.utc(now_date, time_zone, mode='f').split()[0]
 
     # поиск и обработка дней недели
     for day in [day[1] for day in Settings.words_for_week_days]:
         found, text = search_key_word(text, day)
         if found:
-            date = date_converter.nearest_day_of_the_week(day)
+            date = date_converter.nearest_day_of_the_week(day, time_zone)
             break
 
-    # поиск и обработка месяца ввиде слова
+    # поиск и обработка месяца в виде слова
     for month, word in enumerate(Settings.words_for_months):
         found, text = search_key_word(text, word)
         if found:
-            now_year = datetime.datetime.now().strftime("%Y")
+            now_year = (date_converter.utc(datetime.datetime.utcnow().strftime(Settings.date_format), time_zone, mode='f')).strftime("%Y")
             day, text = search_first_number(text)
             if not day:
                 raise SearchError(f"Could not find day for month {month + 1}",
@@ -260,7 +270,7 @@ def date_and_time_handling(text: str) -> tuple:
 
     # поиск даты в числовом виде, если не нашлось ключевых слов
     if date is None:
-        date, text, found = search_date_in_numbers(text)
+        date, text, found = search_date_in_numbers(text, time_zone)
 
     if date is None:
         return None, None, None
@@ -285,7 +295,7 @@ def date_and_time_handling(text: str) -> tuple:
             raise SearchError(f"Time length is not correct: {found}",
                               "Время указано неправильно! введите время напоминания в часах или в час<разделитель(:./)>минута.")
 
-        date = datetime.datetime.now().strftime(Settings.date_format).split()[0]
+        date = (date_converter.utc(datetime.datetime.utcnow().strftime(Settings.date_format), time_zone, mode='f')).split()[0]
         time = formatting_time(found)
 
     return date, time, text

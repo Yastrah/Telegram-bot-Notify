@@ -29,7 +29,8 @@ def read() -> list:
 
 def get_user_data(chat_id: str) -> tuple:
     """
-    Получение данных о конкретном пользователе (user_id, chat_id, language, last_reminder_id, total_reminders, using_since).
+    Получение данных о конкретном пользователе (user_id, chat_id, language, last_reminder_id, total_reminders,
+    time_zone, using_since).\n
     :param chat_id: чат id пользователя
     :return:
     """
@@ -85,21 +86,41 @@ def update_total_reminders(chat_id: str) -> bool:
         return None
 
 
-def add_user(user_id: str, chat_id: str, language: str, last_reminder_id: int, using_since: str) -> bool:
+def update_time_zone(chat_id: str, time_zone: int) -> bool:
+    """
+    На одно увеличивает количество полученных пользователем напоминаний.
+    :param chat_id: чат id пользователя
+    :param time_zone: новое значение UTS
+    :return: True. None - при вызове исключения.
+    """
+    try:
+        with sqlite3.connect(config.data.bot_db) as db:
+            cursor = db.cursor()
+            cursor.execute("""UPDATE users SET time_zone=? WHERE chat_id=?""", [time_zone, chat_id])
+
+        return True
+
+    except Exception as e:
+        logger.error("Failed to update chat_id {0} time_zone!\n\tException: {1}".format(chat_id, e))
+        return None
+
+
+def add_user(user_id: str, chat_id: str, language: str, last_reminder_id: int, time_zone: int, using_since: str) -> bool:
     """
     Добавляет пользователя в базу данных.
     :param user_id:
     :param chat_id:
     :param language:
     :param last_reminder_id:
+    :param time_zone:
     :param using_since:
     :return: True. None - при вызове исключения.
     """
     try:
         with sqlite3.connect(config.data.bot_db) as db:
             cursor = db.cursor()
-            cursor.execute("""INSERT INTO users VALUES (?, ?, ?, ?, ?, ?)""",
-                           [user_id, chat_id, language, last_reminder_id, 0, using_since])
+            cursor.execute("""INSERT INTO users VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                           [user_id, chat_id, language, last_reminder_id, 0, time_zone, using_since])
 
         return True
 

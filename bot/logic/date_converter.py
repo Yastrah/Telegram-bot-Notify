@@ -8,6 +8,41 @@ logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
 
+def utc(date: str, time_zone: str, mode: str = 't'):
+    """
+    Переводит дату и время к uts 00 или из него.\n
+    :param date: дата в виде словаря.
+    :param time_zone: часовой пояс из базы данных.
+    :param mode: 't' перевод к uts 00; 'f' перевод из uts 00.
+    :return: конвертированная дата формата Settings
+    """
+    sign, hours, minutes = time_zone[0], int(time_zone[1:3]), int(time_zone[4:])
+
+    if sign == '±':
+        return date
+
+    uts_date = datetime.datetime(int(date.split()[0].split('/')[2]), int(date.split()[0].split('/')[1]), int(date.split()[0].split('/')[0]),
+                                 int(date.split()[1].split(':')[0]), int(date.split()[1].split(':')[1]))
+    if sign == '+' and mode == 't' or sign == '-' and mode == 'f':
+        uts_date = (uts_date - datetime.timedelta(hours=hours, minutes=minutes)).strftime(Settings.date_format)
+    else:
+        uts_date = (uts_date + datetime.timedelta(hours=hours, minutes=minutes)).strftime(Settings.date_format)
+
+    return uts_date
+
+# def from_uts(date: str, time_zone: str):
+#     sign, hours, minutes = time_zone[0], int(time_zone[1:3]), int(time_zone[4:])
+#
+#     uts_date = datetime.datetime(int(date.split()[0].split('/')[2]), int(date.split()[0].split('/')[1]), int(date.split()[0].split('/')[0]),
+#                                  int(date.split()[0].split(':')[0]), int(date.split()[0].split(':')[1]))
+#     if sign == '+':
+#         uts_date = (uts_date + datetime.timedelta(hours=hours, minutes=minutes)).strftime(Settings.date_format)
+#     else:
+#         uts_date = (uts_date - datetime.timedelta(hours=hours, minutes=minutes)).strftime(Settings.date_format)
+#
+#     return uts_date
+
+
 def date_to_value(date: str) -> int:
     """
     Конвертирует строковый формат даты в численное значение. Чем позже дата, тем больше значение.\n
@@ -105,7 +140,7 @@ def tomorrow(now_date=datetime.datetime.now().strftime(Settings.date_format)) ->
     return dict_in_date(now_date).split()[0]
 
 
-def nearest_day_of_the_week(day: str) -> str:
+def nearest_day_of_the_week(day: str, time_zone: str) -> str:
     """
     Находит дату ближайшего заданного дня недели
     :param day: день недели
@@ -113,13 +148,14 @@ def nearest_day_of_the_week(day: str) -> str:
     """
     days_list = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"]
 
-    date = str(datetime.datetime.today().strftime(Settings.date_format)).split()[0].split('/')
+    # date = str(datetime.datetime.today().strftime(Settings.date_format)).split()[0].split('/')
+    date = utc(datetime.datetime.utcnow().strftime(Settings.date_format), time_zone, mode='f').split()[0].split('/')
 
     for i in range(7):
         if datetime.datetime(int(date[2]), int(date[1]), int(date[0])).weekday() == days_list.index(day):
             return f"{date[0]}/{date[1]}/{date[2]}"
 
-        date = tomorrow(f"{date[0]}/{date[1]}/{date[2]}").split('/')
+        date = (datetime.datetime(int(date[2]), int(date[1]), int(date[0])) + datetime.timedelta(days=1)).strftime("%d/%m/%Y").split('/')
 
     logger.warning("Couldn't find date for {0}!".format(day))
     return None

@@ -1,8 +1,10 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, \
-    InlineKeyboardMarkup, InlineKeyboardButton
+    InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardRemove
 
 from config.configuration import Constants
 
+
+kb_remove = ReplyKeyboardRemove()
 
 kb_main_menu = ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
 kb_main_menu.add(KeyboardButton(Constants.user_commands["list"]["custom_name"]),
@@ -12,10 +14,12 @@ kb_main_menu.add(KeyboardButton(Constants.user_commands["list"]["custom_name"]),
 # kb_main_menu.add(KeyboardButton(Constants.user_commands["delete"]["custom_name"]),
 #                  KeyboardButton(Constants.user_commands["edit"]["custom_name"]))
 
-
 kb_cancel = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
 kb_cancel.add(Constants.user_commands["menu"]["custom_name"])
 
+inline_kb_language = InlineKeyboardMarkup(row_width=2)
+inline_kb_language.add(InlineKeyboardButton('text', callback_data='ru'),
+                       InlineKeyboardButton('text', callback_data='en'))
 
 inline_kb_confirm = InlineKeyboardMarkup(row_width=2)
 inline_kb_confirm.add(InlineKeyboardButton('✅', callback_data='yes'),
@@ -26,6 +30,44 @@ inline_kb_edit_type = InlineKeyboardMarkup(row_width=2)
 inline_kb_edit_type.add(InlineKeyboardButton('🕑 время', callback_data='time'),
                         InlineKeyboardButton('📝 текст', callback_data='text'),
                         InlineKeyboardButton('🕑 время и текст 📝', callback_data='all'))
+
+inline_kb_utc = InlineKeyboardMarkup(row_width=4)
+inline_kb_utc.add(InlineKeyboardButton('-11:00', callback_data='utc -11:00'),
+                  InlineKeyboardButton('-10:00', callback_data='utc -10:00'),
+                  InlineKeyboardButton('-09:30', callback_data='utc -09:30'),
+                  InlineKeyboardButton('-09:00', callback_data='utc -09:00'),
+                  InlineKeyboardButton('-08:00', callback_data='utc -08:00'),
+                  InlineKeyboardButton('-07:00', callback_data='utc -07:00'),
+                  InlineKeyboardButton('-06:00', callback_data='utc -06:00'),
+                  InlineKeyboardButton('-05:00', callback_data='utc -05:00'),
+                  InlineKeyboardButton('-04:00', callback_data='utc -04:00'),
+                  InlineKeyboardButton('-03:30', callback_data='utc -03:30'),
+                  InlineKeyboardButton('-03:00', callback_data='utc -03:00'),
+                  InlineKeyboardButton('-02:00', callback_data='utc -02:00'),
+                  InlineKeyboardButton('-01:00', callback_data='utc -01:00'),
+                  InlineKeyboardButton('00:00', callback_data='utc ±00:00'),
+                  InlineKeyboardButton('+01:00', callback_data='utc +01:00'),
+                  InlineKeyboardButton('+02:00', callback_data='utc +02:00'),
+                  InlineKeyboardButton('+03:00', callback_data='utc +03:00'),
+                  InlineKeyboardButton('+03:30', callback_data='utc +03:30'),
+                  InlineKeyboardButton('+04:00', callback_data='utc +04:00'),
+                  InlineKeyboardButton('+04:30', callback_data='utc +04:30'),
+                  InlineKeyboardButton('+05:00', callback_data='utc +05:00'),
+                  InlineKeyboardButton('+05:30', callback_data='utc +05:30'),
+                  InlineKeyboardButton('+05:45', callback_data='utc +05:45'),
+                  InlineKeyboardButton('+06:00', callback_data='utc +06:00'),
+                  InlineKeyboardButton('+06:30', callback_data='utc +06:30'),
+                  InlineKeyboardButton('+07:00', callback_data='utc +07:00'),
+                  InlineKeyboardButton('+08:00', callback_data='utc +08:00'),
+                  InlineKeyboardButton('+08:45', callback_data='utc +08:45'),
+                  InlineKeyboardButton('+09:00', callback_data='utc +09:00'),
+                  InlineKeyboardButton('+09:30', callback_data='utc +09:30'),
+                  InlineKeyboardButton('+10:00', callback_data='utc +10:00'),
+                  InlineKeyboardButton('+10:00', callback_data='utc +10:30'),
+                  InlineKeyboardButton('+11:00', callback_data='utc +11:00'),
+                  InlineKeyboardButton('+12:00', callback_data='utc +12:00'),
+                  InlineKeyboardButton('+13:00', callback_data='utc +13:00'),
+                  InlineKeyboardButton('+14:00', callback_data='utc +14:00'),)
 
 # greet_kb2 = ReplyKeyboardMarkup(
 #     resize_keyboard=True, one_time_keyboard=True

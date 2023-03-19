@@ -17,6 +17,7 @@ config = load_config("config/bot.ini")
 # timer_stop.set()
 timer_stop = threading.Event()
 
+
 def timer(bot: Bot, loop):
     asyncio.set_event_loop(loop)
 
@@ -30,7 +31,10 @@ def timer(bot: Bot, loop):
 
 
 async def check_for_reminders(bot: Bot):
-    now_date = datetime.datetime.now().strftime(Settings.date_format)
+    # now_date = datetime.datetime.now().strftime(Settings.date_format)
+    now_date = datetime.datetime.utcnow().strftime(Settings.date_format)
+    # cur_date = (datetime.datetime.utcnow() + datetime.timedelta(hours=3)).strftime(Settings.date_format)
+
     data = reminders.get_now(now_date)
 
     if data is None:

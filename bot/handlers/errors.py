@@ -33,7 +33,7 @@ async def error_catched(update: types.Update, exception):
     elif isinstance(exception, BotBlocked):
         logger.warning("User {0} blocked bot!".format(update.message.from_user.id))
         users.remove_user(str(update.message.from_user.id))
-        reminders.remove(str(update.message.chat.id))
+        reminders.remove(chat_id=str(update.message.chat.id))
         logger.debug("User {0} removed from database.".format(update.message.from_user.id))
 
     elif isinstance(exception, CantParseEntities):

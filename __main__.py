@@ -1,7 +1,7 @@
 import logging
 import threading
 import asyncio
-from datetime import datetime
+import datetime
 import sys
 
 from config.configuration import Constants
@@ -14,6 +14,7 @@ from bot.handlers.delete_reminder import register_handlers_delete
 from bot.handlers.list_of_reminders import register_handlers_list
 from bot.handlers.edit_reminder import register_handlers_edit
 from bot.handlers.report import register_handlers_report
+from bot.handlers.settings import register_handlers_settings
 from bot.handlers.messages import register_handlers_messages
 from bot.handlers.errors import register_handlers_error
 
@@ -23,7 +24,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.utils import executor
 from aiogram.types import BotCommand
 
-version = "1.3.2"
+version = "1.3.3"
 
 logger = logging.getLogger(__name__)
 
@@ -38,8 +39,9 @@ def register_all_handlers(dp: Dispatcher):
     register_handlers_delete(dp)
     register_handlers_edit(dp)
     register_handlers_report(dp)
+    register_handlers_settings(dp)
     register_handlers_messages(dp)
-    register_handlers_error(dp)
+    # register_handlers_error(dp)
 
 
 async def set_commands(dispatcher: Dispatcher):
@@ -73,7 +75,7 @@ async def on_shutdown(dispatcher):
 
 
 def main():
-    file_log = logging.FileHandler(filename=f"logs/bot_logs_{datetime.now().strftime('%Y_%m_%d')}.log",
+    file_log = logging.FileHandler(filename=f"logs/bot_logs_{datetime.datetime.now().strftime('%Y_%m_%d')}.log",
                                    encoding="utf-8")
     file_log.setLevel("DEBUG")
 
@@ -97,7 +99,7 @@ VERSION: {0}
 LAST_UPDATE: {1}
 The product is not commercial
 Developed by Yastrah
-GitHub: https://github.com/Yastrah""".format(version, datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+GitHub: https://github.com/Yastrah""".format(version, datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
 
     register_all_handlers(dp)
 
@@ -108,7 +110,23 @@ GitHub: https://github.com/Yastrah""".format(version, datetime.now().strftime("%
 
 
 if __name__ == "__main__":
+    from bot.db import users
+    users.reset()
     main()
+
+    # full_date = "18/03/2023 10:00"
+    # full_date_list = [full_date.split()[0].split('/')[2], full_date.split()[0].split('/')[1], full_date.split()[0].split('/')[0],
+    #                   full_date.split()[1].split(':')[0], full_date.split()[1].split(':')[0]]
+    # full_date_list = list(map(int, full_date_list))
+    # d_obj = datetime.datetime(*full_date_list)
+    # print(d_obj)
+
+    # from config.configuration import Settings
+    # # time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # now_date = datetime.datetime.utcnow()
+    # cur_date = (now_date - datetime.timedelta(hours=3)).strftime(Settings.date_format)
+    # print(cur_date)
+
     # from bot.db import protection
     # protection.checking_for_old_reminders()
 

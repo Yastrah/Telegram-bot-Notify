@@ -1,0 +1,418 @@
+2023-03-19 00:04:30 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 00:04:30
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 00:04:30 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 00:04:30 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 00:04:30 [INFO] __main__: Bot commands have been set.
+2023-03-19 00:04:30 [INFO] __main__: Start schedule process.
+2023-03-19 00:04:30 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 00:04:40 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 00:04:40 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 00:04:40 [WARNING] aiogram: Goodbye!
+2023-03-19 00:04:43 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 00:04:43
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 00:04:43 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 00:04:43 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 00:04:43 [INFO] __main__: Bot commands have been set.
+2023-03-19 00:04:43 [INFO] __main__: Start schedule process.
+2023-03-19 00:04:43 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 00:04:46 [ERROR] bot.handlers.errors: Found exception with user 1990672413!
+	Exception: string indices must be integers
+2023-03-19 00:05:14 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 00:05:14 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 00:05:14 [WARNING] aiogram: Goodbye!
+2023-03-19 00:05:16 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 00:05:16
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 00:05:16 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 00:05:16 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 00:05:16 [INFO] __main__: Bot commands have been set.
+2023-03-19 00:05:16 [INFO] __main__: Start schedule process.
+2023-03-19 00:05:16 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 00:05:17 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-10' coro=<Dispatcher._process_polling_updates() done, defined at D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=TypeError('string indices must be integers')>
+Traceback (most recent call last):
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\bot\handlers\settings.py", line 22, in cmd_settings
+    await message.answer(settings["text"]["ru"].format(bot_name=config.bot.name), parse_mode="HTML",
+TypeError: string indices must be integers
+2023-03-19 00:06:47 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 00:06:47 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 00:06:47 [WARNING] aiogram: Goodbye!
+2023-03-19 00:06:49 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 00:06:49
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 00:06:49 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 00:06:49 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 00:06:50 [INFO] __main__: Bot commands have been set.
+2023-03-19 00:06:50 [INFO] __main__: Start schedule process.
+2023-03-19 00:06:50 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 00:06:56 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-14' coro=<Dispatcher._process_polling_updates() done, defined at D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=TypeError("register_user() missing 1 required positional argument: 'state'")>
+Traceback (most recent call last):
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\bot\handlers\common.py", line 40, in cmd_start
+    await register_user(message)
+TypeError: register_user() missing 1 required positional argument: 'state'
+2023-03-19 00:07:41 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 00:07:41 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 00:07:41 [WARNING] aiogram: Goodbye!
+2023-03-19 00:07:44 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 00:07:44
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 00:07:44 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 00:07:44 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 00:07:44 [INFO] __main__: Bot commands have been set.
+2023-03-19 00:07:44 [INFO] __main__: Start schedule process.
+2023-03-19 00:07:44 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 00:07:46 [WARNING] bot.handlers.common: Registered new user. user_id: 1990672413, chat_id: 1990672413, user_name: yastrah_it
+2023-03-19 00:07:51 [DEBUG] bot.handlers.settings: User 1990672413 set time_zone +03:00.
+2023-03-19 00:08:25 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 00:08:25 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 00:08:25 [WARNING] aiogram: Goodbye!
+2023-03-19 00:38:32 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 00:38:32
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 00:38:32 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 00:38:33 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 00:38:33 [INFO] __main__: Bot commands have been set.
+2023-03-19 00:38:33 [INFO] __main__: Start schedule process.
+2023-03-19 00:38:33 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 00:39:53 [DEBUG] bot.handlers.messages: Created reminder for message: 19 в 0.41 проверка
+	 chat_id: 1990672413, reminder_id: 5, time: 18/03/2023 21:41, text: проверка
+2023-03-19 00:41:10 [INFO] bot.send_reminders: Reminder sent successfully to user 1990672413.
+	Text: проверка
+2023-03-19 00:41:27 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 00:41:27 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 00:41:27 [WARNING] aiogram: Goodbye!
+2023-03-19 17:10:38 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 17:10:38
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 17:10:38 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 17:10:39 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 17:10:39 [INFO] __main__: Bot commands have been set.
+2023-03-19 17:10:39 [INFO] __main__: Start schedule process.
+2023-03-19 17:10:39 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 17:11:05 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-12' coro=<Dispatcher._process_polling_updates() done, defined at D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: '19/03/2023'")>
+Traceback (most recent call last):
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\bot\handlers\messages.py", line 30, in create_reminder
+    date, time, text = search_engine.date_and_time_handling(text, time_zone)
+  File "D:\GitHub\Telegram-bot-Notify\bot\logic\search_engine.py", line 232, in date_and_time_handling
+    date = date_converter.utc(datetime.datetime.utcnow().strftime(Settings.date_format),
+  File "D:\GitHub\Telegram-bot-Notify\bot\logic\date_converter.py", line 22, in utc
+    int(date.split()[0].split(':')[0]), int(date.split()[0].split(':')[1]))
+ValueError: invalid literal for int() with base 10: '19/03/2023'
+2023-03-19 17:11:56 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 17:11:56 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 17:11:56 [WARNING] aiogram: Goodbye!
+2023-03-19 17:11:58 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 17:11:58
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 17:11:59 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 17:11:59 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 17:11:59 [INFO] __main__: Bot commands have been set.
+2023-03-19 17:11:59 [INFO] __main__: Start schedule process.
+2023-03-19 17:11:59 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 17:12:03 [DEBUG] bot.handlers.messages: Trying to create reminder on the past date, chat_id: 1990672413. Date: 19/03/2023 Time: 17:12
+2023-03-19 17:12:28 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 17:12:28 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 17:12:28 [WARNING] aiogram: Goodbye!
+2023-03-19 17:12:30 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 17:12:30
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 17:12:30 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 17:12:30 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 17:12:30 [INFO] __main__: Bot commands have been set.
+2023-03-19 17:12:30 [INFO] __main__: Start schedule process.
+2023-03-19 17:12:30 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 17:12:32 [DEBUG] bot.handlers.messages: Trying to create reminder on the past date, chat_id: 1990672413. Date: 19/03/2023 Time: 17:12
+2023-03-19 17:14:03 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 17:14:03 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 17:14:03 [WARNING] aiogram: Goodbye!
+2023-03-19 17:14:05 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 17:14:05
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 17:14:05 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 17:14:05 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 17:14:05 [INFO] __main__: Bot commands have been set.
+2023-03-19 17:14:05 [INFO] __main__: Start schedule process.
+2023-03-19 17:14:05 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 17:14:09 [DEBUG] bot.handlers.messages: Created reminder for message: сегодня в 17.12 проверка
+	 chat_id: 1990672413, reminder_id: 5, time: 19/03/2023 14:12, uts: +03:00,
+	text: проверка
+2023-03-19 17:14:25 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 17:14:25 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 17:14:25 [WARNING] aiogram: Goodbye!
+2023-03-19 17:14:27 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 17:14:27
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 17:14:27 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 17:14:27 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 17:14:27 [INFO] __main__: Bot commands have been set.
+2023-03-19 17:14:27 [INFO] __main__: Start schedule process.
+2023-03-19 17:14:27 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 17:14:32 [DEBUG] bot.handlers.messages: Created reminder for message: сегодня в 17.15 проверка
+	 chat_id: 1990672413, reminder_id: 7, time: 19/03/2023 14:15, uts: +03:00,
+	text: проверка
+2023-03-19 17:15:13 [INFO] bot.send_reminders: Reminder sent successfully to user 1990672413.
+	Text: проверка
+2023-03-19 17:15:40 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 17:15:40 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 17:15:40 [WARNING] aiogram: Goodbye!
+2023-03-19 17:15:44 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 17:15:44
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 17:15:44 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 17:15:44 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 17:15:44 [INFO] __main__: Bot commands have been set.
+2023-03-19 17:15:44 [INFO] __main__: Start schedule process.
+2023-03-19 17:15:44 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 17:18:56 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 17:18:56 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 17:18:56 [WARNING] aiogram: Goodbye!
+2023-03-19 17:18:58 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 17:18:58
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 17:18:58 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 17:18:58 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 17:18:58 [INFO] __main__: Bot commands have been set.
+2023-03-19 17:18:58 [INFO] __main__: Start schedule process.
+2023-03-19 17:18:58 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 17:19:10 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-11' coro=<Dispatcher._process_polling_updates() done, defined at D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=TypeError("'NoneType' object is not subscriptable")>
+Traceback (most recent call last):
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\bot\handlers\messages.py", line 28, in create_reminder
+    time_zone = users.get_user_data(message.chat.id)[5]
+TypeError: 'NoneType' object is not subscriptable
+2023-03-19 17:19:24 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 17:19:24 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 17:19:24 [WARNING] aiogram: Goodbye!
+2023-03-19 17:20:13 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 17:20:13
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 17:20:14 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 17:20:14 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 17:20:14 [INFO] __main__: Bot commands have been set.
+2023-03-19 17:20:14 [INFO] __main__: Start schedule process.
+2023-03-19 17:20:14 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 17:20:22 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-10' coro=<Dispatcher._process_polling_updates() done, defined at D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=AttributeError("module 'bot.keyboards' has no attribute 'inline_kb_uts'")>
+Traceback (most recent call last):
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\bot\handlers\messages.py", line 29, in create_reminder
+    await register_user(message, state)
+  File "D:\GitHub\Telegram-bot-Notify\bot\handlers\common.py", line 24, in register_user
+    uts_select = await message.answer(Constants.select_uts_message, parse_mode="HTML", reply_markup=keyboards.inline_kb_uts)
+AttributeError: module 'bot.keyboards' has no attribute 'inline_kb_uts'
+2023-03-19 17:20:39 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 17:20:39 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 17:20:39 [WARNING] aiogram: Goodbye!
+2023-03-19 17:20:41 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 17:20:41
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 17:20:41 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 17:20:41 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 17:20:41 [INFO] __main__: Bot commands have been set.
+2023-03-19 17:20:41 [INFO] __main__: Start schedule process.
+2023-03-19 17:20:41 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 17:20:48 [WARNING] bot.handlers.common: Registered new user. user_id: 1990672413, chat_id: 1990672413, user_name: yastrah_it
+2023-03-19 17:20:48 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-10' coro=<Dispatcher._process_polling_updates() done, defined at D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=ValueError("invalid literal for int() with base 10: ''")>
+Traceback (most recent call last):
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\bot\handlers\messages.py", line 33, in create_reminder
+    date, time, text = search_engine.date_and_time_handling(text, time_zone)
+  File "D:\GitHub\Telegram-bot-Notify\bot\logic\search_engine.py", line 232, in date_and_time_handling
+    date = date_converter.utc(datetime.datetime.utcnow().strftime(Settings.date_format),
+  File "D:\GitHub\Telegram-bot-Notify\bot\logic\date_converter.py", line 19, in utc
+    sign, hours, minutes = time_zone[0], int(time_zone[1:3]), int(time_zone[4:])
+ValueError: invalid literal for int() with base 10: ''
+2023-03-19 17:24:48 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 17:24:48 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 17:24:48 [WARNING] aiogram: Goodbye!
+2023-03-19 17:24:51 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 17:24:51
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 17:24:51 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 17:24:51 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 17:24:52 [INFO] __main__: Bot commands have been set.
+2023-03-19 17:24:52 [INFO] __main__: Start schedule process.
+2023-03-19 17:24:52 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 17:25:40 [WARNING] bot.handlers.common: Registered new user. user_id: 1990672413, chat_id: 1990672413, user_name: yastrah_it
+2023-03-19 17:25:40 [WARNING] bot.handlers.common: Registered new user. user_id: 1428079647, chat_id: 1428079647, user_name: sh1z1r
+2023-03-19 17:25:49 [DEBUG] bot.handlers.messages: Created reminder for message: сегодня в 17.12 проверка
+	 chat_id: 1990672413, reminder_id: 7, time: 19/03/2023 17:12, uts: ±00:00,
+	text: проверка
+2023-03-19 17:28:07 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 17:28:07 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 17:28:07 [WARNING] aiogram: Goodbye!
+2023-03-19 17:28:10 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 17:28:10
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 17:28:10 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 17:28:10 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 17:28:10 [INFO] __main__: Bot commands have been set.
+2023-03-19 17:28:10 [INFO] __main__: Start schedule process.
+2023-03-19 17:28:10 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 17:28:14 [WARNING] bot.handlers.common: Registered new user. user_id: 1990672413, chat_id: 1990672413, user_name: yastrah_it
+2023-03-19 17:28:18 [DEBUG] bot.handlers.settings: User 1990672413 set time_zone +03:00.
+2023-03-19 17:28:23 [DEBUG] bot.handlers.messages: Trying to create reminder on the past date, chat_id: 1990672413. Date: 19/03/2023 Time: 17:12
+2023-03-19 17:28:31 [DEBUG] bot.handlers.messages: Created reminder for message: сегодня в 17.29 проверка
+	 chat_id: 1990672413, reminder_id: 8, time: 19/03/2023 14:29, uts: +03:00,
+	text: проверка
+2023-03-19 17:28:55 [WARNING] bot.handlers.common: Registered new user. user_id: 1428079647, chat_id: 1428079647, user_name: sh1z1r
+2023-03-19 17:29:03 [DEBUG] bot.handlers.settings: User 1428079647 set time_zone +02:00.
+2023-03-19 17:29:04 [INFO] bot.send_reminders: Reminder sent successfully to user 1990672413.
+	Text: проверка
+2023-03-19 17:31:00 [DEBUG] bot.handlers.messages: Created reminder for message: Сегодня в 16:35 покакать
+	 chat_id: 1428079647, reminder_id: 1, time: 19/03/2023 14:35, uts: +02:00,
+	text: покакать
+2023-03-19 17:35:02 [INFO] bot.send_reminders: Reminder sent successfully to user 1428079647.
+	Text: покакать
+2023-03-19 17:37:30 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 17:37:30 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 17:37:30 [WARNING] aiogram: Goodbye!
+2023-03-19 17:42:17 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.3
+LAST_UPDATE: 2023-03-19 17:42:17
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-19 17:42:17 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-19 17:42:17 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-19 17:42:17 [INFO] __main__: Bot commands have been set.
+2023-03-19 17:42:17 [INFO] __main__: Start schedule process.
+2023-03-19 17:42:17 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-19 17:42:54 [WARNING] bot.handlers.common: Registered new user. user_id: 1428079647, chat_id: 1428079647, user_name: sh1z1r
+2023-03-19 17:43:22 [WARNING] bot.handlers.common: Registered new user. user_id: 1990672413, chat_id: 1990672413, user_name: yastrah_it
+2023-03-19 17:43:24 [DEBUG] bot.handlers.settings: User 1428079647 set time_zone +02:00.
+2023-03-19 17:51:59 [WARNING] __main__: Shutdown dispatcher!!!
+2023-03-19 17:51:59 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-19 17:51:59 [WARNING] aiogram: Goodbye!

@@ -11,7 +11,6 @@ from bot.logic import date_converter
 from bot.db import reminders, users
 from bot import keyboards
 
-
 logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
@@ -57,14 +56,16 @@ async def cmd_undo(message: types.Message, state: FSMContext):
     if reminder:
         reminder = reminder[0]
     else:
-        logger.error("Last_reminder_id has given, but there is no such reminder. User_id: {0}".format(message.from_user.id))
+        logger.error(
+            "Last_reminder_id has given, but there is no such reminder. User_id: {0}".format(message.from_user.id))
         users.update_last_reminder(message.chat.id, 0)
         return await message.answer("⚡️ Последнее созданное напоминание удалено или уже отправлено")
 
-    question = await message.answer(f"Дата: <b>{date_converter.get_day_of_the_week(reminder[4].split()[0])} {reminder[4]}</b>\n"
-                         f"Id: <b>{reminder[3]}</b>\n"
-                         f"Текст: <b>{reminder[5]}</b>\n"
-                         f"Удалить напоминание?", parse_mode="HTML", reply_markup=keyboards.inline_kb_confirm)
+    question = await message.answer(
+        f"Дата: <b>{date_converter.get_day_of_the_week(reminder[4].split()[0])} {reminder[4]}</b>\n"
+        f"Id: <b>{reminder[3]}</b>\n"
+        f"Текст: <b>{reminder[5]}</b>\n"
+        f"Удалить напоминание?", parse_mode="HTML", reply_markup=keyboards.inline_kb_confirm)
     await state.update_data(message_id=question.message_id)
 
 
@@ -80,11 +81,14 @@ async def id_received(message: types.Message, state: FSMContext):
     await DeleteReminder.next()
 
     reminder = [el for el in reminders.get_user_reminders(message.chat.id) if el[3] == int(message.text)][0]
+    time_zone = users.get_user_data(message.chat.id)[5]
+    date = date_converter.utc(reminder[4], time_zone, mode='f')
 
-    question = await message.answer(f"Дата: <b>{date_converter.get_day_of_the_week(reminder[4].split()[0])} {reminder[4]}</b>\n"
-                         f"Id: <b>{reminder[3]}</b>\n"
-                         f"Текст: <b>{reminder[5]}</b>\n"
-                         f"Удалить напоминание?", parse_mode="HTML", reply_markup=keyboards.inline_kb_confirm)
+    question = await message.answer(
+        f"Дата: <b>{date_converter.get_day_of_the_week(date.split()[0])} {date}</b>\n"
+        f"Id: <b>{reminder[3]}</b>\n"
+        f"Текст: <b>{reminder[5]}</b>\n"
+        f"Удалить напоминание?", parse_mode="HTML", reply_markup=keyboards.inline_kb_confirm)
     await state.update_data(message_id=question.message_id)
 
 

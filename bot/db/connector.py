@@ -32,6 +32,7 @@ def on_start():
                            language VARCHAR NOT NULL,
                            last_reminder_id INT32 NOT NULL,
                            total_reminders INT64 NOT NULL,
+                           time_zone VARCHAR(6) NOT NULL,
                            using_since VARCHAR(10) NOT NULL
                            )""")
 

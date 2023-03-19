@@ -17,22 +17,27 @@ logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
 
-async def register_user(message: types.Message):
+async def register_user(message: types.Message, state: FSMContext):
     now_date = datetime.datetime.now().strftime(Settings.date_format).split()[0]
     # Добавить выбор языка
-    users.add_user(str(message.from_user.id), str(message.chat.id), 'ru', 0, now_date)
+    await message.answer(Constants.registration_message, parse_mode="HTML", reply_markup=keyboards.kb_remove)
+    uts_select = await message.answer(Constants.select_uts_message, parse_mode="HTML", reply_markup=keyboards.inline_kb_utc)
+
+    await state.update_data(message_id=uts_select.message_id)
+
+    users.add_user(str(message.from_user.id), str(message.chat.id), 'ru', 0, "±00:00", now_date)
     logger.warning("Registered new user. user_id: {0}, chat_id: {1}, user_name: {2}".format(message.from_user.id,
                                                                                             message.chat.id,
                                                                                             message.from_user.username))
 
 
-async def cmd_start(message: types.Message):
+async def cmd_start(message: types.Message, state: FSMContext):
     start = Constants.user_commands.get("start")
     await message.answer(start["text"]["ru"].format(bot_name=config.bot.name), parse_mode="HTML",
                          reply_markup=keyboards.kb_main_menu)
 
     if not users.get_user_data(str(message.chat.id)):
-        await register_user(message)
+        await register_user(message, state)
 
 
 async def cmd_help(message: types.Message):

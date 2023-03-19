@@ -3,7 +3,7 @@ import logging
 from config.config_reader import load_config
 from config.configuration import Constants, Settings
 from bot.logic import date_converter
-from bot.db import reminders
+from bot.db import reminders, users
 from bot import keyboards
 
 from aiogram import Dispatcher, types
@@ -27,7 +27,10 @@ async def cmd_reminders_list(message: types.Message, state: FSMContext):
         reminders_list = "<b>🔻Список активных напоминаний🔻</b>\n\n"  # ➖ 〰️ 🔻
 
         for row in data:
-            reminders_list += f"Дата: <b>{date_converter.get_day_of_the_week(row[4].split()[0])} {row[4]}</b>\n" \
+            time_zone = users.get_user_data(message.chat.id)[5]
+            date = date_converter.utc(row[4], time_zone, mode='f')
+
+            reminders_list += f"Дата: <b>{date_converter.get_day_of_the_week(date.split()[0])} {date}</b>\n" \
                               f"Id: <b>{row[3]}</b>\n" \
                               f"Текст: <b>{row[5]}</b>\n\n"
 

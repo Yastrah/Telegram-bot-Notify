@@ -9,9 +9,8 @@ from aiogram.dispatcher.filters import Text
 from config.config_reader import load_config
 from config.configuration import Constants, Settings
 from bot.logic import date_converter, search_engine
-from bot.db import reminders
+from bot.db import reminders, users
 from bot import keyboards
-
 
 logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
@@ -48,9 +47,11 @@ async def id_received(message: types.Message, state: FSMContext):
     await EditReminder.next()
 
     reminder = [el for el in reminders.get_user_reminders(message.chat.id) if el[3] == int(message.text)][0]
+    time_zone = users.get_user_data(message.chat.id)[5]
+    date = date_converter.utc(reminder[4], time_zone, mode='f')
 
     question = await message.answer(
-        f"Дата: <b>{date_converter.get_day_of_the_week(reminder[4].split()[0])} {reminder[4]}</b>\n"
+        f"Дата: <b>{date_converter.get_day_of_the_week(date.split()[0])} {date}</b>\n"
         f"Id: <b>{reminder[3]}</b>\n"
         f"Текст: <b>{reminder[5]}</b>\n"
         f"Что вы хотите изменить?", parse_mode="HTML", reply_markup=keyboards.inline_kb_edit_type)
@@ -87,26 +88,63 @@ async def edit_all(call: types.CallbackQuery, state: FSMContext):
 async def edit_reminder(message: types.Message, state: FSMContext):
     data = await state.get_data()
     if data["edit_type"] == "time":
+        time_zone = users.get_user_data(message.chat.id)[5]
         text = " ".join(message.text.split())
-        date, time, text = search_engine.date_and_time_handling(text)
-        full_date = " ".join([date, time])
+        date, time, text = search_engine.date_and_time_handling(text, time_zone)
+
+        # обработка ошибок с датой
+        if date is None:
+            logger.debug("Reminder handling: can not find date in message: {0}".format(message.text))
+            return await message.answer("Не удалось обработать дату напоминания!")
 
         # проверка корректности даты
         if not date_converter.get_day_of_the_week(date):
             logger.debug("Wrong date input, chat_id: {0}".format(message.chat.id))
             return await message.answer("Некорректная дата!")
 
+        # обработка ошибок со временем
+        if time is None:
+            logger.debug("Reminder handling: can not find time in message: {0}".format(message.text))
+            return await message.answer(text)
+
+        cur_date = " ".join([date, time])
+
+        # переход к UTS 00:00
+        time_zone = users.get_user_data(message.chat.id)[5]
+        utc_date = date_converter.utc(cur_date, time_zone)
+
         # проверка на попытку создать напоминание на прошедшее время
-        now_date = datetime.datetime.now().strftime(Settings.date_format)
-        if date_converter.date_to_value(" ".join([date, time])) <= date_converter.date_to_value(now_date):
+        now_date = datetime.datetime.utcnow().strftime(Settings.date_format)
+        if date_converter.date_to_value(utc_date) <= date_converter.date_to_value(now_date):
             logger.debug("Trying to update reminder date on the past, chat_id: {0}".format(message.chat.id))
             return await message.answer("Вы пытаетесь изменить время напоминания на прошедшее!")
 
-        if reminders.edit_time(message.chat.id, data["reminder_id"], full_date):
+        if reminders.edit_time(message.chat.id, data["reminder_id"], utc_date):
             logger.debug("Successfully updated reminder date with chat_id: {0}, reminder_id: {1}. New date: {2}".format(
-                message.chat.id, data["reminder_id"], full_date))
+                message.chat.id, data["reminder_id"], utc_date))
             await state.finish()
             return await message.answer("Время напоминания успешно изменено", reply_markup=keyboards.kb_main_menu)
+
+        # text = " ".join(message.text.split())
+        # date, time, text = search_engine.date_and_time_handling(text)
+        # full_date = " ".join([date, time])
+        #
+        # # проверка корректности даты
+        # if not date_converter.get_day_of_the_week(date):
+        #     logger.debug("Wrong date input, chat_id: {0}".format(message.chat.id))
+        #     return await message.answer("Некорректная дата!")
+        #
+        # # проверка на попытку создать напоминание на прошедшее время
+        # now_date = datetime.datetime.now().strftime(Settings.date_format)
+        # if date_converter.date_to_value(" ".join([date, time])) <= date_converter.date_to_value(now_date):
+        #     logger.debug("Trying to update reminder date on the past, chat_id: {0}".format(message.chat.id))
+        #     return await message.answer("Вы пытаетесь изменить время напоминания на прошедшее!")
+        #
+        # if reminders.edit_time(message.chat.id, data["reminder_id"], full_date):
+        #     logger.debug("Successfully updated reminder date with chat_id: {0}, reminder_id: {1}. New date: {2}".format(
+        #         message.chat.id, data["reminder_id"], full_date))
+        #     await state.finish()
+        #     return await message.answer("Время напоминания успешно изменено", reply_markup=keyboards.kb_main_menu)
 
         else:
             logger.error("Update date error, chat_id: {0}, text: {1}!".format(message.chat.id, message.text))
@@ -126,27 +164,48 @@ async def edit_reminder(message: types.Message, state: FSMContext):
             return await message.answer("Возникла какая-то ошибка!", reply_markup=keyboards.kb_main_menu)
 
     elif data["edit_type"] == "all":
+        time_zone = users.get_user_data(message.chat.id)[5]
         text = " ".join(message.text.split())
-        date, time, text = search_engine.date_and_time_handling(text)
-        full_date = " ".join([date, time])
+        date, time, text = search_engine.date_and_time_handling(text, time_zone)
+
+        # обработка ошибок с датой
+        if date is None:
+            logger.debug("Reminder handling: can not find date in message: {0}".format(message.text))
+            return await message.answer("Не удалось обработать дату напоминания!")
 
         # проверка корректности даты
         if not date_converter.get_day_of_the_week(date):
             logger.debug("Wrong date input, chat_id: {0}".format(message.chat.id))
             return await message.answer("Некорректная дата!")
 
+        # обработка ошибок со временем
+        if time is None:
+            logger.debug("Reminder handling: can not find time in message: {0}".format(message.text))
+            return await message.answer(text)
+
+        cur_date = " ".join([date, time])
+
+        # переход к UTS 00:00
+        time_zone = users.get_user_data(message.chat.id)[5]
+        utc_date = date_converter.utc(cur_date, time_zone)
+
         # проверка на попытку создать напоминание на прошедшее время
-        now_date = datetime.datetime.now().strftime(Settings.date_format)
-        if date_converter.date_to_value(" ".join([date, time])) <= date_converter.date_to_value(now_date):
+        now_date = datetime.datetime.utcnow().strftime(Settings.date_format)
+        if date_converter.date_to_value(utc_date) <= date_converter.date_to_value(now_date):
             logger.debug("Trying to update reminder date on the past, chat_id: {0}".format(message.chat.id))
             return await message.answer("Вы пытаетесь изменить время напоминания на прошедшее!")
 
-        if reminders.edit_all(message.chat.id, data["reminder_id"], full_date, text):
-            logger.debug("Successfully updated reminder date and text with chat_id: {0}, reminder_id: {1}. "
-                         "New date: {2}; new text {3}".format(
-                message.chat.id, data["reminder_id"], full_date, text))
+        if reminders.edit_time(message.chat.id, data["reminder_id"], utc_date):
+            logger.debug("Successfully updated reminder date with chat_id: {0}, reminder_id: {1}. New date: {2}".format(
+                message.chat.id, data["reminder_id"], utc_date))
             await state.finish()
             return await message.answer("Время напоминания успешно изменено", reply_markup=keyboards.kb_main_menu)
+
+        if reminders.edit_all(message.chat.id, data["reminder_id"], utc_date, text):
+            logger.debug("Successfully updated reminder date and text with chat_id: {0}, reminder_id: {1}. "
+                         "New date: {2}; new text {3}".format(message.chat.id, data["reminder_id"], utc_date, text))
+            await state.finish()
+            return await message.answer("Напоминания успешно изменено", reply_markup=keyboards.kb_main_menu)
 
         else:
             logger.error("Update text error, chat_id: {0}, text: {1}!".format(message.chat.id, message.text))
