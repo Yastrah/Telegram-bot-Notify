@@ -99,9 +99,9 @@ class Constants(object):
             "description": "пожаловаться на ошибку / предложить доработки",
             "what_to_do": {"ru": "Введите, как можно более подробный, текст обращения:",
                            "en": None},
-            "report_saved": {"ru": "Ваше сообщение успешно сохранено", "en": None},
+            "report_saved": {"ru": "Ваше сообщение успешно сохранено с id <b>{report_id}</b>", "en": None},
             "too_many_reports": {"ru": "Вы за сегодня уже отправили максимальное допустимое число жалоб/предложений "
-                                       "({max_reports_per_day})!", "en": None},
+                                       "<b>({max_reports_per_day})</b>!", "en": None},
         },
     }
 

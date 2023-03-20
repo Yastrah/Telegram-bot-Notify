@@ -7,7 +7,6 @@ from bot.db import reminders, users
 
 from aiogram import Dispatcher, types
 
-
 logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
@@ -35,6 +34,9 @@ async def cmd_send_all(message: types.Message):
         logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
         return
 
+    if len(message.text.split()) == 1:
+        return await message.answer("Required argument not found!")
+
     text = ' '.join(message.text.split()[1:])
 
     for user in users.read():
@@ -42,17 +44,34 @@ async def cmd_send_all(message: types.Message):
     logger.debug("Admin {0} sent global message '{1}'.".format(message.from_user.id, text))
 
 
-async def cmd_reset_data_base(message: types.Message):
+async def cmd_reset_table(message: types.Message):
     if message.from_user.id not in config.bot.admin_id:
         logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
         return
 
-    reminders_count = len(reminders.read())
-    reminders.reset()
-    logger.warning("Database was reset!")
+    if len(message.text.split()) == 1:
+        return await message.answer("Required argument not found!")
 
-    await message.answer(f"Database was reset. Deleted <b>{reminders_count}</b> reminders.", parse_mode="HTML")
-    logger.warning("Admin {0} reset database.".format(message.from_user.id))
+    table = message.text.split()[1].lower()
+
+    if table == 'users':
+        users_count = len(users.read())
+        users.reset()
+        logger.warning("Table users was reset!")
+
+        await message.answer(f"Table users was reset. Deleted <b>{users_count}</b> users.", parse_mode="HTML")
+        logger.warning("Admin {0} RESET table users!.".format(message.from_user.id))
+
+    elif table == 'reminders':
+        reminders_count = len(reminders.read())
+        reminders.reset()
+        logger.warning("Table reminders was reset!")
+
+        await message.answer(f"Table reminders was reset. Deleted <b>{reminders_count}</b> reminders.", parse_mode="HTML")
+        logger.warning("Admin {0} RESET table reminders!.".format(message.from_user.id))
+
+    else:
+        return await message.answer("There is no such table!")
 
 
 async def cmd_show_reports(message: types.Message):
@@ -61,6 +80,7 @@ async def cmd_show_reports(message: types.Message):
         return
 
     with open("data/reports.txt", mode='r', encoding="utf-8") as file:
+        file.readline()
         reports_count = int(file.readline())
         data = file.readlines()
 
@@ -72,7 +92,7 @@ async def cmd_show_reports(message: types.Message):
         text += f"{row.split(': ')[0]}:\n<b>{': '.join(row.split(': ')[1:])}</b>\n"
 
     await message.answer(text, parse_mode="HTML")
-    logger.debug("Admin {0} got all reports.".format(message.from_user.id))
+    logger.debug("Admin {0} got all active reports.".format(message.from_user.id))
 
 
 async def cmd_archive_reports(message: types.Message):
@@ -81,6 +101,7 @@ async def cmd_archive_reports(message: types.Message):
         return
 
     with open("data/reports.txt", mode='r', encoding="utf-8") as file:
+        archived_reports_count = int(file.readline())
         reports_count = int(file.readline())
         data = file.read()
 
@@ -88,6 +109,7 @@ async def cmd_archive_reports(message: types.Message):
         return await message.answer("There are no reports to archive!")
 
     with open("data/reports.txt", mode='w', encoding="utf-8") as file:
+        file.write(f'{archived_reports_count + reports_count}\n')
         file.write('0\n')
 
     with open("data/archived_reports.txt", mode='a', encoding="utf-8") as file:
@@ -112,6 +134,9 @@ async def cmd_block_user(message: types.Message):
         logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
         return
 
+    if len(message.text.split()) == 1:
+        return await message.answer("Required argument not found!")
+
     user_id = message.text.split()[1]
 
     if int(user_id) in Settings.blocked_users:
@@ -130,6 +155,9 @@ async def cmd_unblock_user(message: types.Message):
     if message.from_user.id not in config.bot.admin_id:
         logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
         return
+
+    if len(message.text.split()) == 1:
+        return await message.answer("Required argument not found!")
 
     user_id = message.text.split()[1]
 
@@ -154,7 +182,7 @@ async def cmd_unblock_user(message: types.Message):
 def register_handlers_admin(dp: Dispatcher):
     dp.register_message_handler(cmd_show_users, commands="show_users", state="*")
     dp.register_message_handler(cmd_send_all, commands="send_all", state="*")
-    dp.register_message_handler(cmd_reset_data_base, commands="reset_data", state="*")
+    dp.register_message_handler(cmd_reset_table, commands="reset", state="*")
     dp.register_message_handler(cmd_show_reports, commands="show_reports", state="*")
     dp.register_message_handler(cmd_archive_reports, commands="archive_reports", state="*")
     dp.register_message_handler(cmd_show_blocked_users, commands="show_blocked_users", state="*")

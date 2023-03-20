@@ -24,7 +24,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.utils import executor
 from aiogram.types import BotCommand
 
-version = "1.3.3"
+version = "1.3.4"
 
 logger = logging.getLogger(__name__)
 

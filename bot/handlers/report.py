@@ -27,6 +27,7 @@ async def cmd_report(message: types.Message, state: FSMContext):
 
     with open("data/reports.txt", mode='r', encoding="utf-8") as file:
         file.readline()
+        file.readline()
         data = file.read()
 
     if data:
@@ -39,29 +40,35 @@ async def cmd_report(message: types.Message, state: FSMContext):
                 max_reports_per_day=Settings.max_reports_per_day))
 
     await ReportAppeal.waiting_for_text.set()
-    return await message.answer(Constants.user_commands["report"]["what_to_do"]['ru'], reply_markup=keyboards.kb_cancel)
+    return await message.answer(Constants.user_commands["report"]["what_to_do"]['ru'],
+                                parse_mode="HTML", reply_markup=keyboards.kb_cancel)
 
 
 async def text_received(message: types.Message, state: FSMContext):
     with open("data/reports.txt", mode='r', encoding="utf-8") as file:
+        archived_reports_count = int(file.readline())
         reports_count = int(file.readline())
         data = file.readlines()
 
     now_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    report = f"{now_date} [report] id={message.from_user.id}_{reports_count+1}: {message.text}\n"
+    report = f"{now_date} [report] id={message.from_user.id}_{reports_count+archived_reports_count+1}: {message.text}\n"
 
     with open("data/reports.txt", mode='w', encoding="utf-8") as file:
-        file.writelines([f"{reports_count+1}\n"]+data+[report])
+        file.writelines([f"{archived_reports_count}\n", f"{reports_count+1}\n"]+data+[report])
 
-    logger.warning(f"Appeal received from report_id: {message.from_user.id}_{reports_count+1}")
+    logger.warning(f"Appeal received, report_id: {message.from_user.id}_{reports_count+archived_reports_count+1}")
 
     if data:
         if data[-1].split()[0] != now_date.split()[0]:
             for admin in config.bot.admin_id:
+                if admin == message.from_user.id:
+                    continue
                 await message.bot.send_message(chat_id=admin, text="Appeal received")
 
     await state.finish()
-    return await message.answer(Constants.user_commands["report"]["report_saved"]['ru'], reply_markup=keyboards.kb_main_menu)
+    return await message.answer(Constants.user_commands["report"]["report_saved"]['ru'].format(
+        report_id=f"{message.from_user.id}_{reports_count+archived_reports_count+1}"), parse_mode="HTML",
+        reply_markup=keyboards.kb_main_menu)
 
 
 def register_handlers_report(dp: Dispatcher):
