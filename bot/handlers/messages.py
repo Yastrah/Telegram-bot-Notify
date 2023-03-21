@@ -1,7 +1,7 @@
 import datetime
 import logging
 
-from config.configuration import Settings
+from config.configuration import Settings, Constants
 from config.config_reader import load_config
 
 from bot.logic import date_converter, search_engine
@@ -29,6 +29,9 @@ async def create_reminder(message: types.Message, state: FSMContext):
         return await register_user(message, state)
 
     time_zone = users.get_user_data(message.chat.id)[5]
+    if time_zone == "not_set":
+        return await message.answer(Constants.settings_text["please_select_utc"]["ru"], parse_mode="HTML",
+                                    reply_markup=keyboards.kb_main_menu)
     text = " ".join(message.text.split())
     date, time, text = search_engine.date_and_time_handling(text, time_zone)
 

@@ -24,7 +24,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.utils import executor
 from aiogram.types import BotCommand
 
-version = "1.3.4"
+version = "1.3.5"
 
 logger = logging.getLogger(__name__)
 
@@ -70,7 +70,7 @@ async def on_startup(dispatcher):
 
 
 async def on_shutdown(dispatcher):
-    logger.warning("Shutdown dispatcher!!!")
+    logger.warning("Shutdown dispatcher!")
     pass
 
 
@@ -110,8 +110,8 @@ GitHub: https://github.com/Yastrah""".format(version, datetime.datetime.now().st
 
 
 if __name__ == "__main__":
-    from bot.db import users
-    users.reset()
+    # from bot.db import users
+    # users.reset()
     main()
 
     # full_date = "18/03/2023 10:00"

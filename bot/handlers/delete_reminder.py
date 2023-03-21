@@ -59,10 +59,16 @@ async def cmd_undo(message: types.Message, state: FSMContext):
         logger.error(
             "Last_reminder_id has given, but there is no such reminder. User_id: {0}".format(message.from_user.id))
         users.update_last_reminder(message.chat.id, 0)
-        return await message.answer("⚡️ Последнее созданное напоминание удалено или уже отправлено")
+        return await message.answer("⚡️Последнее созданное напоминание удалено или уже отправлено")
+
+    time_zone = users.get_user_data(message.chat.id)[5]
+    if time_zone == "not_set":
+        return await message.answer(Constants.settings_text["please_select_utc"]["ru"], parse_mode="HTML",
+                                    reply_markup=keyboards.kb_main_menu)
+    date = date_converter.utc(reminder[4], time_zone, mode='f')
 
     question = await message.answer(
-        f"Дата: <b>{date_converter.get_day_of_the_week(reminder[4].split()[0])} {reminder[4]}</b>\n"
+        f"Дата: <b>{date_converter.get_day_of_the_week(date.split()[0])} {date}</b>\n"
         f"Id: <b>{reminder[3]}</b>\n"
         f"Текст: <b>{reminder[5]}</b>\n"
         f"Удалить напоминание?", parse_mode="HTML", reply_markup=keyboards.inline_kb_confirm)
@@ -82,6 +88,9 @@ async def id_received(message: types.Message, state: FSMContext):
 
     reminder = [el for el in reminders.get_user_reminders(message.chat.id) if el[3] == int(message.text)][0]
     time_zone = users.get_user_data(message.chat.id)[5]
+    if time_zone == "not_set":
+        return await message.answer(Constants.settings_text["please_select_utc"]["ru"], parse_mode="HTML",
+                                    reply_markup=keyboards.kb_main_menu)
     date = date_converter.utc(reminder[4], time_zone, mode='f')
 
     question = await message.answer(

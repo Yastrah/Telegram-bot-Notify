@@ -48,6 +48,9 @@ async def id_received(message: types.Message, state: FSMContext):
 
     reminder = [el for el in reminders.get_user_reminders(message.chat.id) if el[3] == int(message.text)][0]
     time_zone = users.get_user_data(message.chat.id)[5]
+    if time_zone == "not_set":
+        return await message.answer(Constants.settings_text["please_select_utc"]["ru"], parse_mode="HTML",
+                                    reply_markup=keyboards.kb_main_menu)
     date = date_converter.utc(reminder[4], time_zone, mode='f')
 
     question = await message.answer(

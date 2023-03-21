@@ -20,6 +20,10 @@ async def cmd_reminders_list(message: types.Message, state: FSMContext):
     if message.from_user.id in Settings.blocked_users:
         return await message.answer("🔒 К сожалению вы заблокированны!")
 
+    time_zone = users.get_user_data(message.chat.id)[5]
+    if time_zone == "not_set":
+        return await message.answer(Constants.settings_text["please_select_utc"]["ru"], parse_mode="HTML",
+                                    reply_markup=keyboards.kb_main_menu)
     data = reminders.get_user_reminders(message.chat.id)
 
     if data:
@@ -27,7 +31,6 @@ async def cmd_reminders_list(message: types.Message, state: FSMContext):
         reminders_list = "<b>🔻Список активных напоминаний🔻</b>\n\n"  # ➖ 〰️ 🔻
 
         for row in data:
-            time_zone = users.get_user_data(message.chat.id)[5]
             date = date_converter.utc(row[4], time_zone, mode='f')
 
             reminders_list += f"Дата: <b>{date_converter.get_day_of_the_week(date.split()[0])} {date}</b>\n" \

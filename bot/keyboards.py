@@ -31,17 +31,18 @@ inline_kb_edit_type.add(InlineKeyboardButton('🕑 время', callback_data='t
                         InlineKeyboardButton('📝 текст', callback_data='text'),
                         InlineKeyboardButton('🕑 время и текст 📝', callback_data='all'))
 
+inline_kb_edit_settings = InlineKeyboardMarkup(row_width=2)
+inline_kb_edit_settings.add(InlineKeyboardButton('часовой пояс', callback_data='edit_time_zone'))
+
 inline_kb_utc = InlineKeyboardMarkup(row_width=4)
 inline_kb_utc.add(InlineKeyboardButton('-11:00', callback_data='utc -11:00'),
                   InlineKeyboardButton('-10:00', callback_data='utc -10:00'),
-                  InlineKeyboardButton('-09:30', callback_data='utc -09:30'),
                   InlineKeyboardButton('-09:00', callback_data='utc -09:00'),
                   InlineKeyboardButton('-08:00', callback_data='utc -08:00'),
                   InlineKeyboardButton('-07:00', callback_data='utc -07:00'),
                   InlineKeyboardButton('-06:00', callback_data='utc -06:00'),
                   InlineKeyboardButton('-05:00', callback_data='utc -05:00'),
                   InlineKeyboardButton('-04:00', callback_data='utc -04:00'),
-                  InlineKeyboardButton('-03:30', callback_data='utc -03:30'),
                   InlineKeyboardButton('-03:00', callback_data='utc -03:00'),
                   InlineKeyboardButton('-02:00', callback_data='utc -02:00'),
                   InlineKeyboardButton('-01:00', callback_data='utc -01:00'),
@@ -51,17 +52,11 @@ inline_kb_utc.add(InlineKeyboardButton('-11:00', callback_data='utc -11:00'),
                   InlineKeyboardButton('+03:00', callback_data='utc +03:00'),
                   InlineKeyboardButton('+03:30', callback_data='utc +03:30'),
                   InlineKeyboardButton('+04:00', callback_data='utc +04:00'),
-                  InlineKeyboardButton('+04:30', callback_data='utc +04:30'),
                   InlineKeyboardButton('+05:00', callback_data='utc +05:00'),
-                  InlineKeyboardButton('+05:30', callback_data='utc +05:30'),
-                  InlineKeyboardButton('+05:45', callback_data='utc +05:45'),
                   InlineKeyboardButton('+06:00', callback_data='utc +06:00'),
-                  InlineKeyboardButton('+06:30', callback_data='utc +06:30'),
                   InlineKeyboardButton('+07:00', callback_data='utc +07:00'),
                   InlineKeyboardButton('+08:00', callback_data='utc +08:00'),
-                  InlineKeyboardButton('+08:45', callback_data='utc +08:45'),
                   InlineKeyboardButton('+09:00', callback_data='utc +09:00'),
-                  InlineKeyboardButton('+09:30', callback_data='utc +09:30'),
                   InlineKeyboardButton('+10:00', callback_data='utc +10:00'),
                   InlineKeyboardButton('+10:00', callback_data='utc +10:30'),
                   InlineKeyboardButton('+11:00', callback_data='utc +11:00'),
