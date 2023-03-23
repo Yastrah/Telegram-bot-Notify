@@ -19,12 +19,13 @@ config = load_config("config/bot.ini")
 
 
 async def cmd_start(message: types.Message, state: FSMContext):
+    if not users.get_user_data(str(message.chat.id)):
+        return await register_user(message, state)
+
     start = Constants.user_commands.get("start")
     await message.answer(start["text"]["ru"].format(bot_name=config.bot.name), parse_mode="HTML",
                          reply_markup=keyboards.kb_main_menu)
 
-    if not users.get_user_data(str(message.chat.id)):
-        await register_user(message, state)
 
 
 async def cmd_help(message: types.Message):

@@ -3,10 +3,12 @@ import threading
 import asyncio
 import datetime
 import sys
+import os
 
+from dotenv import load_dotenv, find_dotenv
 from config.configuration import Constants
-from config.config_reader import load_config
 
+from bot.db.protection import checking_for_old_reminders
 from bot.send_reminders import timer
 from bot.handlers.admin import register_handlers_admin
 from bot.handlers.common import register_handlers_common
@@ -24,7 +26,9 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.utils import executor
 from aiogram.types import BotCommand
 
-version = "1.3.5"
+
+version = "1.3.6"
+load_dotenv(find_dotenv())
 
 logger = logging.getLogger(__name__)
 
@@ -57,9 +61,10 @@ async def set_commands(dispatcher: Dispatcher):
 
 async def on_startup(dispatcher):
     """
-    Запуск параллельного потока с таймером при запуске диспетчера.
+    Запуск параллельного потока с таймером при запуске диспетчера. Проверка на устаревшие напоминания.
     """
     await set_commands(dispatcher)
+    checking_for_old_reminders()  # удаление старых напоминаний
 
     loop = asyncio.get_event_loop()
 
@@ -70,8 +75,7 @@ async def on_startup(dispatcher):
 
 
 async def on_shutdown(dispatcher):
-    logger.warning("Shutdown dispatcher!")
-    pass
+    logger.warning("Shutdown dispatcher...")
 
 
 def main():
@@ -88,9 +92,7 @@ def main():
     logging.basicConfig(format="%(asctime)s [%(levelname)s] %(name)s: %(message)s", level="DEBUG",
                         datefmt="%Y-%m-%d %H:%M:%S", handlers=[file_log, console_log])
 
-    config = load_config("config/bot.ini")
-
-    bot = Bot(token=config.bot.token)
+    bot = Bot(token=os.getenv('TOKEN'))
     dp = Dispatcher(bot, storage=MemoryStorage())
 
     logger.info("""Product:

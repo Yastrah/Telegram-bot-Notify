@@ -1,0 +1,151 @@
+2023-03-23 23:07:42 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.6
+LAST_UPDATE: 2023-03-23 23:07:42
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-23 23:07:42 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-23 23:07:42 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-23 23:07:42 [INFO] __main__: Bot commands have been set.
+2023-03-23 23:07:42 [INFO] __main__: Start schedule process.
+2023-03-23 23:07:42 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-23 23:07:51 [WARNING] __main__: Shutdown dispatcher!
+2023-03-23 23:07:51 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-23 23:07:51 [WARNING] aiogram: Goodbye!
+2023-03-23 23:19:15 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.6
+LAST_UPDATE: 2023-03-23 23:19:15
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-23 23:19:15 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-23 23:19:15 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-23 23:19:15 [INFO] __main__: Bot commands have been set.
+2023-03-23 23:19:15 [DEBUG] bot.db.protection: Checking old reminders completed successfully. Found 4 old reminders.
+2023-03-23 23:19:15 [INFO] __main__: Start schedule process.
+2023-03-23 23:19:15 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-23 23:19:32 [DEBUG] bot.handlers.admin: Admin 1990672413 got users in database.
+2023-03-23 23:20:31 [WARNING] __main__: Shutdown dispatcher...
+2023-03-23 23:20:31 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-23 23:20:31 [WARNING] aiogram: Goodbye!
+2023-03-23 23:22:32 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.6
+LAST_UPDATE: 2023-03-23 23:22:32
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-23 23:22:32 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-23 23:22:32 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-23 23:22:32 [INFO] __main__: Bot commands have been set.
+2023-03-23 23:22:32 [DEBUG] bot.db.protection: Checking old reminders completed successfully. Found 0 old reminders.
+2023-03-23 23:22:32 [INFO] __main__: Start schedule process.
+2023-03-23 23:22:32 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-23 23:22:45 [WARNING] bot.handlers.admin: Table users was reset!
+2023-03-23 23:22:45 [WARNING] bot.handlers.admin: Admin 1990672413 RESET table users!.
+2023-03-23 23:23:21 [WARNING] bot.handlers.settings: Registered new user. user_id: 1990672413, chat_id: 1990672413, user_name: yastrah_it
+2023-03-23 23:23:26 [DEBUG] bot.handlers.settings: User 1990672413 set time_zone -10:00.
+2023-03-23 23:24:05 [WARNING] __main__: Shutdown dispatcher...
+2023-03-23 23:24:05 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-23 23:24:05 [WARNING] aiogram: Goodbye!
+2023-03-23 23:28:13 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.6
+LAST_UPDATE: 2023-03-23 23:28:13
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-23 23:28:13 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-23 23:28:13 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-23 23:28:13 [INFO] __main__: Bot commands have been set.
+2023-03-23 23:28:13 [DEBUG] bot.db.protection: Checking old reminders completed successfully. Found 0 old reminders.
+2023-03-23 23:28:13 [INFO] __main__: Start schedule process.
+2023-03-23 23:28:13 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-23 23:28:21 [WARNING] bot.handlers.admin: Table users was reset!
+2023-03-23 23:28:21 [WARNING] bot.handlers.admin: Admin 1990672413 RESET table users!
+2023-03-23 23:28:41 [WARNING] bot.handlers.settings: Registered new user. user_id: 1990672413, chat_id: 1990672413, user_name: yastrah_it
+2023-03-23 23:28:45 [DEBUG] bot.handlers.settings: User 1990672413 set time_zone +03:00.
+2023-03-23 23:28:51 [DEBUG] bot.handlers.messages: Created reminder for message: 23.30 проверка
+	 chat_id: 1990672413, reminder_id: 3, time: 23/03/2023 20:30, uts: +03:00,
+	text: проверка
+2023-03-23 23:30:16 [INFO] bot.send_reminders: Reminder sent successfully to user 1990672413.
+	Text: проверка
+2023-03-23 23:30:20 [WARNING] __main__: Shutdown dispatcher...
+2023-03-23 23:30:20 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-23 23:30:20 [WARNING] aiogram: Goodbye!
+2023-03-23 23:30:22 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.6
+LAST_UPDATE: 2023-03-23 23:30:22
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-23 23:30:23 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-23 23:30:23 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-23 23:30:23 [INFO] __main__: Bot commands have been set.
+2023-03-23 23:30:23 [DEBUG] bot.db.protection: Checking old reminders completed successfully. Found 0 old reminders.
+2023-03-23 23:30:23 [INFO] __main__: Start schedule process.
+2023-03-23 23:30:23 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-23 23:30:37 [WARNING] __main__: Shutdown dispatcher...
+2023-03-23 23:30:37 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-23 23:30:37 [WARNING] aiogram: Goodbye!
+2023-03-23 23:35:24 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.6
+LAST_UPDATE: 2023-03-23 23:35:24
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-23 23:35:24 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-23 23:35:24 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-23 23:35:24 [INFO] __main__: Bot commands have been set.
+2023-03-23 23:35:24 [DEBUG] bot.db.protection: Checking old reminders completed successfully. Found 0 old reminders.
+2023-03-23 23:35:24 [INFO] __main__: Start schedule process.
+2023-03-23 23:35:24 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-23 23:35:31 [WARNING] bot.handlers.admin: Table users was reset!
+2023-03-23 23:35:31 [WARNING] bot.handlers.admin: Admin 1990672413 RESET table users!
+2023-03-23 23:35:36 [WARNING] bot.handlers.settings: Registered new user. user_id: 1990672413, chat_id: 1990672413, user_name: yastrah_it
+2023-03-23 23:40:50 [WARNING] __main__: Shutdown dispatcher...
+2023-03-23 23:40:50 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-23 23:40:50 [WARNING] aiogram: Goodbye!
+2023-03-23 23:40:52 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.6
+LAST_UPDATE: 2023-03-23 23:40:52
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-23 23:40:52 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-23 23:40:52 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-23 23:40:53 [INFO] __main__: Bot commands have been set.
+2023-03-23 23:40:53 [DEBUG] bot.db.protection: Checking old reminders completed successfully. Found 0 old reminders.
+2023-03-23 23:40:53 [INFO] __main__: Start schedule process.
+2023-03-23 23:40:53 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-23 23:41:01 [WARNING] bot.handlers.admin: Table users was reset!
+2023-03-23 23:41:01 [WARNING] bot.handlers.admin: Admin 1990672413 RESET table users!
+2023-03-23 23:41:07 [WARNING] bot.handlers.settings: Registered new user. user_id: 1990672413, chat_id: 1990672413, user_name: yastrah_it
+2023-03-23 23:44:56 [WARNING] __main__: Shutdown dispatcher...
+2023-03-23 23:44:56 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-23 23:44:56 [WARNING] aiogram: Goodbye!
+2023-03-23 23:44:58 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.6
+LAST_UPDATE: 2023-03-23 23:44:58
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-23 23:44:58 [INFO] aiogram: Bot: Notify [@EuclidAssistantBot]
+2023-03-23 23:44:58 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-23 23:44:58 [INFO] __main__: Bot commands have been set.
+2023-03-23 23:44:58 [DEBUG] bot.db.protection: Checking old reminders completed successfully. Found 0 old reminders.
+2023-03-23 23:44:58 [INFO] __main__: Start schedule process.
+2023-03-23 23:44:58 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-23 23:45:10 [WARNING] bot.handlers.admin: Table users was reset!
+2023-03-23 23:45:10 [WARNING] bot.handlers.admin: Admin 1990672413 RESET table users!
+2023-03-23 23:45:13 [WARNING] bot.handlers.settings: Registered new user. user_id: 1990672413, chat_id: 1990672413, user_name: yastrah_it
+2023-03-23 23:45:27 [DEBUG] bot.handlers.settings: User 1990672413 set time_zone +03:00.
+2023-03-23 23:45:37 [WARNING] __main__: Shutdown dispatcher...
+2023-03-23 23:45:37 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-23 23:45:37 [WARNING] aiogram: Goodbye!

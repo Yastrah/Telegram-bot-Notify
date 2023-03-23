@@ -1,0 +1,98 @@
+2023-03-24 00:02:14 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.6
+LAST_UPDATE: 2023-03-24 00:02:14
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-24 00:02:16 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-03-24 00:02:16 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-24 00:02:16 [INFO] __main__: Bot commands have been set.
+2023-03-24 00:02:16 [DEBUG] bot.db.protection: Checking old reminders completed successfully. Found 0 old reminders.
+2023-03-24 00:02:16 [INFO] __main__: Start schedule process.
+2023-03-24 00:02:16 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-24 00:03:24 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-23' coro=<Dispatcher._process_polling_updates() done, defined at D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=ValueError('not enough values to unpack (expected 3, got 2)')>
+Traceback (most recent call last):
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\bot\handlers\messages.py", line 36, in create_reminder
+    date, time, text = search_engine.date_and_time_handling(text, time_zone)
+  File "D:\GitHub\Telegram-bot-Notify\bot\logic\search_engine.py", line 273, in date_and_time_handling
+    date, text, found = search_date_in_numbers(text, time_zone)
+ValueError: not enough values to unpack (expected 3, got 2)
+2023-03-24 00:04:43 [WARNING] __main__: Shutdown dispatcher...
+2023-03-24 00:04:43 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-24 00:04:43 [WARNING] aiogram: Goodbye!
+2023-03-24 00:04:45 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.6
+LAST_UPDATE: 2023-03-24 00:04:45
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-24 00:04:46 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-03-24 00:04:46 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-24 00:04:46 [INFO] __main__: Bot commands have been set.
+2023-03-24 00:04:46 [DEBUG] bot.db.protection: Checking old reminders completed successfully. Found 0 old reminders.
+2023-03-24 00:04:46 [INFO] __main__: Start schedule process.
+2023-03-24 00:04:46 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-24 00:05:06 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-12' coro=<Dispatcher._process_polling_updates() done, defined at D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=ValueError('not enough values to unpack (expected 3, got 2)')>
+Traceback (most recent call last):
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "D:\GitHub\Telegram-bot-Notify\venv\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\bot\handlers\messages.py", line 36, in create_reminder
+    date, time, text = search_engine.date_and_time_handling(text, time_zone)
+  File "D:\GitHub\Telegram-bot-Notify\bot\logic\search_engine.py", line 273, in date_and_time_handling
+    date, text, found = search_date_in_numbers(text, time_zone)
+ValueError: not enough values to unpack (expected 3, got 2)
+2023-03-24 00:08:21 [WARNING] __main__: Shutdown dispatcher...
+2023-03-24 00:08:21 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-24 00:08:21 [WARNING] aiogram: Goodbye!
+2023-03-24 00:08:24 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.3.6
+LAST_UPDATE: 2023-03-24 00:08:24
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-03-24 00:08:24 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-03-24 00:08:24 [WARNING] aiogram: Updates were skipped successfully.
+2023-03-24 00:08:24 [INFO] __main__: Bot commands have been set.
+2023-03-24 00:08:24 [DEBUG] bot.db.protection: Checking old reminders completed successfully. Found 0 old reminders.
+2023-03-24 00:08:24 [INFO] __main__: Start schedule process.
+2023-03-24 00:08:24 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-03-24 00:08:30 [DEBUG] bot.handlers.messages: Reminder handling: can not find date in message: Админские команды:
+/show_users,
+/send_all <text>,
+/reset <useres/reminders>,
+/show_reports,
+/archive_reports,
+/show_blocked_users,
+/block_user <user_id>,
+/unblock_user <user_id>,
+2023-03-24 00:08:59 [DEBUG] bot.handlers.messages: Created reminder for message: 0.09 проверка нового бота
+	 chat_id: 1990672413, reminder_id: 3, time: 23/03/2023 21:09, uts: +03:00,
+	text: проверка нового бота
+2023-03-24 00:09:14 [INFO] bot.send_reminders: Reminder sent successfully to user 1990672413.
+	Text: проверка нового бота
+2023-03-24 00:10:06 [WARNING] __main__: Shutdown dispatcher...
+2023-03-24 00:10:06 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-03-24 00:10:06 [WARNING] aiogram: Goodbye!

@@ -1,5 +1,6 @@
 import logging
 
+from bot.handlers.settings import register_user
 from config.config_reader import load_config
 from config.configuration import Constants, Settings
 from bot.logic import date_converter
@@ -19,6 +20,9 @@ async def cmd_reminders_list(message: types.Message, state: FSMContext):
     await state.finish()
     if message.from_user.id in Settings.blocked_users:
         return await message.answer("🔒 К сожалению вы заблокированны!")
+
+    if not users.get_user_data(str(message.chat.id)):
+        return await register_user(message, state)
 
     time_zone = users.get_user_data(message.chat.id)[5]
     if time_zone == "not_set":

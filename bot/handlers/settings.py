@@ -20,9 +20,7 @@ config = load_config("config/bot.ini")
 async def register_user(message: types.Message, state: FSMContext):
     now_date = datetime.datetime.now().strftime(Settings.date_format).split()[0]
     # Добавить выбор языка
-    await message.answer(Constants.settings_text["registration"]["ru"], parse_mode="HTML", reply_markup=keyboards.kb_remove)
     uts_select = await message.answer(Constants.settings_text["selecting_utc"]["ru"], parse_mode="HTML", reply_markup=keyboards.inline_kb_utc)
-
     await state.update_data(message_id=uts_select.message_id)
 
     users.add_user(str(message.from_user.id), str(message.chat.id), 'ru', 0, "not_set", now_date)
@@ -31,8 +29,13 @@ async def register_user(message: types.Message, state: FSMContext):
                                                                                             message.from_user.username))
 
 
-async def cmd_settings(message: types.Message):
+async def cmd_settings(message: types.Message, state: FSMContext):
     data = users.get_user_data(message.chat.id)
+    if data[5] == "not_set":
+        uts_select = await message.answer(Constants.settings_text["selecting_utc"]["ru"], parse_mode="HTML",
+                                          reply_markup=keyboards.inline_kb_utc)
+        return await state.update_data(message_id=uts_select.message_id)
+
     settings = Constants.user_commands.get("settings")
     await message.answer(settings["text"]["ru"].format(registered=data[6], reminders_sent=data[4], language="🇷🇺 русский", time_zone=data[5]),
                          parse_mode="HTML", reply_markup=keyboards.inline_kb_edit_settings)
@@ -50,33 +53,10 @@ async def set_utc(call: types.CallbackQuery, state: FSMContext):
                               parse_mode="HTML", reply_markup=keyboards.kb_main_menu)
 
 
+async def confirm_received(call: types.CallbackQuery, state: FSMContext):
+    pass
+
+
 def register_handlers_settings(dp: Dispatcher):
     dp.register_message_handler(cmd_settings, commands="settings", state="*")
-    dp.register_callback_query_handler(set_utc, text='utc -11:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc -10:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc -09:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc -08:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc -07:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc -06:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc -05:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc -04:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc -03:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc -02:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc -01:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc ±00:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc +01:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc +02:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc +03:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc +04:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc +05:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc +06:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc +06:30', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc +07:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc +08:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc +09:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc +09:30', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc +10:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc +11:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc +12:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc +13:00', state='*')
-    dp.register_callback_query_handler(set_utc, text='utc +14:00', state='*')
+    dp.register_callback_query_handler(set_utc, text=Settings.callback_utc_data, state='*')

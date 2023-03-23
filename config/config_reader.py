@@ -11,7 +11,6 @@ logger = logging.getLogger(__name__)
 class Bot:
     name: str
     id: str
-    token: str
     admin_id: list
 
 
@@ -38,7 +37,6 @@ def load_config(path: str):
             bot=Bot(
                 name=bot_conf["name"],
                 id=bot_conf["id"],
-                token=bot_conf["token"],
                 admin_id=list(map(int, bot_conf["admin_id"].split())),
             ),
             data=Data(

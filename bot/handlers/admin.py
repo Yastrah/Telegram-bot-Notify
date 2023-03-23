@@ -19,13 +19,13 @@ async def cmd_show_users(message: types.Message):
     users_info = []
     for user in users.read():
         info = await message.bot.get_chat_member(user[0], user[1])
-        users_info.append(f"{user[0]}; {user[1]}; {info['user']['first_name']}; @{info['user']['username']}")
+        users_info.append(f"{user[0]}; {info['user']['first_name']}; @{info['user']['username']}")
 
     text = '\n'.join(users_info)
 
     await message.answer(f"There are <b>{len(users.read())}</b> users in database.\n"
                          f"Active reminders have <b>{len(users_info)}</b> users.\n\n"
-                         f"user_id; chat_id; firstname; username:\n<b>{text}</b>", parse_mode="HTML")
+                         f"user_id; firstname; username:\n\n<b>{text}</b>", parse_mode="HTML")
     logger.debug("Admin {0} got users in database.".format(message.from_user.id))
 
 
@@ -60,7 +60,7 @@ async def cmd_reset_table(message: types.Message):
         logger.warning("Table users was reset!")
 
         await message.answer(f"Table users was reset. Deleted <b>{users_count}</b> users.", parse_mode="HTML")
-        logger.warning("Admin {0} RESET table users!.".format(message.from_user.id))
+        logger.warning("Admin {0} RESET table users!".format(message.from_user.id))
 
     elif table == 'reminders':
         reminders_count = len(reminders.read())
@@ -68,7 +68,7 @@ async def cmd_reset_table(message: types.Message):
         logger.warning("Table reminders was reset!")
 
         await message.answer(f"Table reminders was reset. Deleted <b>{reminders_count}</b> reminders.", parse_mode="HTML")
-        logger.warning("Admin {0} RESET table reminders!.".format(message.from_user.id))
+        logger.warning("Admin {0} RESET table reminders!".format(message.from_user.id))
 
     else:
         return await message.answer("There is no such table!")

@@ -68,14 +68,15 @@ def search_key_word(text: str, words: list, mode: str = 'date') -> (bool, str):
     return False, " ".join(text)
 
 
-def search_date_in_numbers(text: str, time_zone: str) -> (str, str):
+def search_date_in_numbers(text: str, time_zone: str) -> (str, str, str):
     """
     Поиск даты в сообщении в численном виде.
-    :param text: текст сообщения
+    :param text: текст сообщения.
+    :param time_zone: часовой пояс.
     :return: Кортеж: дату в обработанном виде и сообщение без даты. None для првого элемента если ничего не найдено.
     """
     if len(text) < Settings.min_message_len:
-        return None, text
+        return None, text,None
 
     date_pattern = re.compile("\d{1,2}([-./])?(\d{1,2})?([-./])?(\d{2,4})?")
     match = date_pattern.search(text)
@@ -121,10 +122,10 @@ def search_date_in_numbers(text: str, time_zone: str) -> (str, str):
                 date[i] = '0' + date[i]
             elif len(date[i]) > 2:
                 logger.error(f"Reminder handling error! Date: {date}; Text: {text}")
-                return None, text
+                return None, text, found
 
         if not 1 <= len(date) <= 3:
-            return None, text
+            return None, text, found
 
         for i in range(len(date), 3):
             date.append(now_date[i])
@@ -136,7 +137,7 @@ def search_date_in_numbers(text: str, time_zone: str) -> (str, str):
 
         return date, text, found
 
-    return None, text
+    return None, text, None
 
 
 def search_first_number(text: str) -> (str, str):
@@ -220,8 +221,9 @@ def formatting_time(time: str) -> str:
 def date_and_time_handling(text: str, time_zone: str) -> tuple:
     """
     Обрабатывает сообщение разбирая его на дату, время и оставшийся текст
-    :param text: текст сообщения
-    :return:
+    :param text: текст сообщения.
+    :param time_zone: часовой пояс.
+    :return: дата, время, текст
     """
     date = None
 
