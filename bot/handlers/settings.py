@@ -4,6 +4,8 @@ import datetime
 from config.config_reader import load_config
 from config.configuration import Constants, Settings
 
+from aiogram.dispatcher.filters.state import State, StatesGroup
+
 from bot import keyboards
 from bot.db import users
 
@@ -15,6 +17,10 @@ from aiogram.dispatcher.filters import Text
 
 logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
+
+
+class EditSettings(StatesGroup):
+    waiting_for_choose_what_edit = State()
 
 
 async def register_user(message: types.Message, state: FSMContext):
@@ -40,9 +46,12 @@ async def cmd_settings(message: types.Message, state: FSMContext):
     await message.answer(settings["text"]["ru"].format(registered=data[6], reminders_sent=data[4], language="🇷🇺 русский", time_zone=data[5]),
                          parse_mode="HTML", reply_markup=keyboards.inline_kb_edit_settings)
 
+    await EditSettings.waiting_for_choose_what_edit.set()
+
 
 async def set_utc(call: types.CallbackQuery, state: FSMContext):
     data = await state.get_data()
+    await state.finish()
     await call.bot.delete_message(call.message.chat.id, data["message_id"])
 
     time_zone = call.data.split()[1]
@@ -53,10 +62,15 @@ async def set_utc(call: types.CallbackQuery, state: FSMContext):
                               parse_mode="HTML", reply_markup=keyboards.kb_main_menu)
 
 
-async def confirm_received(call: types.CallbackQuery, state: FSMContext):
-    pass
+async def edit_time_zone(call: types.CallbackQuery, state: FSMContext):
+    await state.finish()
+    uts_select = await call.message.answer(Constants.settings_text["selecting_utc"]["ru"], parse_mode="HTML",
+                                           reply_markup=keyboards.inline_kb_utc)
+    await state.update_data(message_id=uts_select.message_id)
 
 
 def register_handlers_settings(dp: Dispatcher):
     dp.register_message_handler(cmd_settings, commands="settings", state="*")
+    dp.register_callback_query_handler(edit_time_zone, text="edit_time_zone", state=EditSettings.waiting_for_choose_what_edit)
     dp.register_callback_query_handler(set_utc, text=Settings.callback_utc_data, state='*')
+

@@ -21,10 +21,15 @@ async def cmd_show_users(message: types.Message):
         info = await message.bot.get_chat_member(user[0], user[1])
         users_info.append(f"{user[0]}; {info['user']['first_name']}; @{info['user']['username']}")
 
+    active_users = []
+    for reminder in reminders.read():
+        if not reminder[1] in active_users:
+            active_users.append(reminder[1])
+
     text = '\n'.join(users_info)
 
     await message.answer(f"There are <b>{len(users.read())}</b> users in database.\n"
-                         f"Active reminders have <b>{len(users_info)}</b> users.\n\n"
+                         f"Active reminders have <b>{len(active_users)}</b> users.\n\n"
                          f"user_id; firstname; username:\n\n<b>{text}</b>", parse_mode="HTML")
     logger.debug("Admin {0} got users in database.".format(message.from_user.id))
 
@@ -124,7 +129,7 @@ async def cmd_show_blocked_users(message: types.Message):
         logger.debug("Admin access denied for user {0}!".format(message.from_user.id))
         return
 
-    text = '\n'.join(Settings.blocked_users)
+    text = '\n'.join(list(map(str, Settings.blocked_users)))
     await message.answer(f"Blocked users:\n<b>{text}</b>", parse_mode="HTML")
     logger.debug("Admin {0} got the list of blocked users.".format(message.from_user.id))
 
