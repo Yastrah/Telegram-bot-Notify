@@ -27,7 +27,7 @@ from aiogram.utils import executor
 from aiogram.types import BotCommand
 
 
-version = "1.3.7"
+version = "1.3.8"
 load_dotenv(find_dotenv())
 
 logger = logging.getLogger(__name__)

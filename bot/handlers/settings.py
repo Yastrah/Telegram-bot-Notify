@@ -26,13 +26,18 @@ class EditSettings(StatesGroup):
 async def register_user(message: types.Message, state: FSMContext):
     now_date = datetime.datetime.now().strftime(Settings.date_format).split()[0]
     # Добавить выбор языка
-    uts_select = await message.answer(Constants.settings_text["selecting_utc"]["ru"], parse_mode="HTML", reply_markup=keyboards.inline_kb_utc)
+    uts_select = await message.answer(Constants.settings_text["selecting_utc"]["ru"],
+                                      parse_mode="HTML", reply_markup=keyboards.inline_kb_utc)
     await state.update_data(message_id=uts_select.message_id)
 
     users.add_user(str(message.from_user.id), str(message.chat.id), 'ru', 0, "not_set", now_date)
     logger.warning("Registered new user. user_id: {0}, chat_id: {1}, user_name: {2}".format(message.from_user.id,
                                                                                             message.chat.id,
                                                                                             message.from_user.username))
+    start = Constants.user_commands.get("start")
+    await message.answer(start["text"]["ru"].format(bot_name=config.bot.name), parse_mode="HTML",
+                         reply_markup=keyboards.kb_main_menu)
+    await message.answer(Constants.settings_text["check_examples"]["ru"], parse_mode="HTML")
 
 
 async def cmd_settings(message: types.Message, state: FSMContext):
@@ -43,7 +48,8 @@ async def cmd_settings(message: types.Message, state: FSMContext):
         return await state.update_data(message_id=uts_select.message_id)
 
     settings = Constants.user_commands.get("settings")
-    await message.answer(settings["text"]["ru"].format(registered=data[6], reminders_sent=data[4], language="🇷🇺 русский", time_zone=data[5]),
+    await message.answer(settings["text"]["ru"].format(registered=data[6], reminders_sent=data[4],
+                                                       language="🇷🇺 русский", time_zone=data[5]),
                          parse_mode="HTML", reply_markup=keyboards.inline_kb_edit_settings)
 
     await EditSettings.waiting_for_choose_what_edit.set()

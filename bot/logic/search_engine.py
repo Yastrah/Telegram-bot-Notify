@@ -63,9 +63,9 @@ def search_key_word(text: str, words: list, mode: str = 'date') -> (bool, str):
                 if text[i - 1].isdigit():
                     return text[i - 1], " ".join(text[i+1:])
 
-                return False, " ".join(text)
+                return None, " ".join(text)
 
-    return False, " ".join(text)
+    return None, " ".join(text)
 
 
 def search_date_in_numbers(text: str, time_zone: str) -> (str, str, str):
@@ -220,19 +220,48 @@ def formatting_time(time: str) -> str:
 
 def date_and_time_handling(text: str, time_zone: str) -> tuple:
     """
-    Обрабатывает сообщение разбирая его на дату, время и оставшийся текст
+    Обрабатывает сообщение разбирая его на дату, время и оставшийся текст.
     :param text: текст сообщения.
     :param time_zone: часовой пояс.
     :return: дата, время, текст
     """
+    found, text = search_key_word(text, ["через"])
+    if found:
+
+        # поиск ключевых слов для времени
+        hours, text = search_key_word(text, Settings.words_for_time[0], mode='time')
+        minutes, text = search_key_word(text, Settings.words_for_time[1], mode='time')
+
+        # поиск времени в численном виде
+        if hours is None and minutes is None:
+            time, text = search_time(text)
+            hours, minutes = time.split(':')
+
+        if hours is None:
+            hours = '00'
+
+        if minutes is None:
+            minutes = '00'
+
+        hours, minutes = int(hours), int(minutes)
+
+        now_date = (datetime.datetime.utcnow() + datetime.timedelta(hours=hours, minutes=minutes)).strftime(Settings.date_format)
+        full_date = date_converter.utc(now_date, time_zone, mode='f')
+        date, time = full_date.split()[0], full_date.split()[1]
+        return date, time, text
+
+
+
+
     date = None
 
     # поиск и обработка ключевых слов
-    found, text = search_key_word(text, ["сегодня"])
-    if found:
-        # date = date_converter.today()
-        date = date_converter.utc(datetime.datetime.utcnow().strftime(Settings.date_format),
-                                  time_zone, mode='f').split()[0]
+    if date is None:
+        found, text = search_key_word(text, ["сегодня"])
+        if found:
+            # date = date_converter.today()
+            date = date_converter.utc(datetime.datetime.utcnow().strftime(Settings.date_format),
+                                      time_zone, mode='f').split()[0]
 
     if date is None:
         found, text = search_key_word(text, ["завтра"])

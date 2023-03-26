@@ -62,7 +62,6 @@ async def cmd_reset_table(message: types.Message):
     if table == 'users':
         users_count = len(users.read())
         users.reset()
-        logger.warning("Table users was reset!")
 
         await message.answer(f"Table users was reset. Deleted <b>{users_count}</b> users.", parse_mode="HTML")
         logger.warning("Admin {0} RESET table users!".format(message.from_user.id))
@@ -70,7 +69,6 @@ async def cmd_reset_table(message: types.Message):
     elif table == 'reminders':
         reminders_count = len(reminders.read())
         reminders.reset()
-        logger.warning("Table reminders was reset!")
 
         await message.answer(f"Table reminders was reset. Deleted <b>{reminders_count}</b> reminders.", parse_mode="HTML")
         logger.warning("Admin {0} RESET table reminders!".format(message.from_user.id))
