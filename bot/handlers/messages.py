@@ -78,10 +78,19 @@ async def create_reminder(message: types.Message, state: FSMContext):
 
 
 
-        return await message.answer("Уведомление успешно создано.\n"
-                                    f"Дата: <b>{date_converter.get_day_of_the_week(date)} {cur_date}</b>\n"
-                                    f"Id: <b>{reminder_id}</b>\n"
-                                    f"Текст: <b>{text}</b>", parse_mode="HTML", reply_markup=keyboards.kb_main_menu)
+        # return await message.answer("Уведомление успешно создано.\n"
+        #                             f"Дата: <b>{date_converter.get_day_of_the_week(date)} {cur_date}</b>\n"
+        #                             f"Id: <b>{reminder_id}</b>\n"
+        #                             f"Текст: <b>{text}</b>", parse_mode="HTML", reply_markup=keyboards.kb_main_menu)
+        return await message.answer(
+            Constants.reminders_format["reminder_created"]["ru"].format(
+                day_of_the_week=date_converter.get_day_of_the_week(date),
+                cur_date=cur_date,
+                reminder_id=reminder_id,
+                text=text),
+            parse_mode="HTML",
+            reply_markup=keyboards.kb_main_menu
+        )
     else:
         return await message.answer("Не удалось создать уведомление", reply_markup=keyboards.kb_main_menu)
 

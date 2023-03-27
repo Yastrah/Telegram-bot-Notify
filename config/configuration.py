@@ -127,9 +127,17 @@ class Constants:
         "utc_set": {"ru": "Часовой пояс успешно установлен на <u><b>UTC {time_zone}</b></u>.", "en": None},
     }
 
-    # please_select_utc = "Пожалуйста выберите свой часовой пояс, сделать это можно под сообщением о регистрации или в " \
-    #                     "настройках (/settings)!"
-    # registration_message = "регистрация"
-    # select_uts_message = "установка uts"
-    # select_language_message = "установка языка"
-
+    reminders_format = {
+        "reminder_created": {"ru": "Уведомление успешно создано\n"
+                                   "Дата: <b>{day_of_the_week} {cur_date}</b>\n"
+                                   "Id: <b>{reminder_id}</b>\n"
+                                   "Текст: <b>{text}</b>",
+                             "en": None},
+        "reminder_in_list": {"ru": "🕑 <b>{time}</b>   Id: <b>{id}</b>\n"
+                                   "- {text}\n\n",
+                             "en": None},
+        "day_title": {"ru": "<b>———<u>{day_of_the_week} {date}</u>———</b>\n",
+                      "en": None},
+        "list_title": {"ru": "<b>🔻 активные напоминания 🔻</b>\n\n",
+                       "en": None},
+    }

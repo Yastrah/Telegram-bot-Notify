@@ -28,22 +28,38 @@ async def cmd_reminders_list(message: types.Message, state: FSMContext):
     if time_zone == "not_set":
         return await message.answer(Constants.settings_text["please_select_utc"]["ru"], parse_mode="HTML",
                                     reply_markup=keyboards.kb_main_menu)
-    data = reminders.get_user_reminders(message.chat.id)
+    reminders_data = reminders.get_user_reminders(message.chat.id)
 
-    if data:
-        data.sort(key=lambda x: ''.join(list(reversed(x[4].split()[0].split('/'))) + x[4].split()[1].split(':')))
-        reminders_list = "<b>🔻Список активных напоминаний🔻</b>\n\n"  # ➖ 〰️ 🔻
+    if not reminders_data:
+        return await message.answer("⚡️ У вас нет активных напоминаний.", reply_markup=keyboards.kb_main_menu)
 
-        for row in data:
-            date = date_converter.utc(row[4], time_zone, mode='f')
+    reminders_data.sort(key=lambda x: ''.join(list(reversed(x[4].split()[0].split('/'))) + x[4].split()[1].split(':')))
+    data = {}
+    for row in reminders_data:
+        date = date_converter.utc(row[4], time_zone, mode='f').split()
+        if data.get(row[4].split()[0]):
+            data[date[0]].append({"time": date[1], "id": row[3], "text": row[5]})
+        else:
+            data[date[0]] = [{"time": date[1], "id": row[3], "text": row[5]}]
 
-            reminders_list += f"Дата: <b>{date_converter.get_day_of_the_week(date.split()[0])} {date}</b>\n" \
-                              f"Id: <b>{row[3]}</b>\n" \
-                              f"Текст: <b>{row[5]}</b>\n\n"
+    reminders_list_message = Constants.reminders_format["list_title"]["ru"]
 
-        await message.answer(reminders_list, parse_mode="HTML", reply_markup=keyboards.kb_main_menu)
-    else:
-        await message.answer("⚡️ У вас нет активных напоминаний.", reply_markup=keyboards.kb_main_menu)
+    for date, reminders_list in data.items():
+
+        reminders_list_message += Constants.reminders_format["day_title"]["ru"].format(
+            day_of_the_week=date_converter.get_day_of_the_week(date),
+            date=date
+        )
+
+        for reminder in reminders_list:
+            reminders_list_message += Constants.reminders_format["reminder_in_list"]["ru"].format(
+                time=reminder['time'],
+                id=reminder['id'],
+                text=reminder['text']
+            )
+
+    await message.answer(reminders_list_message, parse_mode="HTML", reply_markup=keyboards.kb_main_menu)
+
 
 
 def register_handlers_list(dp: Dispatcher):

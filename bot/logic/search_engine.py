@@ -16,7 +16,7 @@ config = load_config("config/bot.ini")
 
 def word_matches(text: str, words: list) -> bool:
     """
-    Соответствует ли слово какому либо из переданного списка.
+    Соответствует ли слово какому-либо из переданного списка.
     :param text: текст сообщения.
     :param words: список слов для поиска.
     :return: Bool - соответствует слово или нет
@@ -249,9 +249,6 @@ def date_and_time_handling(text: str, time_zone: str) -> tuple:
         full_date = date_converter.utc(now_date, time_zone, mode='f')
         date, time = full_date.split()[0], full_date.split()[1]
         return date, time, text
-
-
-
 
     date = None
 

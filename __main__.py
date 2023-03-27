@@ -45,7 +45,7 @@ def register_all_handlers(dp: Dispatcher):
     register_handlers_report(dp)
     register_handlers_settings(dp)
     register_handlers_messages(dp)
-    # register_handlers_error(dp)
+    register_handlers_error(dp)
 
 
 async def set_commands(dispatcher: Dispatcher):
