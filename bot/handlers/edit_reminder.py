@@ -31,11 +31,14 @@ async def cmd_edit(message: types.Message, state: FSMContext):
     if not data:
         return await message.answer("⚡️ У вас нет напоминаний, чтобы их изменить")
 
-    await message.answer("Введите id напоминания:", reply_markup=keyboards.kb_cancel)
+    id_list = [x[3] for x in data]
+
+    await message.answer("Выберите id напоминания:", reply_markup=keyboards.inline_kb_id_list(id_list))
+    await message.answer("Или введите id вручную:", reply_markup=keyboards.kb_cancel)
     await EditReminder.waiting_for_id.set()
 
 
-async def id_received(message: types.Message, state: FSMContext):
+async def get_id_from_message(message: types.Message, state: FSMContext):
     if not message.text.isdigit():
         return await message.answer("Некорректный id!\nВведите id напоминания:")
 
@@ -54,6 +57,29 @@ async def id_received(message: types.Message, state: FSMContext):
     date = date_converter.utc(reminder[4], time_zone, mode='f')
 
     question = await message.answer(
+        f"Дата: <b>{date_converter.get_day_of_the_week(date.split()[0])} {date}</b>\n"
+        f"Id: <b>{reminder[3]}</b>\n"
+        f"Текст: <b>{reminder[5]}</b>\n"
+        f"Что вы хотите изменить?", parse_mode="HTML", reply_markup=keyboards.inline_kb_edit_type)
+    await state.update_data(message_id=question.message_id)
+
+
+async def get_id_from_call(call: types.CallbackQuery, state: FSMContext):
+    if not int(call.data) in [el[3] for el in reminders.get_user_reminders(call.message.chat.id)]:
+        return await call.message.answer("Напоминания с id {reminder_id} не существует!\nВведите id напоминания:".format(
+            reminder_id=int(call.data)), reply_markup=keyboards.kb_cancel)
+
+    await state.update_data(reminder_id=int(call.data))
+    await EditReminder.next()
+
+    reminder = [el for el in reminders.get_user_reminders(call.message.chat.id) if el[3] == int(call.data)][0]
+    time_zone = users.get_user_data(call.message.chat.id)[5]
+    if time_zone == "not_set":
+        return await call.message.answer(Constants.settings_text["please_select_utc"]["ru"], parse_mode="HTML",
+                                         reply_markup=keyboards.kb_main_menu)
+    date = date_converter.utc(reminder[4], time_zone, mode='f')
+
+    question = await call.message.answer(
         f"Дата: <b>{date_converter.get_day_of_the_week(date.split()[0])} {date}</b>\n"
         f"Id: <b>{reminder[3]}</b>\n"
         f"Текст: <b>{reminder[5]}</b>\n"
@@ -127,27 +153,6 @@ async def edit_reminder(message: types.Message, state: FSMContext):
                 message.chat.id, data["reminder_id"], utc_date))
             await state.finish()
             return await message.answer("Время напоминания успешно изменено", reply_markup=keyboards.kb_main_menu)
-
-        # text = " ".join(message.text.split())
-        # date, time, text = search_engine.date_and_time_handling(text)
-        # full_date = " ".join([date, time])
-        #
-        # # проверка корректности даты
-        # if not date_converter.get_day_of_the_week(date):
-        #     logger.debug("Wrong date input, chat_id: {0}".format(message.chat.id))
-        #     return await message.answer("Некорректная дата!")
-        #
-        # # проверка на попытку создать напоминание на прошедшее время
-        # now_date = datetime.datetime.now().strftime(Settings.date_format)
-        # if date_converter.date_to_value(" ".join([date, time])) <= date_converter.date_to_value(now_date):
-        #     logger.debug("Trying to update reminder date on the past, chat_id: {0}".format(message.chat.id))
-        #     return await message.answer("Вы пытаетесь изменить время напоминания на прошедшее!")
-        #
-        # if reminders.edit_time(message.chat.id, data["reminder_id"], full_date):
-        #     logger.debug("Successfully updated reminder date with chat_id: {0}, reminder_id: {1}. New date: {2}".format(
-        #         message.chat.id, data["reminder_id"], full_date))
-        #     await state.finish()
-        #     return await message.answer("Время напоминания успешно изменено", reply_markup=keyboards.kb_main_menu)
 
         else:
             logger.error("Update date error, chat_id: {0}, text: {1}!".format(message.chat.id, message.text))
@@ -223,7 +228,8 @@ async def edit_reminder(message: types.Message, state: FSMContext):
 def register_handlers_edit(dp: Dispatcher):
     dp.register_message_handler(cmd_edit, commands="edit", state="*")
     dp.register_message_handler(cmd_edit, Text(equals=Constants.user_commands["edit"]["custom_name"]), state="*")
-    dp.register_message_handler(id_received, state=EditReminder.waiting_for_id)
+    dp.register_message_handler(get_id_from_message, state=EditReminder.waiting_for_id)
+    dp.register_callback_query_handler(get_id_from_call, text=Settings.ids_for_keyboard, state=EditReminder.waiting_for_id)
     dp.register_callback_query_handler(edit_time, text="time", state=EditReminder.waiting_for_edit_type)
     dp.register_callback_query_handler(edit_text, text="text", state=EditReminder.waiting_for_edit_type)
     dp.register_callback_query_handler(edit_all, text="all", state=EditReminder.waiting_for_edit_type)

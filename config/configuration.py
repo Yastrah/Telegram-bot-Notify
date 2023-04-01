@@ -23,6 +23,8 @@ class Settings:
 
     max_reports_per_day = 3  # наибольшее разрешённое число жалоб от одного пользователя в день
 
+    ids_for_keyboard = [str(x) for x in range(1, 4*5+1)]  # id напоминаний для вывода их id в клавиатуре
+
     callback_utc_data = [
         'utc -10:00', 'utc -09:00', 'utc -08:00', 'utc -07:00',
         'utc -06:00', 'utc -05:00', 'utc -04:00', 'utc -03:00',

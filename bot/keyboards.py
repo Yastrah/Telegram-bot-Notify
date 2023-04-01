@@ -62,6 +62,17 @@ inline_kb_utc.add(
     InlineKeyboardButton('+13:00', callback_data='utc +13:00'),
 )
 
+
+def inline_kb_id_list(id_list: list) -> InlineKeyboardMarkup:
+    row_width = 4
+    if len(id_list) % 4 < 3:
+        row_width = 3
+
+    inline_kb = InlineKeyboardMarkup(row_width=row_width)
+    buttons = [InlineKeyboardButton(str(id), callback_data=(str(id))) for id in id_list]
+    inline_kb.add(*buttons)
+    return inline_kb
+
 # greet_kb2 = ReplyKeyboardMarkup(
 #     resize_keyboard=True, one_time_keyboard=True
 # )

@@ -11,7 +11,7 @@ config = load_config("config/bot.ini")
 def read() -> list:
     """
     Получение данных из DataBase.
-    :return: Данные в виде списка кортежей (id, chat_id, message_id, date, content). None - при вызове исключения.
+    :return: Данные в виде списка кортежей (id, chat_id, message_id, reminder_id, date, content). None - при вызове исключения.
     """
     try:
         with sqlite3.connect(config.data.bot_db) as db:
@@ -28,7 +28,7 @@ def read() -> list:
 def get_now(time) -> list:
     """
     Получение данных из DataBase с заданной датой и временем.
-    :return: Данные в виде списка кортежей (id, chat_id, message_id, date, content). None - при вызове исключения.
+    :return: Данные в виде списка кортежей (id, chat_id, message_id, reminder_id, date, content). None - при вызове исключения.
     """
     try:
         with sqlite3.connect(config.data.bot_db) as db:
@@ -44,7 +44,7 @@ def get_now(time) -> list:
 
 def get_user_reminders(chat_id: str) -> list:
     """
-    Находит все напоминания конкретного пользователя.
+    Находит все напоминания конкретного пользователя. [(id, chat_id, message_id, reminder_id, date, content)]
     :param chat_id: чат id пользователя.
     :return:
     """

@@ -44,7 +44,8 @@ def search_key_word(text: str, words: list, mode: str = 'date') -> (bool, str):
         if word_matches(text[i], words) and i < Settings.day_order_index:
             if mode == 'date':
 
-                text.pop(i)
+                # text.pop(i)
+
                 # # удаление лишних предлогов
                 # if text[i + 1].lower() in Settings.prepositions_for_delete:
                 #     text.pop(i + 1)
@@ -55,7 +56,7 @@ def search_key_word(text: str, words: list, mode: str = 'date') -> (bool, str):
                 # if text[i - 1].lower() in Settings.prepositions_for_delete:
                 #     text.pop(i - 1)
 
-                text = " ".join(text)
+                text = " ".join(text[i+1:])
 
                 return True, text
 
@@ -261,23 +262,23 @@ def date_and_time_handling(text: str, time_zone: str) -> tuple:
                                       time_zone, mode='f').split()[0]
 
     if date is None:
+        found, text = search_key_word(text, ["послезавтра"])
+        if found:
+            now_date = (datetime.datetime.utcnow() + datetime.timedelta(days=2)).strftime(Settings.date_format)
+            date = date_converter.utc(now_date, time_zone, mode='f').split()[0]
+
+    if date is None:
         found, text = search_key_word(text, ["завтра"])
         if found:
             # date = date_converter.tomorrow()
             now_date = (datetime.datetime.utcnow() + datetime.timedelta(days=1)).strftime(Settings.date_format)
             date = date_converter.utc(now_date, time_zone, mode='f').split()[0]
 
-    if date is None:
-        found, text = search_key_word(text, ["послезавтра"])
-        if found:
-            now_date = (datetime.datetime.utcnow() + datetime.timedelta(days=2)).strftime(Settings.date_format)
-            date = date_converter.utc(now_date, time_zone, mode='f').split()[0]
-
     # поиск и обработка дней недели
     for day in [day[1] for day in Settings.words_for_week_days]:
         found, text = search_key_word(text, day)
         if found:
-            date = date_converter.nearest_day_of_the_week(day, time_zone)
+            date = date_converter.nearest_day_of_the_week(day[0], time_zone)
             break
 
     # поиск и обработка месяца в виде слова
@@ -316,6 +317,10 @@ def date_and_time_handling(text: str, time_zone: str) -> tuple:
     # поиск времени в численном виде
     if time is None:
         time, text = search_time(text)
+
+    if time is None and found is None:
+        raise SearchError(f"Could not find time in message: {text}",
+                          "Не удалось обработать дату и время!")
 
     # если время не найдено, то дата превращается во время, а дата ставится сегодняшняя
     if time is None:
