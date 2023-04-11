@@ -4,17 +4,18 @@ import asyncio
 import threading
 from time import sleep
 import datetime
+
 from aiogram import Bot
 
 from config.configuration import Settings
 from config.config_reader import load_config
+
 from bot.db import reminders, users, protection
 
 
 logger = logging.getLogger(__name__)
 config = load_config("config/bot.ini")
 
-# timer_stop.set()
 timer_stop = threading.Event()
 
 
@@ -28,6 +29,8 @@ def timer(bot: Bot, loop):
     while not timer_stop.is_set():
         schedule.run_pending()
         sleep(5)
+
+    logger.warning("Shutdown schedule process...")
 
 
 async def check_for_reminders(bot: Bot):

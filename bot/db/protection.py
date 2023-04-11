@@ -13,12 +13,16 @@ def checking_for_old_reminders():
     data = reminders.read()
     now_date_value = date_to_value(datetime.datetime.now().strftime(Settings.date_format))
 
-    if data:
-        count = 0
-        for reminder in data:
-            if date_to_value(reminder[4]) < now_date_value:
-                reminders.remove(id=reminder[0])
-                count += 1
-        logger.debug("Checking old reminders completed successfully. Found {0} old reminders.".format(count))
-    else:
-        logger.error("Unable to read and check database!")
+    if data is None:
+        return logger.error("Unable to read and check database!")
+
+    if not data:
+        return logger.debug("Checking old reminders completed successfully. There is no any reminders.")
+
+    count = 0
+    for reminder in data:
+        if date_to_value(reminder[4]) < now_date_value:
+            reminders.remove(id=reminder[0])
+            count += 1
+    logger.debug("Checking old reminders completed successfully. Found {0} old reminders.".format(count))
+

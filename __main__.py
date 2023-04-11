@@ -5,6 +5,8 @@ import datetime
 import sys
 import os
 
+from bot.send_reminders import timer_stop
+
 from dotenv import load_dotenv, find_dotenv
 from config.configuration import Constants
 
@@ -27,7 +29,7 @@ from aiogram.utils import executor
 from aiogram.types import BotCommand
 
 
-version = "1.3.9"
+version = "1.4.0"
 load_dotenv(find_dotenv())
 
 logger = logging.getLogger(__name__)
@@ -76,6 +78,7 @@ async def on_startup(dispatcher):
 
 async def on_shutdown(dispatcher):
     logger.warning("Shutdown dispatcher...")
+    timer_stop.set()
 
 
 def main():
