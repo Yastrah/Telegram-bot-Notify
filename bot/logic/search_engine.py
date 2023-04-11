@@ -43,22 +43,7 @@ def search_key_word(text: str, words: list, mode: str = 'date') -> (bool, str):
     for i in range(len(text)):
         if word_matches(text[i], words) and i < Settings.day_order_index:
             if mode == 'date':
-
-                # text.pop(i)
-
-                # # удаление лишних предлогов
-                # if text[i + 1].lower() in Settings.prepositions_for_delete:
-                #     text.pop(i + 1)
-                #
-                # text.pop(i)
-                #
-                # # удаление лишних предлогов
-                # if text[i - 1].lower() in Settings.prepositions_for_delete:
-                #     text.pop(i - 1)
-
-                text = " ".join(text[i+1:])
-
-                return True, text
+                return True, " ".join(text[i+1:])
 
             elif mode == 'time':
                 if text[i - 1].isdigit():
@@ -97,24 +82,7 @@ def search_date_in_numbers(text: str, time_zone: str) -> (str, str, str):
                               f"Недопустимое формат записи, не ставьте лишние знаки препинания!")
 
         date = re.split(r"[-./]", found)
-        # text = ' '.join(text.replace(found, '').split())  # удаление лишних пробелов
         text = text[text.find(found) + len(found):].strip()
-
-        # text = text.split()
-        # # print(match.group(), date, text)
-        # i = text.index(match.group())
-        #
-        # # удаление лишних предлогов
-        # if text[i + 1].lower() in Settings.prepositions_for_delete:
-        #     text.pop(i + 1)
-        #
-        # text.pop(i)
-        #
-        # # удаление лишних предлогов
-        # if text[i - 1].lower() in Settings.prepositions_for_delete:
-        #     text.pop(i - 1)
-        #
-        # text = " ".join(text)
 
         now_date = now_date.split('/')
 
@@ -283,10 +251,10 @@ def date_and_time_handling(text: str, time_zone: str) -> tuple:
 
     # поиск и обработка месяца в виде слова
     for month, word in enumerate(Settings.words_for_months):
-        found, text = search_key_word(text, word)
+        found, text = search_key_word(text, word, mode='time')
         if found:
-            now_year = (date_converter.utc(datetime.datetime.utcnow().strftime(Settings.date_format), time_zone, mode='f')).strftime("%Y")
-            day, text = search_first_number(text)
+            now_year = (date_converter.utc(datetime.datetime.utcnow().strftime(Settings.date_format), time_zone, mode='f')).split()[0].split('/')[2]
+            day = found
             if not day:
                 raise SearchError(f"Could not find day for month {month + 1}",
                                   f"Не удалось найти день для месяца {word} в сообщении!")

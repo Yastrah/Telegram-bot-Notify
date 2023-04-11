@@ -232,3 +232,38 @@ GitHub: https://github.com/Yastrah
 2023-04-12 00:39:27 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
 2023-04-12 00:39:27 [WARNING] aiogram: Goodbye!
 2023-04-12 00:39:32 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-04-12 01:09:37 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.1
+LAST_UPDATE: 2023-04-12 01:09:37
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-04-12 01:09:37 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-04-12 01:09:37 [WARNING] aiogram: Updates were skipped successfully.
+2023-04-12 01:09:37 [INFO] __main__: Bot commands have been set.
+2023-04-12 01:09:37 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-04-12 01:09:37 [INFO] __main__: Start schedule process.
+2023-04-12 01:09:37 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-04-12 01:09:44 [WARNING] __main__: Shutdown dispatcher...
+2023-04-12 01:09:44 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-04-12 01:09:44 [WARNING] aiogram: Goodbye!
+2023-04-12 01:09:47 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-04-12 01:10:05 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.1
+LAST_UPDATE: 2023-04-12 01:10:05
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-04-12 01:10:05 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-04-12 01:10:06 [WARNING] aiogram: Updates were skipped successfully.
+2023-04-12 01:10:06 [INFO] __main__: Bot commands have been set.
+2023-04-12 01:10:06 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-04-12 01:10:06 [INFO] __main__: Start schedule process.
+2023-04-12 01:10:06 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-04-12 01:10:38 [DEBUG] bot.handlers.settings: User 1990672413 set time_zone +03:00.
+2023-04-12 01:10:53 [WARNING] __main__: Shutdown dispatcher...
+2023-04-12 01:10:53 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-04-12 01:10:53 [WARNING] aiogram: Goodbye!
+2023-04-12 01:10:56 [WARNING] bot.send_reminders: Shutdown schedule process...

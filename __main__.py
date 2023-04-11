@@ -29,7 +29,7 @@ from aiogram.utils import executor
 from aiogram.types import BotCommand
 
 
-version = "1.4.0"
+version = "1.4.1"
 load_dotenv(find_dotenv())
 
 logger = logging.getLogger(__name__)
@@ -115,39 +115,4 @@ GitHub: https://github.com/Yastrah""".format(version, datetime.datetime.now().st
 
 
 if __name__ == "__main__":
-    # from bot.db import users
-    # users.reset()
     main()
-
-    # full_date = "18/03/2023 10:00"
-    # full_date_list = [full_date.split()[0].split('/')[2], full_date.split()[0].split('/')[1], full_date.split()[0].split('/')[0],
-    #                   full_date.split()[1].split(':')[0], full_date.split()[1].split(':')[0]]
-    # full_date_list = list(map(int, full_date_list))
-    # d_obj = datetime.datetime(*full_date_list)
-    # print(d_obj)
-
-    # from config.configuration import Settings
-    # # time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    # now_date = datetime.datetime.utcnow()
-    # cur_date = (now_date - datetime.timedelta(hours=3)).strftime(Settings.date_format)
-    # print(cur_date)
-
-    # from bot.db import protection
-    # protection.checking_for_old_reminders()
-
-    # from bot.logic import search_engine
-    # text1 = "10: 1 2.12 проверка"
-    # text2 = "16 10.40 проверка"
-    # text3 = "17 апреля в 1.10 проверка"
-    # text4 = "13.05 в 12 проверка"
-    # text5 = "в 12:10 проверка"
-    # text6 = "в 13.15 проверка"
-    # text7 = "завтра в 15 часов 35 минут проверка"
-    # text8 = "в 10 часов проверка"
-    # text = text8
-    # date, time, text = search_engine.date_and_time_handling(text)
-    # print(date)
-    # print(time)
-    # print(text)
-    # print(search_engine.search_first_number(text))
-    # print("fdas gd gdsgf"["fdas gd gdsgf".find('gd')+len('gd')] == ' ')
