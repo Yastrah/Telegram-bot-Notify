@@ -95,7 +95,8 @@ def main():
     logging.basicConfig(format="%(asctime)s [%(levelname)s] %(name)s: %(message)s", level="DEBUG",
                         datefmt="%Y-%m-%d %H:%M:%S", handlers=[file_log, console_log])
 
-    bot = Bot(token=os.getenv('TOKEN'))
+    PROXY_URL = "http://proxy.server:3128"
+    bot = Bot(token=os.getenv('TOKEN'), proxy=PROXY_URL)
     dp = Dispatcher(bot, storage=MemoryStorage())
 
     logger.info("""Product:
