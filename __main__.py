@@ -11,6 +11,7 @@ from dotenv import load_dotenv, find_dotenv
 from config.configuration import Constants
 
 from bot.db.protection import checking_for_old_reminders
+from bot.db.connector import on_start
 from bot.send_reminders import timer
 from bot.handlers.admin import register_handlers_admin
 from bot.handlers.common import register_handlers_common
@@ -116,4 +117,5 @@ GitHub: https://github.com/Yastrah""".format(version, datetime.datetime.now().st
 
 
 if __name__ == "__main__":
+    on_start()
     main()
