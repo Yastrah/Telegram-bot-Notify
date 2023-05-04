@@ -23,7 +23,7 @@ async def cmd_start(message: types.Message, state: FSMContext):
         return await register_user(message, state)
 
     start = Constants.user_commands.get("start")
-    await message.answer(start["text"]["ru"].format(bot_name=config.bot.name), parse_mode="HTML",
+    await message.answer(start["text"]["ru"].format(user_name=message.from_user.first_name, bot_name=config.bot.name), parse_mode="HTML",
                          reply_markup=keyboards.kb_main_menu)
 
 

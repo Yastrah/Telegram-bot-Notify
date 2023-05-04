@@ -58,7 +58,8 @@ async def cmd_settings(message: types.Message, state: FSMContext):
 async def set_utc(call: types.CallbackQuery, state: FSMContext):
     data = await state.get_data()
     await state.finish()
-    await call.bot.delete_message(call.message.chat.id, data["message_id"])
+    if data.get("message_id"):
+        await call.bot.delete_message(call.message.chat.id, data["message_id"])
 
     time_zone = call.data.split()[1]
 

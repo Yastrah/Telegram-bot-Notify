@@ -27,7 +27,7 @@ async def cmd_delete(message: types.Message, state: FSMContext):
 
     data = reminders.get_user_reminders(message.chat.id)
     if not data:
-        return await message.answer("У вас нет напоминаний, чтобы их удалить")
+        return await message.answer("⚡️ У вас нет напоминаний, чтобы их удалить")
 
     id_list = [x[3] for x in data]
 

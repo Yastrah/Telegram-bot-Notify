@@ -37,7 +37,7 @@ async def cmd_report(message: types.Message, state: FSMContext):
 
         if len(match) >= Settings.max_reports_per_day:
             return await message.answer(Constants.user_commands["report"]["too_many_reports"]['ru'].format(
-                max_reports_per_day=Settings.max_reports_per_day))
+                max_reports_per_day=Settings.max_reports_per_day), parse_mode="HTML")
 
     await ReportAppeal.waiting_for_text.set()
     return await message.answer(Constants.user_commands["report"]["what_to_do"]['ru'],

@@ -1,0 +1,383 @@
+2023-05-04 22:00:29 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:00:29
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:00:29 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:00:30 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:00:30 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:00:30 [WARNING] aiogram: Goodbye!
+2023-05-04 22:00:30 [ERROR] __main__: Could not start polling!
+	Exception: Can't parse botcommand: field "description" must be of type string
+2023-05-04 22:01:05 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:01:05
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:01:05 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:01:05 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:01:05 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:01:05 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:01:05 [INFO] __main__: Start schedule process.
+2023-05-04 22:01:05 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:02:32 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:02:32 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:02:32 [WARNING] aiogram: Goodbye!
+2023-05-04 22:02:34 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:02:34
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:02:35 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:02:35 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:02:35 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:02:35 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:02:35 [INFO] __main__: Start schedule process.
+2023-05-04 22:02:35 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:03:05 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:03:05 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:03:05 [WARNING] aiogram: Goodbye!
+2023-05-04 22:03:07 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:03:07
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:03:07 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:03:07 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:03:07 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:03:07 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:03:08 [INFO] __main__: Start schedule process.
+2023-05-04 22:03:08 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:03:28 [WARNING] bot.handlers.report: Appeal received, report_id: 1990672413_6
+2023-05-04 22:03:57 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:03:57 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:03:57 [WARNING] aiogram: Goodbye!
+2023-05-04 22:03:58 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:03:59 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:03:59
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:03:59 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:03:59 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:03:59 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:03:59 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:03:59 [INFO] __main__: Start schedule process.
+2023-05-04 22:03:59 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:04:24 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:04:24 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:04:24 [WARNING] aiogram: Goodbye!
+2023-05-04 22:04:25 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:04:26 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:04:26
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:04:26 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:04:26 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:04:27 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:04:27 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:04:27 [INFO] __main__: Start schedule process.
+2023-05-04 22:04:27 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:04:48 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:04:48 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:04:48 [WARNING] aiogram: Goodbye!
+2023-05-04 22:04:52 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:04:53 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:04:53
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:04:54 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:04:54 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:04:54 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:04:54 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:04:54 [INFO] __main__: Start schedule process.
+2023-05-04 22:04:54 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:05:03 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:05:03 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:05:03 [WARNING] aiogram: Goodbye!
+2023-05-04 22:05:04 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:05:05 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:05:05
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:05:06 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:05:06 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:05:06 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:05:06 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:05:06 [INFO] __main__: Start schedule process.
+2023-05-04 22:05:06 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:05:32 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:05:32 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:05:32 [WARNING] aiogram: Goodbye!
+2023-05-04 22:05:36 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:05:38 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:05:38
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:05:38 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:05:38 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:05:38 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:05:38 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:05:38 [INFO] __main__: Start schedule process.
+2023-05-04 22:05:38 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:06:11 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:06:11 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:06:11 [WARNING] aiogram: Goodbye!
+2023-05-04 22:06:13 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:06:15 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:06:15
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:06:15 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:06:15 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:06:15 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:06:15 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:06:15 [INFO] __main__: Start schedule process.
+2023-05-04 22:06:15 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:06:47 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:06:47 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:06:47 [WARNING] aiogram: Goodbye!
+2023-05-04 22:06:50 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:06:52 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:06:52
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:06:52 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:06:52 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:06:53 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:06:53 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:06:53 [INFO] __main__: Start schedule process.
+2023-05-04 22:06:53 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:07:07 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:07:07 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:07:07 [WARNING] aiogram: Goodbye!
+2023-05-04 22:07:08 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:07:09 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:07:09
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:07:10 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:07:10 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:07:10 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:07:10 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:07:10 [INFO] __main__: Start schedule process.
+2023-05-04 22:07:10 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:08:14 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:08:14 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:08:14 [WARNING] aiogram: Goodbye!
+2023-05-04 22:08:15 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:08:16 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:08:16
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:08:17 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:08:17 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:08:17 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:08:17 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:08:17 [INFO] __main__: Start schedule process.
+2023-05-04 22:08:17 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:08:45 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:08:45 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:08:45 [WARNING] aiogram: Goodbye!
+2023-05-04 22:08:47 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:08:49 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:08:49
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:08:49 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:08:49 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:08:49 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:08:49 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:08:49 [INFO] __main__: Start schedule process.
+2023-05-04 22:08:49 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:09:02 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:09:02 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:09:02 [WARNING] aiogram: Goodbye!
+2023-05-04 22:09:04 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:09:06 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:09:06
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:09:06 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:09:06 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:09:06 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:09:06 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:09:06 [INFO] __main__: Start schedule process.
+2023-05-04 22:09:06 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:09:10 [ERROR] bot.handlers.errors: Found exception with user 1990672413!
+	Exception: nothing to repeat at position 0
+2023-05-04 22:09:27 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:09:27 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:09:27 [WARNING] aiogram: Goodbye!
+2023-05-04 22:09:31 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:09:33 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:09:33
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:09:33 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:09:33 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:09:33 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:09:33 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:09:33 [INFO] __main__: Start schedule process.
+2023-05-04 22:09:33 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:10:13 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:10:13 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:10:13 [WARNING] aiogram: Goodbye!
+2023-05-04 22:10:18 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:15:36 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:15:36
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:15:37 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:15:37 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:15:37 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:15:37 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:15:37 [INFO] __main__: Start schedule process.
+2023-05-04 22:15:37 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:17:56 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:17:56 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:17:56 [WARNING] aiogram: Goodbye!
+2023-05-04 22:17:57 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:17:59 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:17:59
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:17:59 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:17:59 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:17:59 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:17:59 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:17:59 [INFO] __main__: Start schedule process.
+2023-05-04 22:17:59 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:18:01 [ERROR] asyncio: Task exception was never retrieved
+future: <Task finished name='Task-10' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\Yastrah\AppData\Local\pypoetry\Cache\virtualenvs\telegram-bot-notify-jhVW2ife-py3.8\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=AttributeError("'NoneType' object has no attribute 'from_user'")>
+Traceback (most recent call last):
+  File "C:\Users\Yastrah\AppData\Local\pypoetry\Cache\virtualenvs\telegram-bot-notify-jhVW2ife-py3.8\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+  File "C:\Users\Yastrah\AppData\Local\pypoetry\Cache\virtualenvs\telegram-bot-notify-jhVW2ife-py3.8\lib\site-packages\aiogram\dispatcher\handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\bot\handlers\settings.py", line 61, in set_utc
+    await call.bot.delete_message(call.message.chat.id, data["message_id"])
+KeyError: 'message_id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Yastrah\AppData\Local\pypoetry\Cache\virtualenvs\telegram-bot-notify-jhVW2ife-py3.8\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\Yastrah\AppData\Local\pypoetry\Cache\virtualenvs\telegram-bot-notify-jhVW2ife-py3.8\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\Yastrah\AppData\Local\pypoetry\Cache\virtualenvs\telegram-bot-notify-jhVW2ife-py3.8\lib\site-packages\aiogram\dispatcher\handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\Yastrah\AppData\Local\pypoetry\Cache\virtualenvs\telegram-bot-notify-jhVW2ife-py3.8\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 313, in process_update
+    err = await self.errors_handlers.notify(update, e)
+  File "C:\Users\Yastrah\AppData\Local\pypoetry\Cache\virtualenvs\telegram-bot-notify-jhVW2ife-py3.8\lib\site-packages\aiogram\dispatcher\handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "D:\GitHub\Telegram-bot-Notify\bot\handlers\errors.py", line 43, in error_catched
+    logger.error("Found exception with user {0}!\n\tException: {1}".format(update.message.from_user.id, exception))
+AttributeError: 'NoneType' object has no attribute 'from_user'
+2023-05-04 22:20:13 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:20:13 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:20:13 [WARNING] aiogram: Goodbye!
+2023-05-04 22:20:14 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:20:16 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:20:16
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:20:16 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:20:16 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:20:16 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:20:16 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:20:16 [INFO] __main__: Start schedule process.
+2023-05-04 22:20:16 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:20:20 [DEBUG] bot.handlers.settings: User 1990672413 set time_zone ±00:00.
+2023-05-04 22:20:36 [DEBUG] bot.handlers.settings: User 1990672413 set time_zone +03:00.
+2023-05-04 22:21:49 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:21:49 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:21:49 [WARNING] aiogram: Goodbye!
+2023-05-04 22:21:52 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:23:44 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:23:44
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:23:44 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:23:44 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:23:44 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:23:44 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:23:44 [INFO] __main__: Start schedule process.
+2023-05-04 22:23:44 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:24:40 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:24:40 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:24:40 [WARNING] aiogram: Goodbye!
+2023-05-04 22:24:44 [WARNING] bot.send_reminders: Shutdown schedule process...
+2023-05-04 22:24:46 [INFO] __main__: Product:
+~~~Telegram-bot for quick reminders~~~
+VERSION: 1.4.2
+LAST_UPDATE: 2023-05-04 22:24:46
+The product is not commercial
+Developed by Yastrah
+GitHub: https://github.com/Yastrah
+2023-05-04 22:24:47 [INFO] aiogram: Bot: Notify [@NotifyMeHelperBot]
+2023-05-04 22:24:47 [WARNING] aiogram: Updates were skipped successfully.
+2023-05-04 22:24:47 [INFO] __main__: Bot commands have been set.
+2023-05-04 22:24:47 [DEBUG] bot.db.protection: Checking old reminders completed successfully. There is no any reminders.
+2023-05-04 22:24:47 [INFO] __main__: Start schedule process.
+2023-05-04 22:24:47 [INFO] aiogram.dispatcher.dispatcher: Start polling.
+2023-05-04 22:26:27 [WARNING] __main__: Shutdown dispatcher...
+2023-05-04 22:26:27 [INFO] aiogram.dispatcher.dispatcher: Stop polling...
+2023-05-04 22:26:27 [WARNING] aiogram: Goodbye!
+2023-05-04 22:26:32 [WARNING] bot.send_reminders: Shutdown schedule process...

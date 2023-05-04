@@ -22,6 +22,7 @@ from bot.handlers.report import register_handlers_report
 from bot.handlers.settings import register_handlers_settings
 from bot.handlers.messages import register_handlers_messages
 from bot.handlers.errors import register_handlers_error
+from bot.handlers.show_reports import register_handlers_my_reports
 
 from aiogram import Bot
 from aiogram.dispatcher import Dispatcher
@@ -30,7 +31,7 @@ from aiogram.utils import executor
 from aiogram.types import BotCommand
 
 
-version = "1.4.1"
+version = "1.4.2"
 load_dotenv(find_dotenv())
 
 logger = logging.getLogger(__name__)
@@ -46,6 +47,7 @@ def register_all_handlers(dp: Dispatcher):
     register_handlers_delete(dp)
     register_handlers_edit(dp)
     register_handlers_report(dp)
+    register_handlers_my_reports(dp)
     register_handlers_settings(dp)
     register_handlers_messages(dp)
     register_handlers_error(dp)
