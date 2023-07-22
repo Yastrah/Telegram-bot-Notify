@@ -1,4 +1,4 @@
-# Telegram-bot-Euclid
+# Telegram-bot-Notify
 
 ![build](https://img.shields.io/badge/build-passing-orange)
 ![demo](https://img.shields.io/badge/demo-online-brightgreen)
@@ -8,7 +8,7 @@ Telegram bot Euclid is a helper bot for [Telegram](https://telegram.org) to crea
 
 ## Usage
 
-To get started, open bot [Euclid Assistant](https://t.me/EuclidAssistantBot) and use the command ```/start``` in bot chat.
+To get started, open bot [Notify](https://t.me/NotifyMeHelperBot) and use the command ```/start``` in bot chat.
 
 ## Feedback
 
